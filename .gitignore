@@ -1,5 +1,8 @@
-# Ignore credentials
+# Credentials
 admin/credentials.php
+
+# Historic ages
+history/ages/
 
 # Log files
 error_log

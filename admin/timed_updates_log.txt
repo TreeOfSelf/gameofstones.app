@@ -1,0 +1,3 @@
+Starting 15 minute updateStarting Updates...Connecting to DB... Starting Quarterly Updates...Updating Users...</br>
+starting heroes update</br>
+ Hourly update not running this iteration
