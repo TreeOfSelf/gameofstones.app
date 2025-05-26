@@ -1,0 +1,17 @@
+
+::INSTRUCTIONS FOR MAKING MAPS::
+
+create a file called "<map_name>.map" where <map_name> is the name of your map with all spaces replaced with "_". Preserve case in the filename.
+
+in this new file paste the text output by the towneditor in this form:
+
+	<?php
+	$mapdata="
+	<map data from towneditor>
+	";
+	?>
+	
+Then in the file "coordinates.inc" create a line for your map with the form:
+array( x , y , max_resource_cost , has_market, has_trading_post, has_bank, has_armory)
+
+use 1's or 0's for the "has" fields and the world map coordinate for the x and y.

@@ -1,0 +1,31 @@
+<div align="center">
+     <h6>Current Development Team : Project Coramoor(2024)</br>Game previously developed by Tim Jensen, with graphics by Edward Givens<br/>
+  Game created by Craig Harrison, with graphics by Aaron McCollough<br/>
+  <i>The Wheel of Time</i> and related material &#169; Robert Jordan and TOR Fantasy</h6>
+</div> <!-- Close main container -->
+
+
+  <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+<!--     <script src="jquery.snow.min.1.0.js"></script>-->
+  <script src="./gosbootstrap/bootstrap.min.js"></script>
+  <script src="./gosbootstrap/bootstrap-confirmations.js"></script>
+  <script src="gos_cmn.js"></script>
+  <script>
+	$('[data-toggle="confirmation"]').confirmation();
+	$('.confirmation-callback').confirmation({
+		onConfirm: function() { alert('confirm') },
+		onCancel: function() { alert('cancel') }
+	});
+	
+	$(document).ready(function(){
+	    $("[data-toggle='popover']").popover();
+	                });
+	                
+	$('.btn').click(function(){
+	    $('.btn').not(this).popover('hide');
+	});
+	              
+  </script>
+
+</body>
+</html>

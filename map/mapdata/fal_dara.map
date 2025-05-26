@@ -1,0 +1,11 @@
+<?php 
+$mapdata="
+6|6|Plain_of_Lances|Tarwin-ap-s_Gap|Spine_of_the_World|Black_Hills||||5|5|5|5#
+grass:|grass:|grass:|grass:|grass:|grass:#
+grass:|grass:|grass:|grass:|grass:|grass:#
+grass:|grass:|grass:|grass:|grass:|grass:#
+grass:|grass:|grass:|grass:|grass:|grass:#
+grass:|grass:|grass:|grass:|grass:|grass:#
+grass:|grass:|grass:|grass:|grass:|grass:
+"; 
+?>

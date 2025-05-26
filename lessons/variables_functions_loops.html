@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="codemirror/lib/codemirror.css">
+	<link rel="stylesheet" href="codemirror/theme/panda-syntax.css">
+	</head>
+	
+	<body>
+		
+		<script src="./codemirror/lib/codemirror.js"></script>
+		<script src="./codemirror/mode/javascript/javascript.js"></script>
+		
+		<center>
+		<h1>Variable, Functions, and Loops</h1>
+		<p>The bread and butter of any programming langauge.</p>
+		</br>
+		</br>
+		
+		<div class="infoDiag">
+		<p>It is very important moving forward that we understand these concepts before we start programming more complex applications in Node.JS</p>
+		<p>I have created some really simple visuals to help you get more intuition regarding them.</p>
+		</div>
+		
+		</br>
+		</br>
+		</br>
+		<h1> Variables: </h1>
+
+		<div class="infoDiag">
+		<p>We should not consider variables as simply just numbers and strings, for example:</p>
+		</div>
+		</br>
+		
+		</br>
+		</center>
+		<textArea id="functionExample"></textArea>
+		<script>
+var funcExamp = CodeMirror.fromTextArea(functionExample, {
+lineNumbers: true,
+theme : 'panda-syntax',
+});
+funcExamp.setValue(`
+sayHello = function(){
+	console.log("Hello there!");
+}`);
+		</script>
+		</br>
+		<center>
+		<div class="infoDiag">
+		<p>You might not consider sayHello to be a variable, however, in javascript anything that has a set value, whether it be</p>
+		<p>objects, arrays, functions, buffers, any sort of data</p>
+		<p>It is still considered to be a variable and can use different variable keywords</p>
+		<p>Examples of variable keywords:</p>
+		</div>
+		</br>
+		</center>
+		</br>
+		<textArea id="keywordExample"></textArea>
+		<script>
+var keywordExamp = CodeMirror.fromTextArea(keywordExample, {
+lineNumbers: true,
+theme : 'panda-syntax',
+});
+keywordExamp.setValue(`
+//Constants, they cannot be changed ever! 
+//It is good practice to use these when requiring modules, 
+//setting values that WILL never change (Like an encryption key)
+const immutable = [1,2,3];
+
+//Var keyword, without this the variable becomes global, lets look at an example
+testFunc = function(){
+	var test = "hello";
+}
+console.log(test);
+//This would print undefined, because of the use of var. The variable is local to that function (like a parameter would be)
+
+testFunc = function(){
+	test = "hello";
+}
+console.log(test);
+//In this example it WOULD print hello, because we did not use the var keyword, so it is now in the global scope.
+//There is another keyword let, that is like var but even STRICTER in scope. For now lets just worry about var, const, and global variables.
+//It is a good practice to use the most appropriote type of variable in a given situation.
+//Take a peek at this example:
+
+health = 100;
+modifyHealth = function(){
+	healthModifier = 0.5;
+	health*=healthModifier;
+}
+
+//Because we did not use a var keyword for healthModifier, that variable now exists in the global scope, and therefore will use memory 
+//and never go away. If w are only temporarily needing a variable then we should use var so that it will free that memory once it is 
+//done using it.
+`);
+	</script>
+	</br>
+	<center>
+	<h1> Functions: </h1>
+	</br>
+	<div class="infoDiag">
+	<p>There is a big difference in parameter variables and global variables</p>
+	<p>Remember, parameter variables only exist in that function, stricly within the code block</p>
+	</div>	
+	</br>
+	</br>
+	
+	<img src="img/parameterExample.png"></img>
+	</br>
+	
+	<div class="infoDiag">
+	<p>Think about it like this:</p>
+	<p>The parameter is just a temporary reference the function will use for the actual value we pass to it.</p>
+	<p>Once the function is done with it, it tosses the reference into the void forever.</p>
+	</div>	
+	
+	</br>
+	<img src="img/parameterBadExample.png"></img>	
+	</br>
+	<img src="img/parameterGoodExample.png"></img>	
+	</br>
+	<img src="img/parameterExample2.png"></img>	
+	</br>
+	<img src="img/parameterBadExample2.png"></img>	
+	
+	
+	</br>
+	
+	
+	<div class="infoDiag"><p>The fundamental layout for a function looks like this</p></div>	
+	</br>
+	<img src="img/fundamentalFunction.png"></img>
+
+	</br>
+	</br>
+	</br>
+	<h1> The Return Statement: </h1>
+	</br>
+	<div class="infoDiag"><p>You might remember seeing the return statement, if you don't remember this is how it works</p></div>	
+	</br>
+	</br>
+	</center>
+		<textArea id="returnExample"></textArea>
+		<script>
+var keywordExamp = CodeMirror.fromTextArea(returnExample, {
+lineNumbers: true,
+theme : 'panda-syntax',
+});
+keywordExamp.setValue(`
+
+//Write your function like normal
+addFive = function(numberInput){
+	//Instead of changing a global variable, we take the parameter and effect it in some way and then use the return statement to spit it back out after we modify it
+	return numberInput+=5;
+}
+
+//Then we can call our function , it returns a variable. So we can basically see our function as like a variable itself, that takes a parameter
+sevenPlusFive = addFive(7);
+
+//You can also do tricky shit like this
+
+sevenPlusFivePlusFive = addFive(addFive(7));
+
+//This "nesting" of functions is pretty weird to wrap your head around at first, but in time it will feel more natural to you. I remember you saying you prefer it to be written like this:
+
+sevenPlusFive = addFive(7);
+
+sevenplusFivePlusFive = addFive(sevenPlusFive);
+
+//You what whatever makes you feel comfortable ,but just know that a lot of people will squish things together where they feel appropriote so be prepared.
+
+
+`);
+	</script>
+	</br>
+	<center>
+	<div class="infoDiag"><p>It is also good to know you can write your return statement in a couple different ways just like how you can write functions in a couple different ways (but they do the same thing)</p></div>	
+	
+	</center>
+	<textArea id="returnExampleTwo"></textArea>
+	<script>
+var keywordExamp = CodeMirror.fromTextArea(returnExampleTwo, {
+lineNumbers: true,
+theme : 'panda-syntax',
+});
+keywordExamp.setValue(`
+
+function addFive(input){
+	return input+5;
+}
+
+//Or we can write it as 
+
+addFive = function(input){
+	return (input+5);
+}
+
+//I typically always do my return statements with parentheses.
+//As for how you define a function, either way works! I promise I am not trying to confuse you showing you all the different ways to do things 
+//I just want you to be prepared for working with different types of styles.
+
+`);
+	</script>
+	<center>
+	<h1> Loops </h1>
+	
+	<div class="infoDiag"><p>There are two main types of loops in javascript, a for and a while loop. They are key to making a program. I will try my best to explain them both</p></div>	
+	</br>
+	</br>
+	<h1> The For Loop </h1>
+	<div class="infoDiag"><p>So imagine, we have an array of numbers, and we want to write a function that adds 5 to each element of that array. Only issue is, we don't know how long it is</p>
+	<p> Well, the way you do that is using a foor loop!</p>
+	</div>
+	
+	</center>
+	<textArea id="forLoop"></textArea>
+	<script>
+var keywordExamp = CodeMirror.fromTextArea(forLoop, {
+lineNumbers: true,
+theme : 'panda-syntax',
+});
+keywordExamp.setValue(`
+
+//Index        0 1 2 3 4 5 6 7 8 9 
+numberArray = [1,2,3,4,5,6,7,8,9,10];
+
+//We reference indexes like this:
+numberArray[5] // This would be equal to 6. A little confusing, because arrays always start at index 0! 
+
+//Every array has a property associated to it (arrays are technically objects in javascript)
+//It is called length and accessed like this:
+
+numberArray.length // This would return 10 since there are 10 elements to our array
+
+//Now how do we use this in a for loop?
+
+       //SEMICOLON                    //SEMICOLON
+for(k = 0;        k  <  numberArray.length;      k++){
+	console.log(k);
+
+}
+
+// The result of running this would be:
+// 0
+// 1
+// 2
+// 3
+// 4
+// 5
+// 6
+// 7
+// 8
+// 9
+	
+//Now lets break down each part 
+
+for()
+
+//This is the outline for a for loop, we type for and then put parentheses and then on the inside we fill in how our loop will work
+
+k = 0;
+
+//Image k is like a parameter in a function, its a variable that references where we are in our loop, you don't have to use k, people typically 
+//use a single character but you can also call it index, or anything. Then inside of our for loop, we use the variable k as our index like this:
+
+numberArray[k] 
+
+//The next part is our condition for when to stop the loop
+
+k < numberArray.length;
+
+//Essentially, the loop will keep running while this is true , so while k is LESS than the length of our array, keep running the foor loop 
+
+k++
+
+//This is how much we increment our k variable by each time the loop runs. k++ is the same as writing k+=1, as k-- is the same as k-=1
+
+//Now REMEMBER there are semicolons at the end of each part (except for the last) that is how it knows to properly format our loop 
+
+//So, lets see how we would write a for loop to add 5 to every index of our array 
+
+for(k = 0; k<numberArray.length; k++){
+	numberArray[k]+=5;
+	console.log(numberArray[k]);
+}
+
+//Result:
+//5
+//6
+//7
+//8
+//9
+//10
+//11
+//12
+//13
+//14
+//15 
+ 
+
+}`);
+	</script>
+	<center>
+	<h1> The while loop </h1>
+	<div class="infoDiag"><p>A while loop is like a foor loop, the only difference is it is ONLY  the condition part, lets rewrite our above for loop, but only using a while loop </p></div>		
+	</center>
+	<textArea id="forLoopTwo"></textArea>
+	<script>
+var keywordExamp = CodeMirror.fromTextArea(forLoopTwo, {
+lineNumbers: true,
+theme : 'panda-syntax',
+});
+keywordExamp.setValue(`
+numberArray = [1,2,3,4,5,6,7,8,9,10];
+k =0;
+while(k<numberArray.length){
+	numberArray[k]+=5;
+	console.log(numberArray[k]);
+	k+=1;
+}
+	
+//Result:
+//5
+//6
+//7
+//8
+//9
+//10
+//11
+//12
+//13
+//14
+//15 
+
+//So basically, the while loop is used when you want to keep doing something OVER and OVER until a condition is met, the foor loop is used when you specficially want to numerically iterate but the while loop can 
+//be used in other ways like this:
+
+while(enemyHealth>0){
+	//COMBAT STUFF 
+}
+
+while(userConnected){
+	//SERVER STUFF
+}
+
+//The for loop is more like going through an array 
+//Theres another loop for looping through object properties, but I will save that for our objects lesson =) 
+
+`);
+	</script>
+	<center>
+	<h1> Putting it all together </h1>
+	</br>
+	
+	<div class="infoDiag"><p>
+	Assignment #1:</p>
+	<p>
+	You are given a number array with numbers 1-10. You must write a function that takes two parameters. The first parameter is the amount to add to each index, and the second is the amount to skip through the array by. </p>
+	<p>So for example if we wanted to add 4 to every SECOND number of the array our parameters would be </p>
+	<p>4,2 </p>
+	<p>And the result would be:</p>
+	
+	<p>1,   2,   3,   4,   5,   6,   7,   8,   9,   10</p>
+	<p>1,   <b>2+4</b>,   3,   <b>4+4</b>,   5,   <b>6+4</b>,   7,   <b>8+4</b>,   9,   <b>10+4</b></p>
+	<p> EQUALS: </p>
+	<p>1,   6,   3,   8,   5,  10,   7,   12,  9,   14</p>
+	</br>
+	<p>It is a little tricky! But I am here by your side to help you :) good luck! Click edit in JSFiddle to start!</p>
+	</div>	
+	</center>
+<script async src="//jsfiddle.net/sebastian97/9suzc2p4/1/embed/js/dark/"></script>
+	
+	
+	
+	</body>
+</html>

@@ -1,0 +1,58 @@
+.form { font-family: Verdana; font-size: 10px; color: #999999; background: #0F0F0F; border: #333333 solid 1px; }
+
+.title { font-family: Verdana; font-size: 24px; color: #C6CCD8; background: #0F0F0F; border-color : #999999; border: #999999 solid 1px; padding: 10px; width: 90%;}
+
+.bigtext { font-family: Verdana; font-size: 18px;}
+
+.foottext { font-family: Verdana; font-size: 9px; color: #C6CCD8;}
+
+.littletext { font-family: Verdana; font-size: 12px; color: #C6CCD8;}
+
+.foottext_f { font-family: Verdana; font-size: 9px; color: #999999;}
+
+.littletext_f { font-family: Verdana; font-size: 12px; color: #999999;}
+
+.medtext { font-family: Verdana; font-size: 14px; color: #C6CCD8;}
+
+.logintext { font-family: Verdana; font-size: 12px; color: #C6CCD8;}
+
+.blank { border-width: 0px; border-spacing: 0px; padding: 0px; border-collapse: collapse;}
+
+.abox { border: 1px solid #333333; background-color: #0F0F0F; border-spacing: 0px; padding: 3px;}
+
+.fixgap {
+float: right;
+height: 0;
+}
+
+A:link{color: #5A81BB; text-decoration:none}
+A:visited{color: #5A81BB; text-decoration:none}
+A:active{color: #5A81BB; text-decoration:none}
+A:hover{color: #C4E5FF; text-decoration:none}
+
+A.neutral:link{color: #C0C0C0; text-decoration:none}
+A.neutral:visited{color: #C0C0C0; text-decoration:none}
+A.neutral:active{color: #C0C0C0; text-decoration:none}
+A.neutral:hover{color: #E3E3E3; text-decoration:none}
+
+A.good:link{color: #5483C9; text-decoration:none}
+A.good:visited{color: #5483C9; text-decoration:none}
+A.good:active{color: #5483C9; text-decoration:none}
+A.good:hover{color: #8CA4C9; text-decoration:none}
+
+A.evil:link{color: #E14545; text-decoration:none}
+A.evil:visited{color: #E14545; text-decoration:none}
+A.evil:active{color: #E14545; text-decoration:none}
+A.evil:hover{color: #E19898; text-decoration:none}
+
+A.c:link{color: #000000; text-decoration:underline; font-size: 10px}
+A.c:visited{color: #000000; text-decoration:underline; font-size: 10px}
+A.c:active{color: #000000; text-decoration:underline; font-size: 10px}
+A.c:hover{color: #0F0F0F; text-decoration:none; font-size: 10px}
+
+A.n:link    {color: #FFFFFF; display: block; width: 130px;}
+A.n:visited {color: #FFFFFF; display: block; width: 130px;}
+A.n:active  {display: block; width: 130px;}
+A.n:hover   {display: block; width: 130px; color: #000000; background-color: #FFFFFF;}
+
+.nav-table {width: 130px; background-color: #000000; font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 14px; text-decoration:none;}

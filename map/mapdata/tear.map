@@ -1,0 +1,10 @@
+<?php 
+$mapdata="
+6|6|Hills_of_Kintara|Haddon_Mirk|Sea_of_Storms|Plains_of_Maredo||||5|5|5|5#
+grass:|grass:|grass:|grass:|grass:|grass:#
+grass:|grass:|grass:|grass:|grass:|grass:#
+grass:|grass:|grass:|grass:|grass:|grass:#
+grass:|grass:|grass:|grass:|grass:|grass:#
+grass:|grass:|grass:|grass:|grass:|grass:#
+grass:|grass:|grass:|grass:|grass:|grass:"; 
+?>

@@ -1,0 +1,31 @@
+<html>
+    <head>
+        <title>Training Grounds Tester</title>
+        <script src="plotly-2.25.2.min.js" charset="utf-8"></script>
+        <style>
+            #data {
+                width:600px;
+                height:300px;
+                background-color:rgb(220,220,220);
+                overflow-y:auto;
+            }
+        </style>
+    </head>
+    <body>
+        <h2>Training Grounds Tester</h2>
+        <label for="maxLevel">Max Clan Level:</label>
+        <input value="45" id="maxLevel" name="maxLevel"></input>
+        </br>
+        <label for="groundsLevel">Training Ground Level (0-10):</label>
+        <input value="3" id="groundsLevel" name="groundsLevel"></input>
+        </br>
+        <button name="testHours" id="testHours">Test In Hours</button>         <button name="testDays" id="testDays">Test In Days</button>
+        </br>
+        <div id="plot" style="width:1280px;height:500px;"></div>
+        <div id="data"></div>
+        <script src="./script.js"></script>
+
+    </body>
+
+
+</html>

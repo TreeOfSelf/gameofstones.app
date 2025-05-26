@@ -1,0 +1,11 @@
+<?php 
+$mapdata="
+6|6|Aryth_Ocean|World-ap-s_End|Black_Hills|Shadow_Coast||||5|5|5|5#
+grass:|grass:|grass:|grass:|grass:|grass:#
+grass:|grass:|grass:|grass:|grass:|grass:#
+grass:|grass:|grass:|grass:|grass:|grass:#
+grass:|grass:|grass:|grass:|grass:|grass:#
+grass:|grass:|grass:|grass:|grass:|grass:#
+grass:|grass:|grass:|grass:|grass:|grass:
+"; 
+?>

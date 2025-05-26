@@ -1,0 +1,53 @@
+@font-face {
+  font-family: "Serif Black";
+  src: url("./fonts/InputSerif-Black.ttf");
+}
+
+@font-face {
+  font-family: "Sans Light";
+  src: url("./fonts/InputSans-Light.ttf");
+}
+
+@font-face {
+  font-family: "Serif Bold";
+  src: url("./fonts/InputSerif-Bold.ttf");
+}
+
+br {
+ line-height: 150%;
+}
+
+html,body {
+	background-color:rgb(25,25,25);
+    margin: 0; /* Space from this element (entire page) and others*/
+    padding: 0; /*space from content and border*/
+    border: solid rgb(30,30,30);
+    border-width: thick;
+    display:block;
+    box-sizing: border-box;
+}
+
+h1 {
+	color:rgb(200,200,200);
+	text-shadow: 2px 2px rgb(10,10,10);
+	font-family:'Serif Black';
+	white-space: pre;
+}
+
+p {
+	color:rgb(220,220,220);
+	font-family: 'Sans Light';
+	text-shadow: 2px 2px rgb(10,10,10);
+}
+
+a {
+	font-family: "Serif Bold";
+}
+
+.infoDiag {
+	background-color: rgba(150,150,150,0.1);
+	display: inline-block;
+	padding: 5px 5px 5px 5px;
+    border: solid rgb(20,20,20);
+    border-width: thick;
+}

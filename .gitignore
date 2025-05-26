@@ -1,0 +1,15 @@
+# Ignore credentials
+admin/credentials.php
+
+# Log files
+error_log
+
+# User uploads
+avatar_uploads/
+
+# Configuration files (if they are environment-specific or sensitive)
+php.ini
+.user.ini
+
+# Git directory (if this is not the root of your main repository)
+.git/ 

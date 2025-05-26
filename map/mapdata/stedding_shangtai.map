@@ -1,0 +1,10 @@
+<?php 
+$mapdata="
+6|6|Spine_of_the_World|Aiel_Waste|Sea_of_Storms|Haddon_Mirk||||5|5|5|5#
+grass:|grass:|grass:|grass:|grass:|grass:#
+grass:|grass:|grass:|grass:|grass:|grass:#
+grass:|grass:|grass:|grass:|grass:|grass:#
+grass:|grass:|grass:|grass:|grass:|grass:#
+grass:|grass:|grass:|grass:|grass:|grass:#
+grass:|grass:|grass:|grass:|grass:|grass:"; 
+?>
