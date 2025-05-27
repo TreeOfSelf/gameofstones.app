@@ -7,7 +7,7 @@ $wait_post = 30;
 $id=$char['id'];
 
 $soc_name = $char['society'];
-$loc_name = str_replace('-ap-','&#39;',$char['location']);
+$loc_name = str_replace('-ap-',"'",$char['location']);
 $loc_query = $char['location'];
 $surrounding_area = $map_data[$loc];
 
@@ -256,13 +256,13 @@ $numchar = $resultf['0'];
                 if ($myHorde['done']==1 || $myHorde['done']==2)
                 {
                   if (count($npc_info)==1) $hordemsg .= " was "; else $hordemsg.= " were ";              
-                  $hordemsg .= "defeated in ".str_replace('-ap-','&#39;',$myHorde['location']).". Attack averted!"; 
+                  $hordemsg .= "defeated in ".str_replace('-ap-',"'",$myHorde['location']).". Attack averted!"; 
                 }
                 elseif ($myHorde['done']==0)
                 {
                   $tminus = intval(($myHorde['ends']*3600-time())/60);
                   if (count($npc_info)==1) $hordemsg .= " is "; else $hordemsg.= " are ";              
-                  $hordemsg .= "gathering in ".str_replace('-ap-','&#39;',$myHorde['location']).". Attack in ".displayTime($tminus,0,1)."!";
+                  $hordemsg .= "gathering in ".str_replace('-ap-',"'",$myHorde['location']).". Attack in ".displayTime($tminus,0,1)."!";
                 }
                 elseif ($myHorde['done']==3)
                 {

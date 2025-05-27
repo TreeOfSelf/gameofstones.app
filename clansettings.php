@@ -445,7 +445,7 @@ $numpeople = mysqli_num_rows($result);
               if ($stance[str_replace(" ","_",$listchar[name])] == 1)
               {
           ?>
-          <option value="<?php echo $listchar[id]; ?>"><?php echo str_replace('-ap-','&#39;',$listchar[name]); ?></option>
+          <option value="<?php echo $listchar[id]; ?>"><?php echo str_replace('-ap-',"'",$listchar[name]); ?></option>
           <?php
               }
             }
@@ -460,7 +460,7 @@ $numpeople = mysqli_num_rows($result);
             while ( $listchar = mysqli_fetch_array( $result2 ) )
             {
           ?>
-          <option value="<?php echo $listchar[id]; ?>"><?php echo str_replace('-ap-','&#39;',$listchar[name]); ?></option>
+          <option value="<?php echo $listchar[id]; ?>"><?php echo str_replace('-ap-',"'",$listchar[name]); ?></option>
           <?php
             }
           ?>

@@ -16,12 +16,14 @@ $foundPaths = [];
 if ( ($wdest != "" && $wdest != -1) || $_GET['area'])
 {
  
-  $loc = $char['location'];
-  $end = $location_list[$wdest];
+  $char_location_escaped = mysqli_real_escape_string($db, $char['location']);
+  $loc = $char_location_escaped;
+  $raw_end = $location_list[$wdest];
   
    if( !is_null($_GET['area'])){
-	$end = $_GET['area'];
+    $raw_end = mysqli_real_escape_string($db, $_GET['area']);
   }
+  $end = mysqli_real_escape_string($db, $raw_end);
   echo $end;
   
   $x=0;

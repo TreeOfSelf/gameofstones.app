@@ -88,8 +88,19 @@ else
       if ($loc_id%2==1) { $gtype = 'd';} else $gtype='';
       $upgrades=serialize(array(0,0,0,0,0,0,0,0));
       $empty = serialize(array());
+
+      // Escape string variables for SQL query
+      $escaped_tname = mysqli_real_escape_string($db, $tname);
+      $escaped_shoplvls = mysqli_real_escape_string($db, $shoplvls);
+      $escaped_ruler = mysqli_real_escape_string($db, $ruler);
+      $escaped_gtype = mysqli_real_escape_string($db, $gtype);
+      $escaped_shopg = mysqli_real_escape_string($db, $shopg);
+      $escaped_shipgs = mysqli_real_escape_string($db, $shipgs);
+      $escaped_upgrades = mysqli_real_escape_string($db, $upgrades);
+      $escaped_empty = mysqli_real_escape_string($db, $empty);
+
       mysqli_query($db,"INSERT INTO Locations (name,    id,          shoplvls,   ruler,   bank,pop, last_war,last_tourney,last_update,   wager,   gtype,   lastdice,minw,maxw,shopg,   shipg,    upgrades, curr_dice) 
-                                  VALUES ('$tname','$insert_id','$shoplvls','$ruler','0', '10','0',     '0',         '$last_update','$wager','$gtype','0',     '1', '4', '$shopg','$shipgs','$upgrades','$empty')");
+                                  VALUES ('$escaped_tname','$insert_id','$escaped_shoplvls','$escaped_ruler','0', '10','0',     '0',         '$last_update','$wager','$escaped_gtype','0',     '1', '4', '$escaped_shopg','$escaped_shipgs','$escaped_upgrades','$escaped_empty')");
 	  echo mysqli_error($db);
 	}
   }

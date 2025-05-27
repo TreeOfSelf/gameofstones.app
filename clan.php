@@ -695,7 +695,7 @@ window.onload=intitializeChat;
                   }
               ?>
                 <tr class='small'>
-                  <td><?php echo str_replace('-ap-','&#39;',$loc['name']); ?></td>
+                  <td><?php echo str_replace('-ap-',"'",$loc['name']); ?></td>
                   <td><?php echo round($clanreps[$locid]); ?></td>
                   <td><?php echo round($clanscores[$society['id']]); ?></td>
                   <td>
@@ -722,7 +722,7 @@ window.onload=intitializeChat;
                         if ($stance[str_replace(" ","_",$listchar['name'])] == 1 && $listchar['id'] != $society['id'])
                         {
                   ?> 
-                    <option value="<?php echo $listchar['id'];?>" <?php if ($listchar['id']==$supporting[$society['id']]) echo ' selected';?>><?php echo str_replace('-ap-','&#39;',$listchar['name']); ?></option>
+                    <option value="<?php echo $listchar['id'];?>" <?php if ($listchar['id']==$supporting[$society['id']]) echo ' selected';?>><?php echo str_replace('-ap-',"'",$listchar['name']); ?></option>
                   <?php
                         }
                       }

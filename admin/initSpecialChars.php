@@ -4,9 +4,9 @@ include_once("skills.php");
 include_once("charFuncs.php");
 include_once("itemFuncs.php");
 
-createChar("The", "Creator",  "tlc@semremedy.com", "", "Thakan&#39;dar", 999);
-createChar("Dark", "One",  "tlc@semremedy.com", "", "Thakan&#39;dar", 999);
-createChar("Green", "Man", "tlc@semremedy.com", "", "Thakan&#39;dar", 999);
+createChar("The", "Creator",  "tlc@semremedy.com", "", "Thakan'dar", 999);
+createChar("Dark", "One",  "tlc@semremedy.com", "", "Thakan'dar", 999);
+createChar("Green", "Man", "tlc@semremedy.com", "", "Thakan'dar", 999);
 
 createAccount("tlc@semremedy.com","0;B,mszM*<H2vxJNU^");
 
@@ -24,6 +24,12 @@ function createChar($username, $lastname, $email, $avatar, $startat, $vit)
 {
   global $db, $item_base;
   
+  // Escape input variables to prevent SQL injection
+  $username = mysqli_real_escape_string($db, $username);
+  $lastname = mysqli_real_escape_string($db, $lastname);
+  $email = mysqli_real_escape_string($db, $email);
+  $avatar = mysqli_real_escape_string($db, $avatar);
+  $startat = mysqli_real_escape_string($db, $startat);
 
   $born=time();
   $nation=0;
@@ -47,26 +53,31 @@ function createChar($username, $lastname, $email, $avatar, $startat, $vit)
   $btoday = 170;
   
   $non = serialize(array());
+  $escaped_non = mysqli_real_escape_string($db, $non);
   
   $sql = "INSERT INTO Users (name,       lastname,     avatar,   email,   born,   sex,   type,    nation,   jobs,    focus,gold,   level,vitality,points,propoints,stamina,stamaxa,lastcheck,   lastscript,lastbuy,newmsg,newlog,newachieve,society,nextbattle,battlestoday,bankgold,lastbank,location,  travelmode,travelmode_name,feedneed,travelmode2, travelto,  arrival,depart,traveltype,exp,exp_up,   exp_up_s, goodevil,   equip_pts,used_pts,donor, ip) 
-                     VALUES ('$username','$lastname','$avatar','$email','$born','$sex','$starr','$nation','$jobss',$item,'1000', '1',  $vit,    '2',   '1',      '20',   '20',   '0'          ,'0',       '0',    '1',   '0',   '0',       '',     '0',       '$btoday',   '4000',  '0',     '$startat','0',       '',             '0',     '$num_start','$startat','0',    '0',   '0',       '0','$lvl_up','$lvl_up','$goodevil','100',    '90',    $donor,'$non')";
+                     VALUES ('$username','$lastname','$avatar','$email','$born','$sex','$starr','$nation','$jobss',$item,'1000', '1',  $vit,    '2',   '1',      '20',   '20',   '0'          ,'0',       '0',    '1',   '0',   '0',       '',     '0',       '$btoday',   '4000',  '0',     '$startat','0',       '',             '0',     '$num_start','$startat','0',    '0',   '0',       '0','$lvl_up','$lvl_up','$goodevil','100',    '90',    $donor,'$escaped_non')";
   $result = mysqli_query($db,$sql);
 
   echo mysqli_error($db);
 
-  $char = mysqli_fetch_array(mysqli_query($db,"SELECT id,name FROM Users WHERE name = '$username' AND lastname = '$lastname' "));
+  $char_query_username = mysqli_real_escape_string($db, $username);
+  $char_query_lastname = mysqli_real_escape_string($db, $lastname);
+  $char = mysqli_fetch_array(mysqli_query($db,"SELECT id,name FROM Users WHERE name = '$char_query_username' AND lastname = '$char_query_lastname' "));
   $id=$char['id'];
   include("setitems.php");
 
   for ($i=1; $i < 1000; $i++) $skills[$i]=0;
   $skills = getSkills($skills,$type);
   $friends=serialize(array());
+  $escaped_friends = mysqli_real_escape_string($db, $friends);
 
   $about="";
+  $escaped_about = mysqli_real_escape_string($db, $about);
   
 //  echo "Inserting Data...";
   $sql2 = "INSERT INTO Users_data (id,   about,   skills,   active,find_battle,friends) 
-                           VALUES ('$id','$about','$skills','$non','0',        '$friends')";
+                           VALUES ('$id','$escaped_about','$skills','$escaped_non','0',        '$escaped_friends')";
   $result2 = mysqli_query($db,$sql2);
   
 

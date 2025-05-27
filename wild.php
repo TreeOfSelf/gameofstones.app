@@ -67,7 +67,7 @@ $message=mysqli_real_escape_string($db,$_GET['message']);
 $isHorde=0;
 
 $soc_name = $char['society'];
-$loc_name = str_replace('-ap-','&#39;',$char['location']);
+$loc_name = str_replace('-ap-',"'",$char['location']);
 $loc_query = $char['location'];
  
 $surrounding_area=$map_data[$char['location']];
@@ -102,7 +102,7 @@ $myHorde=0;
       }
       $tminus = intval(($myHorde['ends']*3600-time())/60);
       if (count($npc_info)==1) $hordemsg .= " is "; else $hordemsg.= " are ";              
-      $hordemsg .= "heading towards ".str_replace('-ap-','&#39;',$myHorde['target']).". Attack in ".displayTime($tminus,0,1)."!";
+      $hordemsg .= "heading towards ".str_replace('-ap-',"'",$myHorde['target']).". Attack in ".displayTime($tminus,0,1)."!";
       echo "<p><a href='hordeinfo.php' class='evil'>".$hordemsg."</a></p>";
       $isHorde=$myHorde;
     }

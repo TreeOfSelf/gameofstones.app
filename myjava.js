@@ -428,7 +428,7 @@ function getXMLHttpRequestObject(){
     if (arrowSelected && arrowSelected!=arrow.id) document.getElementById(arrowSelected).src="map/imgs/e.gif";
     arrowSelected=arrow.id;
     if (Loc[arrow.name]) {
-      popConfirm('Take the road to '+Loc[arrow.name].replace('-ap-',"&#39;")+'?','javascript:setTraveling('+arrow.name+',0)');
+      popConfirm('Take the road to '+Loc[arrow.name].replace('-ap-',"'")+'?','javascript:setTraveling('+arrow.name+',0)');
     }
   }
       

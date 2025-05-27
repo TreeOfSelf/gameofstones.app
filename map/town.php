@@ -56,7 +56,7 @@ $mapCo=Array(0,0);
 	var toDock1='<?php echo $surrounding_area[4]; ?>';
 	var toDock2='<?php echo $surrounding_area[5]; ?>';
 	var toDock3='<?php echo $surrounding_area[6]; ?>';
-	parent.setInfo('<?php if (!$_GET['message']) echo str_replace('-ap-','&#39;',$char['location']); else echo $_GET['message']; ?>');
+	parent.setInfo('<?php if (!$_GET['message']) echo str_replace('-ap-',"'",$char['location']); else echo $_GET['message']; ?>');
 	parent.SetPlacePage('loc');
 	parent.marketChange(<?php echo $char['ismarket']; ?>);
 	

@@ -175,7 +175,7 @@ if ($_GET['transfer'] && $char['society'] == $charother['society'] && strtolower
 
 if (!$message && $is_same) $message = "Today's date is " . wotDate();
 elseif (!$message && $char['born']) {
-    $message = "Residing in " . str_replace('-ap-', '&#39;', $char['location']);
+    $message = "Residing in " . str_replace('-ap-', "'", $char['location']);
 }
 
 $charb = $char;

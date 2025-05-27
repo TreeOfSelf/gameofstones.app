@@ -63,7 +63,7 @@ if ($location_array[$char['location']][2]) $is_market=1;
 else $is_market=0;
 
 $message = "";
-if (!$is_market) $message = "There is no Marketplace in ".str_replace('-ap-','&#39;',$char['location']);
+if (!$is_market) $message = "There is no Marketplace in ".str_replace('-ap-',"'",$char['location']);
 
 // ACCEPT TRADE
 
@@ -262,7 +262,7 @@ if ( $s_costmin && $s_costmax && $is_market)
   }
  
   //HEADER
-  if (!$world) $search_text = "the ".str_replace('-ap-','&#39;',$char['location'])." Market";
+  if (!$world) $search_text = "the ".str_replace('-ap-',"'",$char['location'])." Market";
   else $search_text = "markets around the world";
   $message = "There are ".($foundnum)." items in ".$search_text." matching your description";
 
@@ -304,7 +304,7 @@ include('header.php');
             { 
               echo "<input type='button' class='btn btn-success btn-block btn-xs btn-wrap' name='buy".$x."' value='Buy' onClick='marketBuy(".$farr[$sarr[$x]][8][0].",".$farr[$sarr[$x]][8][1].");'>";
             } 
-            elseif ($world) echo str_replace('-ap-','&#39;',$farr[$sarr[$x]][5]);
+            elseif ($world) echo str_replace('-ap-',"'",$farr[$sarr[$x]][5]);
           ?>
           </td>
         </tr>
@@ -332,7 +332,7 @@ else
 
 if ($s_item || $s_type && !($s_costmin && $s_costmax && $s_bonusmin && $s_bonusmax)) $message = "You must enter a value for each of the cost and bonus fields";
 
-if (!$is_town) $message = "There is no market in ".str_replace('-ap-','&#39;',$char['location']);
+if (!$is_town) $message = "There is no market in ".str_replace('-ap-',"'",$char['location']);
 $bg = "background-image:url('images/townback/".str_replace(' ','_',strtolower($char['location'])).".jpg'); ";
 include('header.php');
 
@@ -342,7 +342,7 @@ if ($is_town)
   <div class="row solid-back">
     <div class='col-sm-4'>
       <img class='img-optional'src='images/ShopKeeps/<?php echo str_replace(' ','_',$char['location']);?>4.jpg' /><br/><br/>
-      <?php echo "<i>Welcome to<br/>".str_replace('-ap-','&#39;',$char['location'])."'s Marketplace!</i>"; ?><br/>
+      <?php echo "<i>Welcome to<br/>".str_replace('-ap-',"'",$char['location'])."'s Marketplace!</i>"; ?><br/>
     </div>
     <div class='col-sm-8'>
       <form method="post" action="market.php" class='form-inline'>
@@ -416,7 +416,7 @@ if ($is_town)
         <div class="form-group form-group-sm">
           <label for="world">Item Location:</label>
           <select name="world" size="1" class="form-control gos-form input-sm">
-            <option selected value="0"><?php echo str_replace('-ap-','&#39;',$char['location']); ?></option>
+            <option selected value="0"><?php echo str_replace('-ap-',"'",$char['location']); ?></option>
             <option value="2">Anywhere</option>
           </select>
         </div><br/>

@@ -363,6 +363,11 @@ function doDuel($char_attack, $player_word, $weapon_a, $weapon_b, $horde=0)
   $bresult[0]['score2'] = $score2;
   $bresult[0]['winner'] = $winner;
 
+  // Store player names and battle round count for generate_duel_text
+  $bresult[0]['pname'] = $player_word[0]; // Player 1 name
+  $bresult[0]['ename'] = $player_word[1]; // Player 2 name
+  $bresult[0]['bnum'] = $z; // Number of battle rounds/turns
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
   return $bresult;
@@ -415,93 +420,125 @@ function generate_duel_message($bresult)
 function generate_duel_text($bresult)
 {
   global $duel_text;
-  
-  $align= array("left","right");
-  $attach = "<br/>";
-  
+
+  $pname_orig = $bresult[0]['pname']; // Original player name string
+  $ename_orig = $bresult[0]['ename']; // Original enemy name string
+  $bnum = $bresult[0]['bnum'];
+  $winner_name_orig = $bresult[0]['winner']; // Original winner name string
+
+  $pcolor = "#007bff"; // Dark green
+  $ecolor = "#c70000"; // Dark red
+  $dmgcolor = "#FF0000"; // Red
+  $statuscolor = "#A020F0"; // Purple for status effects
+  $itemcolor = "#0000FF"; // Blue for item messages
+  $questcolor = "#FF8C00"; // Dark Orange for quest updates
+
+  // Pre-style names with their consistent colors
+  $styled_player_name = "<span style='font-weight: bold; color:".$pcolor.";'>".htmlspecialchars($pname_orig)."</span>";
+  $styled_enemy_name = "<span style='font-weight: bold; color:".$ecolor.";'>".htmlspecialchars($ename_orig)."</span>";
+
   $array_gen = "";
-  
-  for ($t=1; $t< count($bresult); $t++)
-  {
-    $turn = $bresult[$t]['turn'];
-    $bimage = "attack".$turn;
-    if ($bresult[$t]['hlvl']>2)  $bimage = "miss".$turn;
-    $text = "<p align='".$align[$turn]."'><font class='battletext'>".$bresult[$t]['att'].$duel_text[$bresult[$t]['hlvl']][rand(0,2)]."</font>";
-    if ($bresult[$t]['dam'] > 0) $text .= "<font class='battletext'> ".$bresult[$t]['def']." takes <b>".$bresult[$t]['dam']."</b> damage</font>";
-    if ($bresult[$t]['stun'])
-    {
-      if (rand(0,1)) $bimage="stun";
-      $text .= $attach."<font class='battletext'>".$bresult[$t]['def']." is stunned for ".$bresult[$t]['stun']."</font>";
-    }
-    if ($bresult[$t]['wound'])
-    {
-      if (rand(0,1)) $bimage="wound";  
-      if ($bresult[$t]['stun']) $text .= "<font class='battletext'> and wounded for ".$bresult[$t]['wound'].".</font>"; 
-      else $text .= $attach."<font class='battletext'>".$bresult[$t]['def']." is wounded for ".$bresult[$t]['wound'].".</font>";
-    }
-    if ($bresult[$t]['poison'])
-    {
-      if (rand(0,1)) $bimage="poison";
-      $text .= $attach."<font class='battletext'>Poison wracks ".$bresult[$t]['def']."'s body for ".$bresult[$t]['poison']." damage</font>";
-    }
-    if ($bresult[$t]['taint'])
-    {
-      if (rand(0,1)) $bimage="taint";
-      $text .= $attach."<font class='battletext'>".$bresult[$t]['def']."'s taint increases by ".$bresult[$t]['taint']."</font>";
-    }
-    if ($bresult[$t]['tdmg'])
-    {
-      $text .= $attach."<font class='battletext'>".$bresult[$t]['att']." takes ".$bresult[$t]['tdmg']." taint damage</font>";
-    }
-    if ($bresult[$t]['hgain'])
-    {
-      if (rand(0,1)) $bimage="healthgain";
-      $text .= $attach."<font class='battletext'>".$bresult[$t]['att']." gains ".$bresult[$t]['hgain']." health</font>";
-    }
-    if ($bresult[$t]['sdmg'])
-    {
-      if ($bresult[$t]['hgain']) $text .= "<font class='battletext'>, but is injured and takes ".$bresult[$t]['sdmg']." damage.</font>";
-      else $text .= $attach."<font class='battletext'>".$bresult[$t]['att']." is injured in the attack and takes ".$bresult[$t]['sdmg']." damage</font>";
-    }
-    if ($bresult[$t]['ahp'] > $bresult[0]['ahp']*0.33) $hcolor1='text-primary'; else $hcolor1='text-danger';
-    if ($bresult[$t]['dhp'] > $bresult[0]['ahp']*0.33) $hcolor2='text-primary'; else $hcolor2='text-danger'; 
-    
-    $text .= $attach."<font class='battletext'>".$bresult[$t]['att']." has </font><font class='".$hcolor1." battletext'><b>".$bresult[$t]['ahp']."</b></font>";
-    $text .= "<font class='battletext'> health and ".$bresult[$t]['def']." has </font><font class='".$hcolor2." battletext'><b>".$bresult[$t]['dhp']."</b></font>";
-    $text .= "<font class='battletext'> health</font><br/><br/>";
-    $bimage ="images/".$bimage.".gif";
-    
-    if ($turn ==0) $text = new_bline(0,$text,$bimage,$bresult[$t]['ahp'],$bresult[$t]['dhp']);    
-    else $text = new_bline(0,$text,$bimage,$bresult[$t]['dhp'],$bresult[$t]['ahp']);
 
-    $array_gen .= $text;
-  }
-      
-  $pic_name = 'images/BattleBox/OP.gif';
-  $win_thing = "<center>";
-  if ($bresult[0]['winner'] != "")
-    $win_thing .= "<b>".$bresult[0]['winner']." wins</b><br/>";
-  else
-    $win_thing .= "<b>The Duel is a Tie!</b><br/>";
-  if ($bresult[0]['gold'])
+  for ($t = 1; $t <= $bnum; $t++)
   {
-    $win_thing .= "<b>and takes ".displayGold($bresult[0]['gold'])."</b><br>";
-    $pic_name = 'images/marks.gif';    
-  }
-  if ($bresult[0]['cgold']) $win_thing .= "<b>".displayGold($bresult[0]['cgold'])." was taken for ".$bresult[0]['cwin']."</b><br/><br/>";
-  if ($bresult[0]['alt'])$win_thing .= "<b>but was compelled to take no gold for winning.</b><br/><br/>";
+    if (!isset($bresult[$t])) continue; 
 
-  if ($bresult[0]['item'])
-  {
-    $win_thing .= $bresult[0]['item'];
-    $pic_name = $bresult[0]['iimg'];
-  }  
-  if ($bresult[0]['quest']) $win_thing .= "<br><br><b>Quest Completed!</b>";
-  
-  $win_thing .= "</center>";
-  
-  $array_gen .= new_bline(0,$win_thing,$pic_name,$bresult[0]['ahpf'],$bresult[0]['dhpf']);
-  
+    $turn_data = $bresult[$t];
+    $is_player_turn = ($turn_data['turn'] == 0);
+    
+    $active_char_styled_name = $is_player_turn ? $styled_player_name : $styled_enemy_name;
+    $inactive_char_styled_name = $is_player_turn ? $styled_enemy_name : $styled_player_name;
+    $align_direction = $is_player_turn ? 'left' : 'right';
+
+    $turn_html_block = ""; // Initialize block for this turn
+
+    // Initial action text
+    $action_msg_core = "";
+    if (isset($duel_text[$turn_data['hlvl']]) && isset($duel_text[$turn_data['hlvl']][0])) {
+        $action_text_options = $duel_text[$turn_data['hlvl']];
+        $action_msg_core .= htmlspecialchars($action_text_options[rand(0, count($action_text_options)-1)]);
+    } else {
+        $action_msg_core .= " attacks."; 
+    }
+    $turn_html_block .= "<p align='".$align_direction."' class='battletext'>".$active_char_styled_name." ".$action_msg_core."</p>";
+
+    // Damage
+    if ($turn_data['dam'] > 0) {
+      $damage_value_styled = "<span style='color:".$dmgcolor."; font-weight: bold;'>".htmlspecialchars($turn_data['dam'])."</span>";
+      $turn_html_block .= "<p align='".$align_direction."' class='battletext'>".$inactive_char_styled_name." takes ".$damage_value_styled." damage.</p>";
+    }
+
+    // Status effects
+    if ($turn_data['stun']) {
+      $turn_html_block .= "<p align='".$align_direction."' class='battletext'>".$inactive_char_styled_name." <span style='color:".$statuscolor.";'>is stunned for ".htmlspecialchars($turn_data['stun'])."!</span></p>";
+    }
+    if ($turn_data['wound']) {
+      $turn_html_block .= "<p align='".$align_direction."' class='battletext'>".$inactive_char_styled_name." <span style='color:".$statuscolor.";'>is wounded for ".htmlspecialchars($turn_data['wound'])."!</span></p>";
+    }
+    if ($turn_data['poison']) {
+      $turn_html_block .= "<p align='".$align_direction."' class='battletext'> <span style='color:".$statuscolor.";'>Poison wracks</span> ".$inactive_char_styled_name." <span style='color:".$statuscolor.";'>for ".htmlspecialchars($turn_data['poison'])." damage!</span></p>";
+    }
+    if ($turn_data['taint']) {
+      $turn_html_block .= "<p align='".$align_direction."' class='battletext'>".$inactive_char_styled_name."<span style='color:".$statuscolor.";'>'s taint increases by ".htmlspecialchars($turn_data['taint'])."!</span></p>";
+    }
+    // Status effects on the active character
+    if ($turn_data['tdmg']) { // Taint damage to self
+      $turn_html_block .= "<p align='".$align_direction."' class='battletext'>".$active_char_styled_name." <span style='color:".$statuscolor.";'>takes ".htmlspecialchars($turn_data['tdmg'])." taint damage!</span></p>";
+    }
+    if ($turn_data['hgain']) { // Health gain for self
+      $turn_html_block .= "<p align='".$align_direction."' class='battletext'>".$active_char_styled_name." <span style='color:green;'>gains ".htmlspecialchars($turn_data['hgain'])." health!</span></p>";
+    }
+    if ($turn_data['sdmg']) { // Self-damage from an attack
+      $turn_html_block .= "<p align='".$align_direction."' class='battletext'>".$active_char_styled_name." <span style='color:".$dmgcolor.";'>is injured and takes ".htmlspecialchars($turn_data['sdmg'])." damage!</span></p>";
+    }
+    
+    $bimage = "images/attack".$turn_data['turn'].".gif"; 
+    if ($turn_data['hlvl'] > 2) $bimage = "images/miss".$turn_data['turn'].".gif";
+    if ($turn_data['stun'] && rand(0,1)) $bimage = "images/stun.gif";
+    if ($turn_data['wound'] && rand(0,1)) $bimage = "images/wound.gif";
+    // TODO: Add more bimage conditions if they existed for poison, taint, hgain, sdmg based on old code if necessary
+
+    $ahp = isset($turn_data['ahp']) ? $turn_data['ahp'] : $bresult[0]['ahpf'];
+    $dhp = isset($turn_data['dhp']) ? $turn_data['dhp'] : $bresult[0]['dhpf'];
+    
+    $player_hp_to_show = $is_player_turn ? $ahp : $dhp;
+    $enemy_hp_to_show = $is_player_turn ? $dhp : $ahp;
+
+    $array_gen .= new_bline(0, addslashes($turn_html_block), $bimage, $player_hp_to_show, $enemy_hp_to_show);
+  }
+
+  // Winner summary text, centered, with internal <br/> for structure
+  $win_text_block = "<center class='battletext'>"; // Added battletext class here too
+  if ($winner_name_orig == $pname_orig) {
+    $win_text_block .= $styled_player_name." wins!";
+  } else if ($winner_name_orig == $ename_orig) {
+    $win_text_block .= $styled_enemy_name." wins!";
+  } else {
+    $win_text_block .= "The duel is a tie!";
+  }
+
+  if (isset($bresult[0]['gold']) && $bresult[0]['gold']) {
+    $win_text_block .= " <span style='color:".$itemcolor.";'>and takes ".(function_exists('displayGold') ? displayGold($bresult[0]['gold']) : htmlspecialchars($bresult[0]['gold']).' gold').".</span>";
+  }
+  if (isset($bresult[0]['cgold']) && $bresult[0]['cgold']) {
+      $win_text_block .= " <span style='color:".$itemcolor.";'>".(function_exists('displayGold') ? displayGold($bresult[0]['cgold']) : htmlspecialchars($bresult[0]['cgold']).' gold')." was taken for ".htmlspecialchars($bresult[0]['cwin']).".</span>";
+  }
+  if (isset($bresult[0]['alt']) && $bresult[0]['alt']) {
+      $win_text_block .= " <span style='color:".$itemcolor.";'>but was compelled to take no gold for winning.</span>";
+  }
+
+  if (isset($bresult[0]['item']) && $bresult[0]['item']) {
+    $win_text_block .= "<br/><span style='color:".$itemcolor.";'>".($bresult[0]['item'])."</span>"; 
+  }
+
+  if (isset($bresult[0]['quest']) && $bresult[0]['quest']) {
+    $win_text_block .= "<br/><span style='color:".$questcolor."; font-weight: bold;'>Quest Updated!</span>";
+  }
+  $win_text_block .= "</center>"; 
+
+  $final_image = isset($bresult[0]['iimg']) && $bresult[0]['iimg'] ? $bresult[0]['iimg'] : 'images/BattleBox/OP.gif';
+  $array_gen .= new_bline(0, addslashes($win_text_block), $final_image, $bresult[0]['ahpf'], $bresult[0]['dhpf']);
+
   return $array_gen;
 }
 
@@ -670,7 +707,7 @@ function generateNPC ($name, $lvl)
       $att = 65;
       break;
 
-    case 'Asha&#39;man':
+    case "Asha'man":
       $stats = "Y".($s1)." O".(2*$s2). " W".ceil($s3/3);
       $att = 65;
       break;
@@ -748,16 +785,16 @@ function generateNPC ($name, $lvl)
       break;
 
     case 'Lopar':
-      $stats = "O".(2*$s1)." N".(2*$s2). " G".($s3);
+      $stats = "O".(2*$s1)." N".(2*$s2)." G".($s3);
       $att = 60;
       break;
 
-    case 'To&#39;raken':
+    case "To'raken":
       $stats = "Y".($s1)." O".(2*$s2)." X".ceil($s3/3);
       $att = 65;
       break;
 
-    case 'S&#39;redit':
+    case "S'redit":
       $stats = "S".($s1)." N".($s2*2). " S".($s3);
       $att = 60;
       break;

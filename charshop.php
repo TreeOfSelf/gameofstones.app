@@ -162,7 +162,7 @@ include('header.php');
     <td width="25">&nbsp;</td>
     <td width="200"><font class="foottext"><center><b><A HREF="javascript:popUp('itemstat.php?<?php echo "base=".$listchar[base]."&prefix=".$listchar[prefix]."&suffix=".$listchar[suffix]; ?>')"><?php echo $listchar['name']; ?></a></b></td>
     <td width="100"><font class="foottext"><center><?php echo displayGold($listchar['cost']); ?></center></td>
-    <td width="100"><font class="foottext"><center><?php echo str_replace('-ap-','&#39;',$listchar['location']); /*ucwords($item_type[$item_base[$listchar['base']][1]]);*/ ?></td>
+    <td width="100"><font class="foottext"><center><?php echo str_replace('-ap-',"'",$listchar['location']); /*ucwords($item_type[$item_base[$listchar['base']][1]]);*/ ?></td>
     <td width="50">&nbsp;</td>
     <td width="50" valign="middle" align="center"><font class="foottext"><?php if ($char['location']==$listchar['location']) { ?><a href="charshop.php?doit=1&delete=<?php echo $listchar['id']; ?>"><img border="0" src="images/delete.gif"></a><?php } ?></td>
     <td width="25">&nbsp;</td>

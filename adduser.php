@@ -156,13 +156,18 @@ elseif (strlen($lastname) > 2 && strlen($lastname) < 20 && strlen($username) > 2
     $char = mysqli_fetch_array($result);
     $id=$char['id'];
     
-    $creator = mysqli_fetch_array(mysqli_query($db,"SELECT id, name, lastname FROM Users WHERE name = 'The' AND lastname = 'Creator' "));
-    $cid = $creator['id'];
+    // Fetch 'The Creator' user's ID safely
+    $creator_data = mysqli_fetch_array(mysqli_query($db,"SELECT id FROM Users WHERE name = 'The' AND lastname = 'Creator' "));
+    $cid = 0; // Default to 0, assuming '0' can represent a system/undefined sender
+    if ($creator_data && isset($creator_data['id']) && is_numeric($creator_data['id'])) {
+        $cid = (int)$creator_data['id'];
+    }
 
     $notesub = "Welcome to GoS!";
     $note = "Check out the <a href=http://talij.com/goswiki/>GoS Wiki</a> for an overview of the gameplay or check out the forum if you have any questions.<br/><br/>";
-    $note .= "If you&#39;re new to GoS, check out the <a href=http://talij.com/goswiki/index.php?title=Tutorial>Green Man&#39;s Tutorial</a> to learn how to play.<br/><br/>Enjoy the game!";
+    $note .= "If you're new to GoS, check out the <a href=http://talij.com/goswiki/index.php?title=Tutorial>Green Man's Tutorial</a> to learn how to play.<br/><br/>Enjoy the game!";
     $note_extra = "";
+    $note = mysqli_real_escape_string($db, $note);
     $result = mysqli_query($db,"INSERT INTO Notes (from_id,to_id,del_from,del_to,type,root,sent,   cc,subject,   body,   special) 
                                       VALUES ('$cid', '$id','0',     '0',   '0', '0', '$born','','$notesub','$note','$note_extra')");
 

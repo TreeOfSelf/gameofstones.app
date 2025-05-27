@@ -60,7 +60,7 @@ elseif ($qreward[0] == "GP")
 <table border="1" cellpadding="10" rules="rows" cellspacing="0" bgcolor="#0f0f0f" bordercolor="#555555" width="90%">
   <tr>
     <td>
-      <center><font class="littletext"><b><?php echo str_replace('-ap-','&#39;',$quest[name]) ?></b><font class="littletext"><br>
+      <center><font class="littletext"><b><?php echo str_replace('-ap-',"'",$quest[name]) ?></b><font class="littletext"><br>
     </td>
   </tr>
 </table>

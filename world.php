@@ -68,7 +68,7 @@ if ($fromLoc == $clean_loc && (($toLoc >= 0 && $toLoc < 4) || $escortId > 0 || $
   if ($loc != $char['location'])
   {
     $char['location'] = $loc;
-    mysqli_query($db,"UPDATE Users SET stamina='".$newstamina."', feedneed='".$char['feedneed']."', location='$loc' WHERE id='$char[id]'");
+    mysqli_query($db,"UPDATE Users SET stamina='".$newstamina."', feedneed='".$char['feedneed']."', location='".mysqli_real_escape_string($db, $loc)."' WHERE id='$char[id]'");
   }
 }
 

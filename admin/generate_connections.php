@@ -16,7 +16,6 @@ set_time_limit(80000);
     $found = [];
     $found[$loc] = 1;
     generateShortestPaths($loc, 1, $found);
-	print "yeehaw";
   }
   
   // Generate Random routes
@@ -25,7 +24,6 @@ set_time_limit(80000);
     $count = 0;
     $basePath[$count] = $loc;
     $done = addConnection($basePath, $count);
-	print "yaaa";
   }
 
 function generateShortestPaths($loc, $level, $found)
@@ -33,6 +31,8 @@ function generateShortestPaths($loc, $level, $found)
     global $db;
   global $map_data;
   
+  $escaped_loc = mysqli_real_escape_string($db, $loc);
+
   if ($level == 1)
   {
     $path[0] = $loc;
@@ -41,7 +41,7 @@ function generateShortestPaths($loc, $level, $found)
   }
   else
   {
-    $lpaths = mysqli_query($db,"SELECT * FROM Routes WHERE type='1' AND start='".$loc."' AND length='".$level."'");
+    $lpaths = mysqli_query($db,"SELECT * FROM Routes WHERE type='1' AND start='".$escaped_loc."' AND length='".$level."'");
     while ($lpath = mysqli_fetch_array($lpaths))
     {
       $found = genShortPaths(unserialize($lpath['path']), $found);
@@ -60,10 +60,13 @@ function genShortPaths($path, $found)
   global $map_data;
   $count = count($path);
   $surrounding_area = $map_data[$path[$count-1]];
+  $escaped_start_node = mysqli_real_escape_string($db, $path[0]);
+
   for ($i = 0; $i < 4; $i++)
   {
     $next = $surrounding_area[$i];
-    $prevPaths = mysqli_num_rows(mysqli_query($db,"SELECT * FROM Routes WHERE type='1' AND start='".$path[0]."' AND end='".$next."' AND length < ".$count));
+    $escaped_next_node = mysqli_real_escape_string($db, $next);
+    $prevPaths = mysqli_num_rows(mysqli_query($db,"SELECT * FROM Routes WHERE type='1' AND start='".$escaped_start_node."' AND end='".$escaped_next_node."' AND length < ".$count));
     if ($prevPaths == 0)
     {
       $found[$surrounding_area[$i]] = 1;
@@ -168,11 +171,11 @@ function createRouteTable ()
 function insertRoute ($path, $type)
 {
     global $db;
-  $mystart = $path[0];
-  $mynext = $path[1];
+  $mystart = mysqli_real_escape_string($db, $path[0]);
+  $mynext = mysqli_real_escape_string($db, $path[1]);
   $mylength = count($path);
-  $myend = $path[$mylength -1];
-  $spath = serialize($path);
+  $myend = mysqli_real_escape_string($db, $path[$mylength -1]);
+  $spath = mysqli_real_escape_string($db, serialize($path));
 
   mysqli_query($db,"INSERT INTO Routes (start,     end,     next,     type,   length,    path) 
                            VALUES ('$mystart','$myend','$mynext','$type','$mylength','$spath')");

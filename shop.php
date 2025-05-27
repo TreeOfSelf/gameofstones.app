@@ -31,7 +31,7 @@ $type_discounts['13']=$town_bonuses['tP'] + $town_bonuses['tV'];
 $wikilink = "Shops";
 
 if ($message == '')
- $message = "<b>Shop</b> of ".str_replace('-ap-','&#39;',$loc);
+ $message = "<b>Shop</b> of ".str_replace('-ap-',"'",$loc);
 $buy = mysqli_real_escape_string($db,$_GET['buy']);
 
 $shoplvls=unserialize($location['shoplvls']);

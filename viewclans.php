@@ -23,7 +23,7 @@ $result = mysqli_query($db,$query);
 $socAmount = mysqli_num_rows($result);
 
 
-if ($message == '') $message = "Clan Ranks in ".str_replace('-ap-','&#39;',$loc);
+if ($message == '') $message = "Clan Ranks in ".str_replace('-ap-',"'",$loc);
 
 //HEADER
 include('header.php');

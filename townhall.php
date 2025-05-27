@@ -35,7 +35,7 @@ $jobs = unserialize($char['jobs']);
 $wikilink = "City+Hall";
 $tab = mysqli_real_escape_string($db,$_REQUEST['tab']);
 
-$loc_name = str_replace('-ap-','&#39;',$char['location']);
+$loc_name = str_replace('-ap-',"'",$char['location']);
 $loc_query = $char['location'];
 $soc_name = $char['society'];
 

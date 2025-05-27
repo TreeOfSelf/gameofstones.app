@@ -18,7 +18,7 @@ for ($loc_id=0; $loc_id < 15; ++$loc_id)
     
     //$shoplvls = serialize(array (1,1,1,1,1,1,1,1));
     echo $shop_base[$name][0];
-    $forum = array ( array ("The", "Creator" , "Welcome to ".str_replace('-ap-','&#39;',$tname)."!",time()) );
+    $forum = array ( array ("The", "Creator" , "Welcome to ".str_replace('-ap-',"'",$tname)."!",time()) );
     $forum = serialize($forum);
     //echo "id: ".$loc_id." name:".$tname;
     $ruler= "No One";

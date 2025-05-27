@@ -53,19 +53,19 @@
 			function clickArrow(arrow,plac,need)
 			{
 				if (parent.sellRes) parent.popConfirm('You have more supplies than you are skilled to transport. Sell all extras and travel?','javascript:setTraveling('+plac+','+need+')');
-				else parent.popConfirm('Travel to '+arrow.replace('-ap-',"&#39;").replace('-ap-',"&#39;").replace('-ap-',"&#39;")+' by boat?','javascript:setTraveling('+plac+','+need+')');
+				else parent.popConfirm('Travel to '+arrow.replace('-ap-',"'").replace('-ap-',"'").replace('-ap-',"'")+' by boat?','javascript:setTraveling('+plac+','+need+')');
 			}
 		</SCRIPT>
 	</head>
 	<body bgcolor="black">
 		<font class="littletext">
-		<table border='0' cellpadding='0' cellspacing='0'><tr><td><img src='tools/anchor.gif'></td><td class="littletext">&nbsp;<b><?php echo str_replace('-ap-','&#39;',$char['location']); ?> Dock:</b></td></tr></table>
+		<table border='0' cellpadding='0' cellspacing='0'><tr><td><img src='tools/anchor.gif'></td><td class="littletext">&nbsp;<b><?php echo str_replace('-ap-',"'",$char['location']); ?> Dock:</b></td></tr></table>
 		<br>
 		<font class='foottext_f'>Passage to:<br>
 		<?php
-			if ($_GET['d1']) {echo "<font class='littletext_f'><b><a name='".$_GET['d1']."' href=\"javascript:showArea(-1); clickArrow('".$_GET['d1']."',5,".($cost1*7+2).");\">".str_replace('-ap-','&#39;',$_GET['d1'])."</a></b> &nbsp; "; if ($char['gold']<$cost1) echo "<font color='ED3915'>"; else echo "<font class='littletext_f'>"; echo $cost1."g [<a href='javascript:void();' onMouseover='showArea(1);' onMouseout='showArea(0);'><b>?</b></a>]<br>\n";}
-			if ($_GET['d2']) {echo "<font class='littletext_f'><b><a name='".$_GET['d2']."' href=\"javascript:showArea(-1); clickArrow('".$_GET['d2']."',6,".($cost2*7+2).");\">".str_replace('-ap-','&#39;',$_GET['d2'])."</a></b> &nbsp; "; if ($char['gold']<$cost2) echo "<font color='ED3915'>"; else echo "<font class='littletext_f'>"; echo $cost2."g [<a href='javascript:void();' onMouseover='showArea(2);' onMouseout='showArea(0);'><b>?</b></a>]<br>\n";}
-			if ($_GET['d3']) {echo "<font class='littletext_f'><b><a name='".$_GET['d3']."' href=\"javascript:showArea(-1); clickArrow('".$_GET['d3']."',7,".($cost3*7+2).");\">".str_replace('-ap-','&#39;',$_GET['d3'])."</a></b> &nbsp; "; if ($char['gold']<$cost3) echo "<font color='ED3915'>"; else echo "<font class='littletext_f'>"; echo $cost3."g [<a href='javascript:void();' onMouseover='showArea(3);' onMouseout='showArea(0);'><b>?</b></a>]<br>\n";}
+			if ($_GET['d1']) {echo "<font class='littletext_f'><b><a name='".$_GET['d1']."' href=\"javascript:showArea(-1); clickArrow('".$_GET['d1']."',5,".($cost1*7+2).");\">".str_replace('-ap-',"'",$_GET['d1'])."</a></b> &nbsp; "; if ($char['gold']<$cost1) echo "<font color='ED3915'>"; else echo "<font class='littletext_f'>"; echo $cost1."g [<a href='javascript:void();' onMouseover='showArea(1);' onMouseout='showArea(0);'><b>?</b></a>]<br>\n";}
+			if ($_GET['d2']) {echo "<font class='littletext_f'><b><a name='".$_GET['d2']."' href=\"javascript:showArea(-1); clickArrow('".$_GET['d2']."',6,".($cost2*7+2).");\">".str_replace('-ap-',"'",$_GET['d2'])."</a></b> &nbsp; "; if ($char['gold']<$cost2) echo "<font color='ED3915'>"; else echo "<font class='littletext_f'>"; echo $cost2."g [<a href='javascript:void();' onMouseover='showArea(2);' onMouseout='showArea(0);'><b>?</b></a>]<br>\n";}
+			if ($_GET['d3']) {echo "<font class='littletext_f'><b><a name='".$_GET['d3']."' href=\"javascript:showArea(-1); clickArrow('".$_GET['d3']."',7,".($cost3*7+2).");\">".str_replace('-ap-',"'",$_GET['d3'])."</a></b> &nbsp; "; if ($char['gold']<$cost3) echo "<font color='ED3915'>"; else echo "<font class='littletext_f'>"; echo $cost3."g [<a href='javascript:void();' onMouseover='showArea(3);' onMouseout='showArea(0);'><b>?</b></a>]<br>\n";}
 		?>
 		<br>
 		

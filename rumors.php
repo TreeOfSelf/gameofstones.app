@@ -101,7 +101,7 @@ window.onload=intitializeChat;
 
 <?php 
 //HEADER
-if (!$is_town) $message = "Rumors spread slowly in ".str_replace('-ap-','&#39;',$char['location']);
+if (!$is_town) $message = "Rumors spread slowly in ".str_replace('-ap-',"'",$char['location']);
 
 if (!$tab) $tab=1;
 include('header.php');
@@ -195,7 +195,7 @@ if ($is_town)
                       else $classn="btn-primary";
                         
                       $owner_name = "<a class='btn btn-xm btn-block btn-wrap ".$classn."' href='bio.php?name=".$owner['name']."&last=".$owner['lastname']."'>".$owner['name']." ".$owner['lastname']."</a>";
-                      $loc_name = str_replace('-ap-','&#39;',$owner['location']);
+                      $loc_name = str_replace('-ap-',"'",$owner['location']);
                       
                       $heldTime = intval((time()-$curHorn['last_moved'])/60);
                   ?>
@@ -246,7 +246,7 @@ if ($is_town)
                           }
                           else $classn="btn-primary";
                           $owner_name = "<a class='btn btn-xs btn-block btn-wrap ".$classn."'  href='bio.php?name=".$owner['name']."&last=".$owner['lastname']."'>".$owner['name']." ".$owner['lastname']."</a>";
-                          $loc_name = str_replace('-ap-','&#39;',$owner["location"]);
+                          $loc_name = str_replace('-ap-',"'",$owner["location"]);
                         }
                         else if ($sealList[$s]['owner'] == 99999)
                         {

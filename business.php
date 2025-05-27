@@ -1029,7 +1029,7 @@ $wikilink = $wikilinks[$shop-1];
   $town_img_name = str_replace(' ','_',strtolower($char['location']));
   $town_img_name = str_replace('&#39;','',strtolower($town_img_name));
 
-if (!$is_town) $message = "There are no businesses in ".str_replace('-ap-','&#39;',$char['location']);
+if (!$is_town) $message = "There are no businesses in ".str_replace('-ap-',"'",$char['location']);
 $bg="";
 if ($mode != 1) 
 {

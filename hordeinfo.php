@@ -199,11 +199,11 @@ include('header.php');
               </tr>
               <tr>
                 <td align='right' width='50%'>Gathered in: </td>
-                <td><?php echo str_replace('-ap-','&#39;',$myHorde['location']);?></td>
+                <td><?php echo str_replace('-ap-',"'",$myHorde['location']);?></td>
               </tr>
               <tr>
                 <td align='right' width='50%'>Targeting: </td>
-                <td><?php echo str_replace('-ap-','&#39;',$myHorde['target']);?></td>
+                <td><?php echo str_replace('-ap-',"'",$myHorde['target']);?></td>
               </tr>
               <tr>
                 <td align='right' width='50%'>Start Time: </td>

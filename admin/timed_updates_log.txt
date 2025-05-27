@@ -711,4 +711,21 @@ Army up: 0</br>
 Using hhealth: 2484 for horde updates0<485640.00055556</br>
 Time check for hordes ran successfully</br>
  Test for new horde generation: 1748329200<1748304002Updating Last Battle...</br>
-SEALS BROKEN: 0
+SEALS BROKEN: 0Starting 15 minute updateStarting Updates...Connecting to DB... Starting Quarterly Updates...Updating Users...</br>
+starting heroes update</br>
+ Hourly update not running this iterationStarting 15 minute updateStarting Updates...Connecting to DB... Starting Quarterly Updates...Updating Users...</br>
+starting heroes update</br>
+ Hourly update not running this iterationStarting 15 minute updateStarting Updates...Connecting to DB... Starting Quarterly Updates...Updating Users...</br>
+starting heroes update</br>
+ Hourly update not running this iterationStarting 15 minute updateStarting Updates...Connecting to DB... Starting Quarterly Updates...Updating Users...
+</br>Checking character: The Creator   Current gold: "1000"  | New gold: "1000"   Current battles: "170" | New battles: 0
+</br>Checking character: Dark One   Current gold: "1000"  | New gold: "1000"   Current battles: "170" | New battles: 0
+</br>Checking character: Green Man   Current gold: "1000"  | New gold: "1000"   Current battles: "170" | New battles: 0
+</br>Checking character: operator test   Current gold: "1000"  | New gold: "1000"   Current battles: "70" | New battles: 68</br>
+starting heroes updatePHP Fatal error:  Uncaught mysqli_sql_exception: Incorrect integer value: '' for column `gameofstonesapp_test`.`Users_stats`.`xp` at row 1 in /home/gameofstonesapp/domains/test.gameofstones.app/public_html/admin/heroes_update.php:95
+Stack trace:
+#0 /home/gameofstonesapp/domains/test.gameofstones.app/public_html/admin/heroes_update.php(95): mysqli_query()
+#1 /home/gameofstonesapp/domains/test.gameofstones.app/public_html/admin/quarterly_updates.php(276): include_once('...')
+#2 /home/gameofstonesapp/domains/test.gameofstones.app/public_html/admin/timed_updates.php(27): include_once('...')
+#3 {main}
+  thrown in /home/gameofstonesapp/domains/test.gameofstones.app/public_html/admin/heroes_update.php on line 95

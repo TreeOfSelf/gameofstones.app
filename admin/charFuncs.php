@@ -131,7 +131,7 @@ $nat_info = array(
 );
 
 $nat_start = array(
-'0' => "Thakan&#39;dar",
+'0' => "Thakan'dar",
 '1' => "Rhuidean",
 '2' => "Ebou Dar",
 '3' => "Amador",
@@ -488,7 +488,7 @@ $achievements = array(
 'align_shadow' => array('align_low', '', array("Earn -"," Alignment or lower"), array(300, 1000), array('25','100'),'ji','Alignment'),
 
 'travel_ways' => array('ways_use', '', array("Travel the Ways "," time"), array(1), array('5'),'ji','General'),
-'use_tar' => array('tar_posts', '', array("Make "," post in Tel&#39;aran&#39;rhoid"), array(1), array('5'),'ji','General'),
+'use_tar' => array('tar_posts', '', array("Make "," post in Tel'aran'rhoid"), array(1), array('5'),'ji','General'),
 
 );
 //46, 154

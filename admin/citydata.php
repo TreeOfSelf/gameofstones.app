@@ -29,7 +29,7 @@ $ordups = unserialize($ordcity['upgrades']);
 if ($ordups[7]>0) $orderRuler = $ordcity['ruler'];
 
 // Ruled Chaos bonus
-$chaoscity = mysqli_fetch_array(mysqli_query($db,"SELECT ruler, upgrades FROM Locations WHERE name='Thakan&#39;dar'"));
+$chaoscity = mysqli_fetch_array(mysqli_query($db,"SELECT ruler, upgrades FROM Locations WHERE name='Thakan'dar'"));
 $chaosups = unserialize($chaoscity['upgrades']);
 if ($chaosups[7]>0) $chaosRuler = $chaoscity['ruler'];
 

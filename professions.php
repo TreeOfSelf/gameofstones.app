@@ -204,7 +204,7 @@ function swapinfo(pro)
                   }
                   echo "<tr>";
                   echo "<td align='center'>".$job_biz_names[$bq['type']]['0']."</td>";
-                  echo "<td align='center'>".str_replace('-ap-','&#39;',$bq['location'])."</td>";
+                  echo "<td align='center'>".str_replace('-ap-',"'",$bq['location'])."</td>";
                   echo "<td align='center' class='hidden-xs'>".displayGold($bq['value'])."</td>";
                   echo "<td align='center'>".$bsubs[0]."</td>";
                   echo "<td align='center'>".$bsubs[1]."</td>";
@@ -242,7 +242,7 @@ function swapinfo(pro)
                   $eups = unserialize($est['upgrades']);
                   $maxestinv = 3+3*$eups[2];
                   echo "<tr>";
-                  echo "<td>".str_replace('-ap-','&#39;',$est['location'])."</td>";
+                  echo "<td>".str_replace('-ap-',"'",$est['location'])."</td>";
                   echo "<td>(".($est['row']+1).",".($est['col']+1).")</td>";
                   echo "<td>".$estate_lvls[$est['level']]."</td>";
                   echo "<td>".displayGold($est['value'])."</td>";

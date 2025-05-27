@@ -71,7 +71,7 @@ function showMe(aText,aTime){
     }
   }
 
-  aText = aText.replace('-ap-',"&#39;").replace('-ap-',"&#39;").replace('-ap-',"&#39;");
+  aText = aText.replace('-ap-',"'").replace('-ap-',"'").replace('-ap-',"'");
   var theLayer=document.getElementById("theLayer");
   document.getElementById('popText').innerHTML="<center>"+aText;
 

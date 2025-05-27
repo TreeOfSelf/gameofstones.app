@@ -794,7 +794,7 @@ $stat_msg = array(
   'nN' => array("","% damage if Amadician",1),
   'yN' => array("","% damage if Andoran",1),
   'qN' => array("","% damage if Arafellin",1),
-  'fN' => array("","% damage if Atha&#39;an Miere",1),
+  'fN' => array("","% damage if Atha'an Miere",1),
   'hN' => array("","% damage if Cairhienin",1),
   'dN' => array("","% damage if Domani",1),
   'gN' => array("","% damage if Ghealdanin",1),
@@ -823,13 +823,13 @@ $stat_msg = array(
   'pE' => array("","% defense in Plain Areas",1),
 
   // Estate Bonuses
-  'zD' => array("","% damage in Estate&#39;s Wilderness Area",1),
-  'zE' => array("","% defense in Estate&#39;s Wilderness Area",1),
-  'nJ' => array("","% Ji vs NPCs in Estate&#39;s Wilderness Area",1),
-  'zL' => array(""," Luck in Estate&#39;s Wilderness Area",1),
+  'zD' => array("","% damage in Estate's Wilderness Area",1),
+  'zE' => array("","% defense in Estate's Wilderness Area",1),
+  'nJ' => array("","% Ji vs NPCs in Estate's Wilderness Area",1),
+  'zL' => array(""," Luck in Estate's Wilderness Area",1),
   'zQ' => array("Local Quest bonus coin level ","",0),
   'zS' => array(""," Estate Storage",1),
-  'eT' => array("","% chance for bonus Ter&#39;angreal in Estates",1),
+  'eT' => array("","% chance for bonus Ter'angreal in Estates",1),
   'wT' => array("Estate Tax level ","",0),
   'tV' => array("","% discount in Surrounding Cities",1),
   

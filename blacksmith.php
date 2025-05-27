@@ -199,7 +199,7 @@ while ($qitem = mysqli_fetch_array($iresult))
 if ($message == '') $message = "Welcome to the Local Blacksmith!";
 
 //HEADER
-if (!$is_town) $message = "There are no businesses in ".str_replace('-ap-','&#39;',$char['location']);
+if (!$is_town) $message = "There are no businesses in ".str_replace('-ap-',"'",$char['location']);
 
 if ($mode != 1) 
 {

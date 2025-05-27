@@ -51,7 +51,7 @@
   $speed=intval(0.3+SQRT(pow($location_array[$loc][0]-$location_array[$locfrom][0],2)+pow($location_array[$loc][1]-$location_array[$locfrom][1],2))/($char['arrival']-time()));
   if ($speed<1) $speed=1;
   echo ($char['arrival']-time())."|".($char['arrival']-$char['depart'])."|";
-  echo "<center><font class='medtext'>Traveling from<br><b>".str_replace('-ap-','&#39;',$char['location'])."</b> to <b>".str_replace('-ap-','&#39;',$char['travelto'])."</b>".
+  echo "<center><font class='medtext'>Traveling from<br><b>".str_replace('-ap-',"'",$char['location'])."</b> to <b>".str_replace('-ap-',"'",$char['travelto'])."</b>".
                    "<br><br><table width='220' height='197'><tr><td width='100%'><img src='../images/travel.gif'></td><td></td></tr><table><br><br>".
                    "<table border='0' cellpadding='0' cellspacing='0'><tr><td id='travelInfo'><font class='littletext'>".intval(100*(time()-$char['depart'])/($char['arrival']-$char['depart']))." percent completed</td></tr></table>".
                    "<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>";

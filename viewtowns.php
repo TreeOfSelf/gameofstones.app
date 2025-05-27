@@ -64,7 +64,7 @@ include('header.php');
           if ($hasSeal)
             $sealImg = "&nbsp;<img src='images/classes/4.gif' height=15 width=15/>";
         ?>
-          <a href='#' class='btn btn-xs btn-default btn-block btn-wrap'><?php echo $himage.str_replace('-ap-','&#39;',$loc['name']).$sealImg; ?></a>
+          <a href='#' class='btn btn-xs btn-default btn-block btn-wrap'><?php echo $himage.str_replace('-ap-',"'",$loc['name']).$sealImg; ?></a>
         </td>
         <td align='center'><?php echo $loc['myOrder']; ?></td>
         <td align='center' class='hidden-xs'><?php echo $loc['army']; ?></td>  

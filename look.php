@@ -114,7 +114,7 @@ if ($world) $message = "The World has a population of ".number_format($numchar2)
 
 if ($message == '')
 {
-$message = str_replace('-ap-','&#39;',$char['location'])." has a population of ".number_format($numchar2);
+$message = str_replace('-ap-',"'",$char['location'])." has a population of ".number_format($numchar2);
 if ($clansearch) $message = $clansearch." contains ".number_format($numchar2)." members";
 }
 
