@@ -60,7 +60,7 @@ redirectMessage('<?php echo $rmsg;?>');
     <div class='col-sm-12'>
       <table border=0 cellpadding=0 cellspacing=0 width='100%'>
         <tr>
-          <td class='hidden-xs' rowspan=3 width='64'><img width='64' src='images/BattleBox/Left2.jpg' class='img hidden-xs img-optional'/></td>
+          <td class='hidden-xs' rowspan=3 width='64'><img width='64' src='images/BattleBox/Left2.jpg' class='img hidden-xs img-optional battle-left-box'/></td>
           <td class='visible-md img-optional' width='110' style='background-image:url(images/BattleBox/TopLeftmdspcr.jpg); background-repeat: repeat-x;'></td>
           <td class='visible-lg img-optional' width='210' style='background-image:url(images/BattleBox/TopLeftwidespcr.jpg); background-repeat: repeat-x;'></td>
           <td class='hidden-xs' align='center' height='38' width='592'>
@@ -68,7 +68,7 @@ redirectMessage('<?php echo $rmsg;?>');
           </td>
           <td class='visible-md img-optional' width='110' style='background-image:url(images/BattleBox/TopRtmdspcr.jpg); background-repeat: repeat-x;'></td>
           <td class='visible-lg img-optional' width='210' style='background-image:url(images/BattleBox/TopRtwidespcr.jpg); background-repeat: repeat-x;'></td>
-          <td class='hidden-xs' rowspan=3 width='64'><img width='64' src='images/BattleBox/Right2.jpg' class='img hidden-xs img-optional'/></td>
+          <td class='hidden-xs' rowspan=3 width='64'><img width='64' src='images/BattleBox/Right2.jpg' class='img hidden-xs img-optional battle-right-box'/></td>
           <td class='visible-xs' rowspan=3></td>
           <td class='visible-xs' style='border-style: solid;' colspan=3></td>
           <td class='visible-xs' rowspan=3></td>

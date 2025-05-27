@@ -110,6 +110,15 @@ clickable
 a.clickable { color: inherit; }
 a.clickable:hover { text-decoration:none; }
 
+@media (min-width: 768px) and (max-width: 991px) {
+  .battle-screen-table .hidden-xs {
+    display: none !important;
+  }
+  .battle-screen-table .visible-xs {
+    display: table-cell !important;
+  }
+}
+
 
 
 

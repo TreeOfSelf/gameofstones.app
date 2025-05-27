@@ -55,13 +55,23 @@ max-width:90%;
 
 .battlebox 
 {
-background-image:url(images/BattleBox/Scroll.jpg);
+background-image:url(images/BattleBox/scroll.png);
 background-size: 100%;
 background-position:center;
 }
 
+#battleBox > p { background-color: #fff09b2b; border-radius: 20px; padding: 5px 10px;}
+.battle-left-box { transform:translateX(2px);}
+.battle-right-box { transform:translateX(-2px);}
+
+body > div > div.row.solid-back > div > table > tbody > tr:nth-child(1) {
+  @media (max-width: 991px) {
+    display: none;
+  }
+}
+
 .battletext { font-family: Verdana; font-size: 12px; color: #C6CCD8; background-color: #000000;}
-.battledtext { font-family: Verdana; font-size: 12px; color: #000000; background-color: #F5F2EB;}
+.battledtext { font-family: Verdana; font-size: 14px; color: #000000;}
 
 .estate_t { font-family: Verdana; font-size: 9px; color: #EEEEEE; background-color: #111111; font-weight:bold;}
 .estate_r { font-family: Verdana; font-size: 9px; color: #E14545; background-color: #111111; font-weight:bold;}
