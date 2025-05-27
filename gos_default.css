@@ -60,7 +60,7 @@ background-size: 100%;
 background-position:center;
 }
 
-#battleBox > p { /*background-color: #fff09b2b;*/ border-radius: 20px; padding: 5px 10px;}
+#battleBox > p { background-color: #f0e29634; border-radius: 20px; padding: 5px 10px;}
 .battle-left-box { transform:translateX(2px);}
 .battle-right-box { transform:translateX(-2px);}
 
@@ -70,7 +70,7 @@ body > div > div.row.solid-back > div > table > tbody > tr:nth-child(1) {
   }
 }
 
-.battletext { font-family: Verdana; font-size: 12px; color: #C6CCD8; background-color: #000000;}
+.battletext { font-family: Verdana; font-size: 12px; color: #C6CCD8;}
 .battledtext { font-family: Verdana; font-size: 14px; color: #000000;}
 
 .estate_t { font-family: Verdana; font-size: 9px; color: #EEEEEE; background-color: #111111; font-weight:bold;}

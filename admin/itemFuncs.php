@@ -1047,6 +1047,15 @@ function lvl_req($string, $mod)
 	if(!empty($string)){
 		
   $char_stat = cparse($string,0);
+  
+  // Initialize expected keys to prevent undefined array key warnings
+  $expected_keys = ['A', 'B', 'D', 'E', 'X', 'W', 'P', 'T', 'L', 'C', 'O', 'N', 'F', 'S', 'V', 'Y', 'G', 'H'];
+  foreach ($expected_keys as $key) {
+    if (!isset($char_stat[$key])) {
+      $char_stat[$key] = 0;
+    }
+  }
+  
   $num = (($char_stat['A']+$char_stat['B']+$char_stat['D']+$char_stat['E']+$char_stat['X']+$char_stat['W'])*3 + ($char_stat['P'])*2 + 
             ($char_stat['T']+$char_stat['L']+$char_stat['C'])*5 + ($char_stat['O']+$char_stat['N'])/3 +
             ($char_stat['F']+$char_stat['S']+$char_stat['V']+$char_stat['Y']+$char_stat['G']-$char_stat['H']));

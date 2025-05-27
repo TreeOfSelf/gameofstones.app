@@ -68,15 +68,15 @@ $isHorde=0;
 
 $soc_name = $char['society'];
 $loc_name = str_replace('-ap-',"'",$char['location']);
-$loc_query = $char['location'];
+$sql_safe_location = mysqli_real_escape_string($db, $char['location']);
  
 $surrounding_area=$map_data[$char['location']];
 
 // LOAD SOCIETY TABLE
-$location = mysqli_fetch_array(mysqli_query($db,"SELECT * FROM Locations WHERE name='$loc_query'"));
+$location = mysqli_fetch_array(mysqli_query($db,"SELECT * FROM Locations WHERE name='$sql_safe_location'"));
 
 // UPDATE NUMBER OF MEMEBERS
-$resultf = mysqli_fetch_array(mysqli_query($db,"SELECT COUNT(*) FROM Users WHERE location='$loc_query' "));
+$resultf = mysqli_fetch_array(mysqli_query($db,"SELECT COUNT(*) FROM Users WHERE location='$sql_safe_location' "));
 $numchar = $resultf[0];
 $myHorde=0;
 ?>
@@ -90,7 +90,7 @@ $myHorde=0;
           <p>Number of characters: <?php echo "$numchar"; ?></p>
 
   <?php
-    $result3 = mysqli_query($db,"SELECT * FROM Hordes WHERE done='0' AND location='$char[location]'");
+    $result3 = mysqli_query($db,"SELECT * FROM Hordes WHERE done='0' AND location='$sql_safe_location'");
     while ($myHorde = mysqli_fetch_array( $result3 ) )
     {
       $npc_info = unserialize($myHorde['npcs']);
@@ -257,8 +257,16 @@ $myHorde=0;
 <div id="wrapper">
     <div id="innerWrapper">
 <?php
-  $wild_img_name = str_replace(' ','_',$char['location']);
+  // Start with the original location string
+  $wild_img_name = $char['location'];
+  // Replace spaces with underscores
+  $wild_img_name = str_replace(' ','_',$wild_img_name);
+  // Remove '-ap-' (custom apostrophe placeholder)
+  $wild_img_name = str_replace('-ap-','',$wild_img_name);
+  // Remove '&#39;' (HTML entity for apostrophe)
   $wild_img_name = str_replace('&#39;','',$wild_img_name);
+  // Remove literal apostrophe "'"
+  $wild_img_name = str_replace('\'','',$wild_img_name);
   
   if ($mode != 1) 
   {

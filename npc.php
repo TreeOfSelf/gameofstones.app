@@ -253,9 +253,12 @@ if ($found) $elvl += 2;
 $elvl += $char['level'];
 
 // Check for estates with upgrades to raise level of NPCs.
-$result= (mysqli_query($db,"SELECT id, upgrades FROM Estates WHERE row='$row' AND col='$col' AND location='$char[location]'"));
+$sql_safe_location = mysqli_real_escape_string($db, $char['location']);
+$result= (mysqli_query($db,"SELECT id, upgrades FROM Estates WHERE row='$row' AND col='$col' AND location='$sql_safe_location'"));
+
 $npcAlign=0;
 $bubble = 0;
+if (mysqli_num_rows($result) > 0) {$is_estate=1;}
 while ($testate = mysqli_fetch_array( $result ) )
 {
   $teups = unserialize($testate['upgrades']);
@@ -318,7 +321,7 @@ $nat_bonus = getNatBonuses($nb,$wt_bonuses[$wild_types[$char['location']]],$nt_b
 
 // Estate bonuses
 $est_bonus = "";
-$myEstate= mysqli_fetch_array(mysqli_query($db,"SELECT * FROM Estates WHERE owner='$id' AND location='$char[location]'"));
+$myEstate= mysqli_fetch_array(mysqli_query($db,"SELECT * FROM Estates WHERE owner='$id' AND location='$sql_safe_location'"));
 $estJiBonus = 1;
 if ($myEstate)
 {
@@ -892,8 +895,6 @@ if (($rand_val >= 60 && $winner == $player_word[0]))
     $bresult[0]['iimg'] = "items/".str_replace(" ","",$finditem).".gif";
     
     // add item and display message
-	// v v  v why the fuck is this even here it has caused me so much trouble and its never even used 
-    //$findnum = count($itmlist);
     if ($finditem) 
     {
       $itype=$ftype;
@@ -905,29 +906,18 @@ if (($rand_val >= 60 && $winner == $player_word[0]))
                                         VALUES ('$id','$itype','$wear','0',    '$ipts','',     '$itime',  '$finditem','$prefix','$suffix','$istats')");
       $invsize++;
 
-      $bname = str_replace(" ","_",$finditem);
-      $pname = 0;
-      $sname = 0;
-      $popuptext = "itemstat.php?base=".$bname."&prefix=";
-      $linktext = "";
+      $itemNameDisplay = "";
       if ($prefix !="")
       {
-        $linktext .= ucwords($prefix)." ";
-        $pname = str_replace(" ","_",$prefix);
-        $popuptext .= $pname;
+        $itemNameDisplay .= ucwords($prefix)." ";
       }
-      $linktext .= ucwords($finditem);
-      $popuptext .= "&suffix=";
+      $itemNameDisplay .= ucwords($finditem);
       if ($suffix != "")
       {
-        $linktext .= " ".str_replace("Of","of",ucwords($suffix));
-        $sname = str_replace(" ","_",$suffix);
-        $popuptext .= $sname;
-        
+        $itemNameDisplay .= " ".str_replace("Of","of",ucwords($suffix));
       }
-      $popuptext .= "&lvl=".$char['level']."&gender=".$char['sex']."&cond=".$wear;
       
-      $bresult[0]['item'] = "You found: <a href=javascript:popUp('".$popuptext."')>$linktext</a>! (".$invsize."/".$inv_max.")";
+      $bresult[0]['item'] = "You found: <span style='color: #00BFFF; font-weight: bold;'>".htmlspecialchars($itemNameDisplay)."</span>! (".$invsize."/".$inv_max.")";
 
       $stats['items_found']++;
     }
@@ -941,7 +931,7 @@ $array_gen = generate_duel_text($bresult);
 // Estate taxes
 $charip = unserialize($char['ip']); 
 $alts = getAlts($charip);
-$result10= mysqli_query($db,"SELECT id, owner, upgrades, level, inv FROM Estates WHERE row='$row' AND col='$col' AND location='$char[location]'");
+$result10= mysqli_query($db,"SELECT id, owner, upgrades, level, inv FROM Estates WHERE row='$row' AND col='$col' AND location='$sql_safe_location'");
 while ($testate = mysqli_fetch_array( $result10 ) )
 {
   $eowner = mysqli_fetch_array(mysqli_query($db,"SELECT id, name, lastname, bankgold, society FROM Users WHERE id='$testate[owner]'"));
@@ -1245,6 +1235,17 @@ function updateBattle() {
 
     document.getElementById("battleP1H").innerHTML = "<img src='images/health.gif' style='vertical-align:middle'>: "+myBattle[myTurn][2]+"/"+maxHealth0;
     document.getElementById("battleP2H").innerHTML = "<img src='images/health.gif' style='vertical-align:middle'>: "+myBattle[myTurn][3]+"/"+maxHealth1;
+
+    // Handle Player Avatar Overlay
+    var playerOverlayElement = document.getElementById('playerAvatarOverlay');
+    if (myBattle[myTurn][4] && myBattle[myTurn][4] !== "") {
+        playerOverlayElement.src = myBattle[myTurn][4];
+        playerOverlayElement.style.display = 'block';
+    } else {
+        playerOverlayElement.style.display = 'none';
+        playerOverlayElement.src = ''; // Clear src to prevent loading old image if display is toggled rapidly
+    }
+
   }
   else if (looping)
   {
@@ -1258,6 +1259,20 @@ function updateBattle() {
 <?php
 include('header.php');
 ?>
+<style>
+  #battleBox2 span {
+    color: #FFFFFF !important;
+  }
+  #battleBox2 p {
+    color: #FFFFFF !important;
+  }
+  #battleBox2 center {
+    color: #FFFFFF !important;
+  }
+  #battleBox2 a {
+    color: #FFFFFF !important;
+  }
+</style>
 <form name="redirectForm" action="world.php" method="post">
   <input type='hidden' name='message' id='message' value=''>
 </form>
@@ -1295,16 +1310,19 @@ redirectMessage("<?php echo $rmsg;?>");
             <!-- New Single Row Structure for Player, Battle Log, Enemy -->
             <div class='row' style="height: 100%;">
               <!-- Player Image and Health Container -->
-              <div class='col-sm-3 col-md-2' style='position: relative; height: 100%; display: flex; align-items: center; justify-content: center;'>
-                <img class='img-optional img-responsive' src='<?php echo $player_avatar; ?>' style='position: absolute; max-height: 160px; top: 50%; left: 50%; transform: translate(-50%, -50%); display: block; margin: auto;'/>
-                <div id="battleP1H" style="position: absolute; top: -17px; left: 5px; right: 5px; width: auto; background-color: rgba(0,0,0,0.65); color: white; text-align: center; padding: 2px 0; font-family: Verdana; font-size: 10px; border-radius: 4px; z-index: 10;">
+              <div class='col-sm-3 col-md-2' style='position: relative; height: 100%;'>
+                <div id="playerAvatarContainer" style='position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 100%; height: 160px; display: flex; align-items: center; justify-content: center;'>
+                    <img id='playerAvatarImg' class='img-optional img-responsive' src='<?php echo $player_avatar; ?>' style='max-height: 100%; max-width: 100%; object-fit: contain;'/>
+                    <img id='playerAvatarOverlay' src='' style='position: absolute; top: 0; left: 0; width: 100%; height: 100%; max-height: 160px; display: none; margin: auto; object-fit: contain;' />
+                </div>
+                <div id="battleP1H" style="position: absolute; top: -17px; left: 0px; right: 5px; width: auto; color: white; text-align: center; padding: 2px 0; font-family: Verdana; font-size: 10px; border-radius: 4px; z-index: 10;">
                     <!-- Health content will be populated by JS -->
                 </div>
               </div>
 
               <!-- Battle Log Text Container -->
               <div class='col-sm-6 col-md-8' style="height: 100%; overflow-y: auto;">
-                <div id='battleBox2' style="font-family: Verdana; font-size: 11px;"></div>
+                <div id='battleBox2' style="font-family: Verdana; font-size: 11px; color: #FFFFFF !important;"></div>
               </div>
 
               <!-- Enemy Image and Health Container -->
@@ -1312,7 +1330,7 @@ redirectMessage("<?php echo $rmsg;?>");
                 <div id="battleImg" class='hidden-xs' style='max-height: 160px; display: flex; align-items: center; justify-content: center;'>
                     <!-- Enemy image populated by JS -->
                 </div>
-                <div id="battleP2H" style="position: absolute; top: -17px; left: 5px; right: 5px; width: auto; background-color: rgba(0,0,0,0.65); color: white; text-align: center; padding: 2px 0; font-family: Verdana; font-size: 10px; border-radius: 4px; z-index: 10;">
+                <div id="battleP2H" style="position: absolute; top: -17px; left: 0px; right: 5px; width: auto; color: white; text-align: center; padding: 2px 0; font-family: Verdana; font-size: 10px; border-radius: 4px; z-index: 10;">
                     <!-- Health content will be populated by JS -->
                 </div>
               </div>

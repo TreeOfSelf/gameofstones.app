@@ -388,7 +388,8 @@
           }
           else
           {
-            $isHorde=mysqli_fetch_array( mysqli_query($db,"SELECT * FROM Hordes WHERE done='0' AND location='$char[location]'") );
+            $escaped_location = mysqli_real_escape_string($db, $char['location']);
+            $isHorde=mysqli_fetch_array( mysqli_query($db,"SELECT * FROM Hordes WHERE done='0' AND location='".$escaped_location."'") );
         ?>
         <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">
@@ -572,9 +573,9 @@
     $textHere = "'% Towards Level Up'";
     // If they have a clan
     if ($char['society'] != "") {
-  
       $societyValue = $char['society'];
-      $headerQuery = "SELECT * FROM Users WHERE society = '$societyValue'";
+      $escaped_societyValue = mysqli_real_escape_string($db, $societyValue);
+      $headerQuery = "SELECT * FROM Users WHERE society = '$escaped_societyValue'";
       $societyMembers = mysqli_query($db, $headerQuery);
   
       if ($societyMembers) {
@@ -597,7 +598,7 @@
           if($char['level'] < $levelCap){
 
             mysqli_query($db,"LOCK TABLES Soc WRITE, Users WRITE;");
-            $headerQuery = "SELECT * FROM Soc WHERE name = '$societyValue'";
+            $headerQuery = "SELECT * FROM Soc WHERE name = '$escaped_societyValue'";
             $societyRows = mysqli_query($db, $headerQuery);
             $society = mysqli_fetch_assoc($societyRows);
             mysqli_query($db,"UNLOCK TABLES;");

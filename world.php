@@ -5,19 +5,31 @@ include_once("admin/connect.php");
 include_once("admin/userdata.php");
 include_once("admin/locFuncs.php");
 include_once('map/mapdata/coordinates.inc');
-$loc=$char['location'];
-$no_query=1; 
-$message=mysqli_real_escape_string($db,$_REQUEST['message']);
-$fromLoc=mysqli_real_escape_string($db,$_REQUEST['fromLoc']);
-$toLoc=mysqli_real_escape_string($db,$_REQUEST['toLoc']);
-$escortId=mysqli_real_escape_string($db,$_REQUEST['escortId']);
-$waysId=mysqli_real_escape_string($db,$_REQUEST['waysId']);
 
-$surrounding_area = $map_data[$loc]; 
-$clean_loc = str_replace("&#39;", "", $char['location']);
-if ($fromLoc == $clean_loc && (($toLoc >= 0 && $toLoc < 4) || $escortId > 0 || $waysId > 0)) 
+$current_char_location = $char['location']; // Store current location from $char array
+$no_query=1;
+
+// Get parameters from request
+// $message is escaped as it might be used in SQL or directly output later.
+$message_param = isset($_REQUEST['message']) ? mysqli_real_escape_string($db, $_REQUEST['message']) : '';
+// $fromLoc_param is kept raw for string comparison.
+$fromLoc_param = isset($_REQUEST['fromLoc']) ? $_REQUEST['fromLoc'] : '';
+// Numeric parameters are converted to integers.
+$toLoc_param = isset($_REQUEST['toLoc']) ? intval($_REQUEST['toLoc']) : -1;
+$escortId_param = isset($_REQUEST['escortId']) ? intval($_REQUEST['escortId']) : 0;
+$waysId_param = isset($_REQUEST['waysId']) ? intval($_REQUEST['waysId']) : 0;
+
+$surrounding_area = $map_data[$current_char_location]; // Use original current location as key for map_data
+// Prepare character's current location for comparison: remove &#39; if present. Literal ' will remain.
+$clean_current_loc_for_compare = str_replace("&#39;", "", $current_char_location);
+
+// Compare raw fromLoc_param with the cleaned version of character's current location.
+// Use integer versions of toLoc_param, escortId_param, waysId_param for numeric comparisons.
+if ($fromLoc_param == $clean_current_loc_for_compare && (($toLoc_param >= 0 && $toLoc_param < 4) || $escortId_param > 0 || $waysId_param > 0))
 {
-  $result3 = mysqli_query($db,"SELECT * FROM Hordes WHERE done='0' AND location='$char[location]'");
+  // Escape current character location for use in SQL query
+  $sql_safe_current_char_loc = mysqli_real_escape_string($db, $current_char_location);
+  $result3 = mysqli_query($db,"SELECT * FROM Hordes WHERE done='0' AND location='$sql_safe_current_char_loc'");
   $numhorde = mysqli_num_rows($result3);
   // SET TRAVELING
   if ($travel_mode[$char['travelmode']][1]<=$char['feedneed']) $char['travelmode']=0; // WALK IF HORSE IS TOO HUNGRY
@@ -29,30 +41,32 @@ if ($fromLoc == $clean_loc && (($toLoc >= 0 && $toLoc < 4) || $escortId > 0 || $
   if ($numhorde && $debug_mode != true) $newstamina = $newstamina-2;
   if ($newstamina < 0) $newstamina = 0;
 
-  if ($toLoc > -1)
+  $next_destination_loc = ''; // Initialize variable for the next location
+
+  if ($toLoc_param > -1)
   {
-    $loc = $surrounding_area[$toLoc];
+    $next_destination_loc = $surrounding_area[$toLoc_param];
   }
-  else if ($escortId > 0)
+  else if ($escortId_param > 0)
   { 
     $myquests= unserialize($char['quests']);
-    $quest = mysqli_fetch_array(mysqli_query($db,"SELECT * FROM Quests WHERE id='$escortId'"));
+    $quest = mysqli_fetch_array(mysqli_query($db,"SELECT * FROM Quests WHERE id='$escortId_param'"));
     $goals = unserialize($quest['goals']);
     $route = mysqli_fetch_array(mysqli_query($db,"SELECT * FROM Routes WHERE id='".$goals[1]."'"));
     $rpath = unserialize($route['path']);
-    $loc = $rpath[$myquests[$escortId][1]+1];
-    $myquests[$escortId][1] += 1;
-    $myquests[$escortId][2] = 0;
+    $next_destination_loc = $rpath[$myquests[$escortId_param][1]+1];
+    $myquests[$escortId_param][1] += 1;
+    $myquests[$escortId_param][2] = 0;
     $myquests2 = serialize($myquests);
     $char['quests'] = $myquests2;
     mysqli_query($db,"UPDATE Users_data SET quests='".$myquests2."' WHERE id='$id'");
 	
   }
-  else if ($waysId > 0 && $waysId == $char['route'])
+  else if ($waysId_param > 0 && $waysId_param == $char['route'])
   {
-    $route = mysqli_fetch_array(mysqli_query($db,"SELECT * FROM Routes WHERE id='".$waysId."'"));
+    $route = mysqli_fetch_array(mysqli_query($db,"SELECT * FROM Routes WHERE id='".$waysId_param."'"));
     $rpath = unserialize($route['path']);
-    $loc = $rpath[$char['routepoint']+1];
+    $next_destination_loc = $rpath[$char['routepoint']+1];
     $char['routepoint'] = $char['routepoint']+1;
     if ($char['routepoint'] >= $route['length']-1)
     {
@@ -65,20 +79,22 @@ if ($fromLoc == $clean_loc && (($toLoc >= 0 && $toLoc < 4) || $escortId > 0 || $
     }
   }
   
-  if ($loc != $char['location'])
+  if ($next_destination_loc && $next_destination_loc != $current_char_location)
   {
-    $char['location'] = $loc;
-    mysqli_query($db,"UPDATE Users SET stamina='".$newstamina."', feedneed='".$char['feedneed']."', location='".mysqli_real_escape_string($db, $loc)."' WHERE id='$char[id]'");
+    $char['location'] = $next_destination_loc; // Update $char array for current script execution
+    // mysqli_real_escape_string is correctly used here for the new location value
+    mysqli_query($db,"UPDATE Users SET stamina='".$newstamina."', feedneed='".$char['feedneed']."', location='".mysqli_real_escape_string($db, $next_destination_loc)."' WHERE id='$char[id]'");
   }
 }
 
-$loc_name = $char['location'];
+$loc_name = $char['location']; // This will be the new location if travel occurred, otherwise original
 if ($location_array[$char['location']][2]) $wikilink = "Cities";
 else $wikilink = "Wilderness+Areas";
 
 include("map/places/banker.php");
 
-if (!$message) $message = $loc_name;
+if (!$message_param) $message = $loc_name; // If no request message, use loc_name. $message is used by header.php
+else $message = $message_param; // Otherwise, use the (escaped) message from request.
 
 include('header.php');
 ?>

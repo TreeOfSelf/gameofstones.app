@@ -35,18 +35,19 @@ function bell_rand($mymax, $maxall)
   return $retval;
 }
 
-function new_bline($int, $string, $img="", $h1="", $h2="") 
+function new_bline($int, $string, $img="", $h1="", $h2="", $player_overlay_img="") 
 {
   static $a = 0;
   $rval="";
   if (!$int) 
   {
     $a++;
-    $rval .= "myBattle[".($a-1)."] = new Array(4);\n";
+    $rval .= "myBattle[".($a-1)."] = new Array(5);\n";
     $rval .= "myBattle[".($a-1)."][0] = \"$string\";\n";
     $rval .= "myBattle[".($a-1)."][1] = \"$img\";\n";
     $rval .= "myBattle[".($a-1)."][2] = \"$h1\";\n";
     $rval .= "myBattle[".($a-1)."][3] = \"$h2\";\n";
+    $rval .= "myBattle[".($a-1)."][4] = \"$player_overlay_img\";\n";
     return $rval;
   }
   else return $a;
@@ -426,12 +427,15 @@ function generate_duel_text($bresult)
   $bnum = $bresult[0]['bnum'];
   $winner_name_orig = $bresult[0]['winner']; // Original winner name string
 
-  $pcolor = "#6495ED";
+  $pcolor = "#097bbc";
   $ecolor = "#E34234";
   $dmgcolor = "#FF3131"; 
   $statuscolor = "#A020F0";
   $itemcolor = "#0000FF";
   $questcolor = "#FF8C00";
+
+  $player_win_color = "#32CD32"; // LimeGreen for player win
+  $enemy_win_color = "#FF4500";  // OrangeRed for enemy win
 
   // Pre-style names with their consistent colors
   $styled_player_name = "<span style='font-weight: bold; color:".$pcolor.";'>".htmlspecialchars($pname_orig)."</span>";
@@ -497,49 +501,87 @@ function generate_duel_text($bresult)
       $turn_html_block .= "<p align='".$align_direction."' class='battletext'>".$active_char_styled_name." <span style='color:".$dmgcolor.";'>is injured and takes ".htmlspecialchars($turn_data['sdmg'])." damage!</span></p>";
     }
     
+    $player_hp_to_show = $is_player_turn ? $turn_data['ahp'] : $turn_data['dhp'];
+    $enemy_hp_to_show = $is_player_turn ? $turn_data['dhp'] : $turn_data['ahp'];
+
+    // Determine Player Avatar Overlay Image (only when player character is affected)
+    $player_avatar_overlay_image = "";
+    if ($turn_data['sdmg'] > 0 && $is_player_turn) { // Self-damage from player's attack
+        $player_avatar_overlay_image = "images/delete.gif";
+    }
+    if ($turn_data['hgain'] > 0 && $is_player_turn) { // Health gain for player
+        $player_avatar_overlay_image = "images/healthgain.gif";
+    }
+    // Player takes taint damage (tdmg is when the *active* character takes taint damage from their own accumulated taint)
+    if ($turn_data['tdmg'] > 0 && $is_player_turn) { 
+        $player_avatar_overlay_image = "images/taint.gif";
+    }
+    // Player is poisoned by enemy (poison damage is damage taken by the *inactive* character from accumulated poison)
+    if ($turn_data['poison'] > 0 && !$is_player_turn) { 
+        $player_avatar_overlay_image = "images/poison.gif";
+    }
+
+    // Determine Central Battle Image ($bimage) - with priority
     $bimage = "images/attack".$turn_data['turn'].".gif"; 
     if ($turn_data['hlvl'] > 2) $bimage = "images/miss".$turn_data['turn'].".gif";
+
+    // Status effect images for $bimage - higher priority ones can override lower ones
     if ($turn_data['stun'] && rand(0,1)) $bimage = "images/stun.gif";
     if ($turn_data['wound'] && rand(0,1)) $bimage = "images/wound.gif";
-    // TODO: Add more bimage conditions if they existed for poison, taint, hgain, sdmg based on old code if necessary
+    // New effects (with 50% chance to show, similar to stun/wound)
+    if ($turn_data['taint'] > 0 && rand(0,1)) { // Taint applied to opponent
+        $bimage = "images/taint.gif";
+    }
+    if ($turn_data['poison'] > 0 && rand(0,1)) { // Poison damage to opponent
+        $bimage = "images/poison.gif";
+    }
+    if ($turn_data['hgain'] > 0 && rand(0,1)) { // Active character gains health
+        $bimage = "images/healthgain.gif";
+    }
+    if ($turn_data['sdmg'] > 0 && rand(0,1)) { // Active character takes self-damage from their attack
+        $bimage = "images/delete.gif";
+    }
 
-    $ahp = isset($turn_data['ahp']) ? $turn_data['ahp'] : $bresult[0]['ahpf'];
-    $dhp = isset($turn_data['dhp']) ? $turn_data['dhp'] : $bresult[0]['dhpf'];
-    
-    $player_hp_to_show = $is_player_turn ? $ahp : $dhp;
-    $enemy_hp_to_show = $is_player_turn ? $dhp : $ahp;
-
-    $array_gen .= new_bline(0, addslashes($turn_html_block), $bimage, $player_hp_to_show, $enemy_hp_to_show);
+    $array_gen .= new_bline(0, addslashes($turn_html_block), $bimage, $player_hp_to_show, $enemy_hp_to_show, $player_avatar_overlay_image);
   }
 
   // Winner summary text, centered, with internal <br/> for structure
   $win_text_block = "<center class='battletext'>"; // Added battletext class here too
+  // $summary_white_color variable is no longer strictly needed here for names/tie due to npc.php CSS overrides
+  // but the !important green/red for win status will take precedence.
+
   if ($winner_name_orig == $pname_orig) {
-    $win_text_block .= $styled_player_name." wins!";
+    $win_text_block .= "<span style='font-weight: bold; color: ".$player_win_color." !important;'>".htmlspecialchars($pname_orig)."</span><span style='font-weight: bold; color: ".$player_win_color." !important;'> wins!</span>";
   } else if ($winner_name_orig == $ename_orig) {
-    $win_text_block .= $styled_enemy_name." wins!";
+    $win_text_block .= "<span style='font-weight: bold; color: ".$enemy_win_color." !important;'>".htmlspecialchars($ename_orig)."</span><span style='font-weight: bold; color: ".$enemy_win_color." !important;'> wins!</span>";
   } else {
-    $win_text_block .= "The duel is a tie!";
+    $win_text_block .= "<span>The duel is a tie!</span>"; // This will be made white by npc.php CSS
   }
 
   if (isset($bresult[0]['gold']) && $bresult[0]['gold']) {
-    $win_text_block .= " <span style='color:".$itemcolor.";'>and takes ".(function_exists('displayGold') ? displayGold($bresult[0]['gold']) : htmlspecialchars($bresult[0]['gold']).' gold').".</span>";
+    $win_text_block .= " <span style='color:".$summary_white_color.";'>and takes ".(function_exists('displayGold') ? displayGold($bresult[0]['gold']) : htmlspecialchars($bresult[0]['gold']).' gold').".</span>";
   }
   if (isset($bresult[0]['cgold']) && $bresult[0]['cgold']) {
-      $win_text_block .= " <span style='color:".$itemcolor.";'>".(function_exists('displayGold') ? displayGold($bresult[0]['cgold']) : htmlspecialchars($bresult[0]['cgold']).' gold')." was taken for ".htmlspecialchars($bresult[0]['cwin']).".</span>";
+      $win_text_block .= " <span style='color:".$summary_white_color.";'>".(function_exists('displayGold') ? displayGold($bresult[0]['cgold']) : htmlspecialchars($bresult[0]['cgold']).' gold')." was taken for ".htmlspecialchars($bresult[0]['cwin']).".</span>";
   }
   if (isset($bresult[0]['alt']) && $bresult[0]['alt']) {
-      $win_text_block .= " <span style='color:".$itemcolor.";'>but was compelled to take no gold for winning.</span>";
+      $win_text_block .= " <span style='color:".$summary_white_color.";'>but was compelled to take no gold for winning.</span>";
   }
 
   if (isset($bresult[0]['item']) && $bresult[0]['item']) {
-    $win_text_block .= "<br/><span style='color:".$itemcolor.";'>".($bresult[0]['item'])."</span>"; 
+    // Note: This makes the surrounding text white. The link color within $bresult[0]['item'] (if any) might persist
+    // as $bresult[0]['item'] is pre-formatted HTML from npc.php.
+    $item_html_output = $bresult[0]['item'];
+    // Ensure the link text within the item message is also white by adding a style to the <a> tag.
+    // This specifically targets <a href=...> as generated by npc.php.
+    $item_html_output = str_replace('<a href=', '<a style=\'color:'.$summary_white_color.' !important;\' href=', $item_html_output);
+    $win_text_block .= "<br/><span style='color:".$summary_white_color.";'>".$item_html_output."</span>";
   }
 
   if (isset($bresult[0]['quest']) && $bresult[0]['quest']) {
-    $win_text_block .= "<br/><span style='color:".$questcolor."; font-weight: bold;'>Quest Updated!</span>";
+    $win_text_block .= "<br/><span style='color:".$summary_white_color."; font-weight: bold;'>Quest Updated!</span>";
   }
-  $win_text_block .= "</center>"; 
+  $win_text_block .= "</center>";
 
   $final_image = isset($bresult[0]['iimg']) && $bresult[0]['iimg'] ? $bresult[0]['iimg'] : 'images/BattleBox/OP.gif';
   $array_gen .= new_bline(0, addslashes($win_text_block), $final_image, $bresult[0]['ahpf'], $bresult[0]['dhpf']);

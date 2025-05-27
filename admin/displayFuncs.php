@@ -560,34 +560,56 @@ return $stats;
 }
 
 // PARSER FUNCTION
-function cparse($string,$resolve=0)
+function cparse($string, $resolve_param_unused = 0) // Parameter $resolve is not used
 {
-  // RESOLVE all common terms and place in array
-  if(!is_array($string)){
-  $resolve = explode(" ",$string);
-  for ($x=0; $x<count($resolve); $x++)
-  {
-    if (!preg_match('/^[a-z]*$/i',$resolve[$x][0].$resolve[$x][1])) // one letter code
-    {
-      $array[$resolve[$x][0]] += intval($resolve[$x][1].$resolve[$x][2].$resolve[$x][3].$resolve[$x][4].$resolve[$x][5]);
+  if (!is_array($string)) {
+    $array = []; // Initialize $array for this branch
+    $parts = explode(" ", $string);
+    foreach ($parts as $part) {
+      $part = trim($part);
+      if (empty($part)) {
+        continue;
+      }
+
+      $key = '';
+      $value_str = '';
+
+      // Determine if it's a one-letter or two-letter code
+      if (strlen($part) >= 2 && ctype_alpha($part[0]) && ctype_alpha($part[1])) {
+        // Two-letter code (e.g., sA10, fP0)
+        $key = substr($part, 0, 2);
+        $value_str = substr($part, 2);
+      } elseif (strlen($part) >= 1 && ctype_alpha($part[0])) {
+        // One-letter code (e.g., A5, N-10, T3)
+        $key = substr($part, 0, 1);
+        $value_str = substr($part, 1);
+      } else {
+        // Malformed part, skip
+        continue;
+      }
+
+      // Only proceed if a key was successfully determined
+      if ($key !== '') {
+        $value = intval($value_str);
+        if (!isset($array[$key])) {
+          $array[$key] = 0;
+        }
+        $array[$key] += $value;
+      }
     }
-    else // two letter code
-    {
-      $array[$resolve[$x][0].$resolve[$x][1]] += intval($resolve[$x][2].$resolve[$x][3].$resolve[$x][4].$resolve[$x][5].$resolve[$x][6]);
+
+    // Apply G > 75 logic
+    if (isset($array['G']) && $array['G'] > 75) {
+      if (!isset($array['N'])) {
+        $array['N'] = 0;
+      }
+      $array['N'] += ($array['G'] - 75) * 2;
+      $array['G'] = 75;
     }
-  }
-  if ($array['G'] > 75)
-  {
-    $array['N'] += ($array['G']-75)*2;
-    $array['G'] = 75;
-  }
-	if(!is_null($array)){
-  return $array;
-	}else{
-		return "";
-	}
-  }else{
-	return "";
+    return $array;
+  } else {
+    // If $string is an array, original behavior is to return an empty string.
+    return "";
   }
 }
 
@@ -794,7 +816,7 @@ $stat_msg = array(
   'nN' => array("","% damage if Amadician",1),
   'yN' => array("","% damage if Andoran",1),
   'qN' => array("","% damage if Arafellin",1),
-  'fN' => array("","% damage if Atha'an Miere",1),
+  'fN' => array("","% damage if Atha\\'an Miere",1),
   'hN' => array("","% damage if Cairhienin",1),
   'dN' => array("","% damage if Domani",1),
   'gN' => array("","% damage if Ghealdanin",1),
@@ -823,13 +845,13 @@ $stat_msg = array(
   'pE' => array("","% defense in Plain Areas",1),
 
   // Estate Bonuses
-  'zD' => array("","% damage in Estate's Wilderness Area",1),
-  'zE' => array("","% defense in Estate's Wilderness Area",1),
-  'nJ' => array("","% Ji vs NPCs in Estate's Wilderness Area",1),
-  'zL' => array(""," Luck in Estate's Wilderness Area",1),
+  'zD' => array("","% damage in Estate\\'s Wilderness Area",1),
+  'zE' => array("","% defense in Estate\\'s Wilderness Area",1),
+  'nJ' => array("","% Ji vs NPCs in Estate\\'s Wilderness Area",1),
+  'zL' => array(""," Luck in Estate\\'s Wilderness Area",1),
   'zQ' => array("Local Quest bonus coin level ","",0),
   'zS' => array(""," Estate Storage",1),
-  'eT' => array("","% chance for bonus Ter'angreal in Estates",1),
+  'eT' => array("","% chance for bonus Ter\\'angreal in Estates",1),
   'wT' => array("Estate Tax level ","",0),
   'tV' => array("","% discount in Surrounding Cities",1),
   

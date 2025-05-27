@@ -708,7 +708,7 @@ include('header.php');
                       $blited = 1;
                       $weapon = $estats[$placeequip];
                       $itmStats = itm_info(cparse($weapon));
-                      $pointcost = (lvl_req($weapon, getTypeMod($tskills, $itemtoblit['type'])));
+                      $pointcost = lvl_req($weapon, getTypeMod($tskills, $itemtoblit['type']));
                   ?>
                       <button type="button" class="btn btn-primary btn-xs btn-wrap" data-html="true" data-toggle="popover" data-placement="top" data-content="<?php echo $itmStats; ?>"><?php echo iname($itemtoblit); ?></button><br />
                       <?php
@@ -1072,8 +1072,17 @@ include('header.php');
   </div> <!-- close outer col -->
 </div> <!-- close row -->
 <script type="text/javascript">
+  var item_base = <?php
+    $js_item_base = [];
+    if (is_array($item_base)) {
+        foreach ($item_base as $key => $value) {
+            $js_item_base[str_replace(" ", "_", $key)] = $value;
+        }
+    }
+    echo json_encode($js_item_base);
+  ?>;
   var inv = new Array();
-  var skills = '<?php echo $skills; ?>';
+  var skills = <?php echo json_encode($skills); ?>;
   var myPts = <?php echo $char['equip_pts']; ?>;
   var cnation = <?php echo $char['nation']; ?>;
   var ai = -1;
@@ -1097,7 +1106,7 @@ include('header.php');
       $weaveinfo[$w] = "<div class='panel panel-danger'><div class='panel-heading'><h3 class='panel-title'>" . ucwords($myWeaves[$w][0]) . "</h3></div><div class='panel-body abox' align='center'><img class='img-responsive hidden-xs img-optional-nodisplay' border='0' bordercolor='black' src='items/" . str_replace(' ', '', $myWeaves[$w][0]) . ".gif'/>";
       $weaveinfo[$w] .= itm_info(cparse(weaveStats($myWeaves[$w][0], $skills)));
       $weaveinfo[$w] .= "</div></div>";
-      echo "  weaveinfo[" . $w . "] = \"" . $weaveinfo[$w] . "\";\n";
+      echo "  weaveinfo[" . $w . "] = \"" . json_encode($weaveinfo[$w]) . "\";\n";
     }
   }
   ?>

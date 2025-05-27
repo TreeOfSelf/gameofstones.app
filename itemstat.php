@@ -34,7 +34,7 @@ $weapon = $weapon." ".getTerMod($ter_bonuses,$item_base[$base][1],$prefix,$suffi
 if ($item_base[$base][1] < 14) $worth = item_val($weapon);
 else $worth = $item_base[$base][2];
 
-if ($_GET[data]) echo "<font class=littletext>".$weapon;
+if (isset($_GET['data']) && $_GET['data']) echo "<font class=littletext>".$weapon;
 $char_stats = cparse($weapon,0);
 
 
