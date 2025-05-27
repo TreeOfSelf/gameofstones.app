@@ -60,7 +60,7 @@ background-size: 100%;
 background-position:center;
 }
 
-#battleBox > p { background-color: #fff09b2b; border-radius: 20px; padding: 5px 10px;}
+#battleBox > p { /*background-color: #fff09b2b;*/ border-radius: 20px; padding: 5px 10px;}
 .battle-left-box { transform:translateX(2px);}
 .battle-right-box { transform:translateX(-2px);}
 

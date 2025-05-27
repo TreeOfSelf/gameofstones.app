@@ -729,3 +729,11 @@ Stack trace:
 #2 /home/gameofstonesapp/domains/test.gameofstones.app/public_html/admin/timed_updates.php(27): include_once('...')
 #3 {main}
   thrown in /home/gameofstonesapp/domains/test.gameofstones.app/public_html/admin/heroes_update.php on line 95
+Starting 15 minute updateStarting Updates...Connecting to DB... Starting Quarterly Updates...Updating Users...</br>
+starting heroes updatePHP Fatal error:  Uncaught mysqli_sql_exception: Incorrect integer value: '' for column `gameofstonesapp_test`.`Users_stats`.`xp` at row 1 in /home/gameofstonesapp/domains/test.gameofstones.app/public_html/admin/heroes_update.php:95
+Stack trace:
+#0 /home/gameofstonesapp/domains/test.gameofstones.app/public_html/admin/heroes_update.php(95): mysqli_query()
+#1 /home/gameofstonesapp/domains/test.gameofstones.app/public_html/admin/quarterly_updates.php(276): include_once('...')
+#2 /home/gameofstonesapp/domains/test.gameofstones.app/public_html/admin/timed_updates.php(27): include_once('...')
+#3 {main}
+  thrown in /home/gameofstonesapp/domains/test.gameofstones.app/public_html/admin/heroes_update.php on line 95

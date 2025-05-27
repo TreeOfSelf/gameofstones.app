@@ -52,6 +52,26 @@ $stats = mysqli_fetch_array(mysqli_query($db,"SELECT * FROM Users_stats WHERE id
 $myquests= unserialize($char['quests']);
 $qcomp = 0;
 
+// Player avatar logic from bio.php
+$player_avatar = $char['avatar'];
+$classes = unserialize($char['type']);
+$is_creator = ($classes[0] == 0);
+
+if (!($player_avatar)) {
+    $nat = str_replace(" ", "_", $nationalities[$char['nation']]);
+    $sex = $char['sex'];
+    $sexChar = "M";
+    if ($sex) $sexChar = "F";
+    $w = 0;
+    for ($y = 1; $y < count($worth_ranks); $y++) {
+        if ($stats['net_worth'] >= $worth_ranks[$y]['0']) $w = $y;
+    }
+    if ($is_creator) $w = 0;
+
+    $player_avatar = "char/" . $nat . $sexChar . $w . ".jpg";
+}
+// End player avatar logic
+
 // determine wilderness grid cell
 $row = mysqli_real_escape_string($db,$_GET['row']);
 $col = mysqli_real_escape_string($db,$_GET['col']);
@@ -1214,11 +1234,13 @@ function updateBattle() {
     document.getElementById("battleBox2").innerHTML = myBattle[myTurn][0];
     if (myBattle[myTurn][1] != "")
     {
-      document.getElementById("battleImg").innerHTML = "<img class='img-optional' src='"+myBattle[myTurn][1]+"'>";
+      // Apply max-height to enemy image and set its source
+      document.getElementById("battleImg").innerHTML = "<img class='img-optional img-responsive' src='"+myBattle[myTurn][1]+"' style='max-height: 160px; display: block; margin: auto;'>";
     }
     else
     {
-      document.getElementById("battleImg").innerHTML = "<img class='img-optional' src='images/BattleBox/OP.gif' class='img img-responsive hidden-xs'/>";
+      // Clear the battleImg div if no image, or set a default placeholder if desired
+      document.getElementById("battleImg").innerHTML = "<img class='img-optional' src='images/BattleBox/OP.gif' class='img img-responsive hidden-xs' style='max-height: 160px; display: block; margin: auto;'/>";
     }
 
     document.getElementById("battleP1H").innerHTML = "<img src='images/health.gif' style='vertical-align:middle'>: "+myBattle[myTurn][2]+"/"+maxHealth0;
@@ -1270,28 +1292,32 @@ redirectMessage("<?php echo $rmsg;?>");
         </tr>
         <tr>
           <td class='solid-back' style='vertical-align: text-top;' height='155' colspan=3>
-            <div class='row'>
-              <div class='col-sm-3 col-md-2'>
-                <div id="battleP1H" style="font-family: Verdana; font-size: 10px;"></div>
+            <!-- New Single Row Structure for Player, Battle Log, Enemy -->
+            <div class='row' style="height: 100%;">
+              <!-- Player Image and Health Container -->
+              <div class='col-sm-3 col-md-2' style='position: relative; height: 100%; display: flex; align-items: center; justify-content: center;'>
+                <img class='img-optional img-responsive' src='<?php echo $player_avatar; ?>' style='position: absolute; max-height: 160px; top: 50%; left: 50%; transform: translate(-50%, -50%); display: block; margin: auto;'/>
+                <div id="battleP1H" style="position: absolute; top: -17px; left: 5px; right: 5px; width: auto; background-color: rgba(0,0,0,0.65); color: white; text-align: center; padding: 2px 0; font-family: Verdana; font-size: 10px; border-radius: 4px; z-index: 10;">
+                    <!-- Health content will be populated by JS -->
+                </div>
               </div>
-              <div class='col-sm-6 col-md-8 hidden-xs'>
-                <br/>
-              </div>
-              <div class='col-sm-3 col-md-2'>
-                <div id="battleP2H" style="font-family: Verdana; font-size: 10px;"></div>
-              </div>        
-            </div>
-            <div class='row'>
-              <div class='col-md-2 hidden-sm hidden-xs'>
-                <img class='img-optional' src='images/BattleBox/OP.gif' class='img img-responsive'/>
-              </div>
-              <div class='col-sm-9 col-md-8'>
+
+              <!-- Battle Log Text Container -->
+              <div class='col-sm-6 col-md-8' style="height: 100%; overflow-y: auto;">
                 <div id='battleBox2' style="font-family: Verdana; font-size: 11px;"></div>
               </div>
-              <div class='col-sm-3 col-md-2'>
-                <div id="battleImg" class='hidden-xs'></div>
-              </div>        
+
+              <!-- Enemy Image and Health Container -->
+              <div class='col-sm-3 col-md-2' style='position: relative; height: 100%; display: flex; align-items: center; justify-content: center;'>
+                <div id="battleImg" class='hidden-xs' style='max-height: 160px; display: flex; align-items: center; justify-content: center;'>
+                    <!-- Enemy image populated by JS -->
+                </div>
+                <div id="battleP2H" style="position: absolute; top: -17px; left: 5px; right: 5px; width: auto; background-color: rgba(0,0,0,0.65); color: white; text-align: center; padding: 2px 0; font-family: Verdana; font-size: 10px; border-radius: 4px; z-index: 10;">
+                    <!-- Health content will be populated by JS -->
+                </div>
+              </div>
             </div>
+          </td>
         </tr>
         <tr>
           <td class='visible-md img-optional' width='110' style='background-image:url(images/BattleBox/BLeftmdspcr.jpg); background-repeat: repeat-x;'></td>

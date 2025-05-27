@@ -426,12 +426,12 @@ function generate_duel_text($bresult)
   $bnum = $bresult[0]['bnum'];
   $winner_name_orig = $bresult[0]['winner']; // Original winner name string
 
-  $pcolor = "#007bff"; // Dark green
-  $ecolor = "#c70000"; // Dark red
-  $dmgcolor = "#FF0000"; // Red
-  $statuscolor = "#A020F0"; // Purple for status effects
-  $itemcolor = "#0000FF"; // Blue for item messages
-  $questcolor = "#FF8C00"; // Dark Orange for quest updates
+  $pcolor = "#6495ED";
+  $ecolor = "#E34234";
+  $dmgcolor = "#FF3131"; 
+  $statuscolor = "#A020F0";
+  $itemcolor = "#0000FF";
+  $questcolor = "#FF8C00";
 
   // Pre-style names with their consistent colors
   $styled_player_name = "<span style='font-weight: bold; color:".$pcolor.";'>".htmlspecialchars($pname_orig)."</span>";
@@ -460,13 +460,18 @@ function generate_duel_text($bresult)
     } else {
         $action_msg_core .= " attacks."; 
     }
-    $turn_html_block .= "<p align='".$align_direction."' class='battletext'>".$active_char_styled_name." ".$action_msg_core."</p>";
 
-    // Damage
+    // Prepare the full message for this turn, potentially with a line break
+    $message_output_for_turn = $active_char_styled_name." ".$action_msg_core;
+
+    // Damage: Append to message_output_for_turn with a line break if damage occurs
     if ($turn_data['dam'] > 0) {
       $damage_value_styled = "<span style='color:".$dmgcolor."; font-weight: bold;'>".htmlspecialchars($turn_data['dam'])."</span>";
-      $turn_html_block .= "<p align='".$align_direction."' class='battletext'>".$inactive_char_styled_name." takes ".$damage_value_styled." damage.</p>";
+      $message_output_for_turn .= "<br>".$inactive_char_styled_name." takes ".$damage_value_styled." damage.";
     }
+    
+    // Add the combined message as a single paragraph to the turn's HTML block
+    $turn_html_block .= "<p align='".$align_direction."' class='battletext'>".$message_output_for_turn."</p>";
 
     // Status effects
     if ($turn_data['stun']) {
