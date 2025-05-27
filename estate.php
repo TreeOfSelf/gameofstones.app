@@ -567,9 +567,9 @@ var qinfo = new Array();
         
         if (!$myquests[$qid][0])
         {
-          echo str_replace('-ap-',"'","qinfo[$qid] = \"<FIELDSET class=abox><LEGEND><b>".$quest['name']."</b></LEGEND><center><br/><br/>\" + ");
-          echo str_replace('-ap-',"'","\"".getQuestInfo($quest, $goodevil)."\" + ");
-          echo str_replace('-ap-',"'","\"<br/><br/></FIELDSET>\";\n");
+          echo "qinfo[$qid] = \"<FIELDSET class=abox><LEGEND><b>".$quest['name']."</b></LEGEND><center><br/><br/>\" + ";
+          echo "\"".getQuestInfo($quest, $goodevil)."\" + ";
+          echo "\"<br/><br/></FIELDSET>\";\n";
         }
       }
     }
@@ -696,7 +696,7 @@ if ($myEstate)
                         $upbonus = getUpgradeBonus($eups, $estate_unq_wild, $wild_types[$char['location']]);
                         $upbonus1 = getUpgradeBonus($eups, $estate_unq_wild, $wild_types[$char['location']],1);
                       }        
-                      $etitle = str_replace("&#39;","\&#39;","Current Bonus:<br/>".itm_info(cparse($upbonus))."<br/><i>Next Level:<br/>".itm_info(cparse($upbonus1))."</i>");        
+                      $etitle = "Current Bonus:<br/>".itm_info(cparse($upbonus))."<br/><i>Next Level:<br/>".itm_info(cparse($upbonus1))."</i>";        
                       echo "<tr>";
                       
                       echo "<td align='center'>";
@@ -865,14 +865,14 @@ if ($myEstate)
                           if ($quest['align']==1) $iclass='primary';
                           else if ($quest['align']==2) $iclass='danger';
               
-                          $qinfo[$qid] = "<div class='panel panel-".$iclass."' style='width: 200px;'><div class='panel-heading'><h3 class='panel-title'>".str_replace('-ap-',"'",$quest['name'])."</h3></div><div class='panel-body solid-back' align='center'>";
+                          $qinfo[$qid] = "<div class='panel panel-".$iclass."' style='width: 200px;'><div class='panel-heading'><h3 class='panel-title'>".$quest['name']."</h3></div><div class='panel-body solid-back' align='center'>";
                           $qinfo[$qid] .= getQuestInfo($quest);
                           $qinfo[$qid] .= "</div></div>";
               
                           $goals = unserialize($quest['goals']);      
                 ?>
                 <tr>
-                  <td class="popcenter"><button type="button" class="btn btn-<?php echo $iclass; ?> btn-xs btn-block btn-wrap link-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-content="<?php echo $qinfo[$qid];?>"><?php echo str_replace('-ap-',"'",$quest['name']); ?></button></td>
+                  <td class="popcenter"><button type="button" class="btn btn-<?php echo $iclass; ?> btn-xs btn-block btn-wrap link-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-content="<?php echo $qinfo[$qid];?>"><?php echo $quest['name']; ?></button></td>
                   <?php
                     $qtype = $quest_type[$quest['type']];
                   ?>
@@ -979,7 +979,7 @@ if ($myEstate)
                         while ( $listchar = mysqli_fetch_array( $result2 ) )
                         {
                     ?> 
-                          <option value="<?php echo $listchar['id'];?>" <?php if ($listchar['id']==$supporting[$surrounding_area[$x]]) echo ' selected';?>><?php echo str_replace('-ap-',"'",$listchar['name']); ?></option>
+                          <option value="<?php echo $listchar['id'];?>" <?php if ($listchar['id']==$supporting[$surrounding_area[$x]]) echo ' selected';?>><?php echo $listchar['name']; ?></option>
                     <?php
                         }
                         echo "</select></td>";
@@ -1017,7 +1017,7 @@ if ($myEstate)
                       {
                         echo "<option value='".$city[$x]['id']."'";
                         if ($myEstate['trade'] == $city[$x]['id']) echo " selected";
-                        echo ">".str_replace('-ap-',"'",$city[$x]['name'])."</option>";
+                        echo ">".$city[$x]['name']."</option>";
                       }
 
                       $society = mysqli_fetch_array(mysqli_query($db,"SELECT * FROM Soc WHERE name='$char[society]'"));
@@ -1046,7 +1046,6 @@ if ($myEstate)
     <div id="innerWrapper">              
               <?php
                 $wild_img_name = str_replace(' ','_',$char['location']);
-                $wild_img_name = str_replace('&#39;','',$wild_img_name);
                 if ($mode != 1) 
                 {
                   echo "<table style='background: url(images/wildmap_v9/".$wild_img_name.".gif); background-size: 100% 100%; background-repeat: no-repeat; width:98%; height: 98%;'><tr><td align='center'>";

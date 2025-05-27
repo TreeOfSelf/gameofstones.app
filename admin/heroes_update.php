@@ -14,11 +14,11 @@ if (!$lastBattleDone)
   // Update stats of all characters
   
   
-  $result = mysqli_query($db,"SELECT * FROM Users LEFT JOIN Users_stats ON Users.id=Users_stats.id WHERE (Users.nation!='0')");
+  $result = mysqli_query($db,"SELECT Users.*, Users_stats.* FROM Users LEFT JOIN Users_stats ON Users.id=Users_stats.id WHERE (Users.nation!='0')");
   while ( $listchar = mysqli_fetch_array( $result ) )
   {
-    $listchar['coin']=$listchar['gold'];
-    $listchar['xp']=$listchar['exp'];
+    $listchar['coin']= isset($listchar['gold']) ? intval($listchar['gold']) : 0;
+    $listchar['xp']= isset($listchar['exp']) ? intval($listchar['exp']) : 0;
     $enum = 0;
     $elvl = 0;
     $tot_estate = 0;
@@ -55,8 +55,18 @@ if (!$lastBattleDone)
 	
     $listchar['num_biz']=$bnum;
     $listchar['tot_business']=$tot_business;
-    $listchar['net_worth'] = $listchar['tot_business'] + $listchar['tot_estate'] + $listchar['coin'] + $listchar['bankcoin'];
-    mysqli_query($db,"UPDATE Users_stats SET coin='".$listchar['coin']."', xp='".$listchar['xp']."', top_estate='".$listchar['top_estate']."', tot_estate='".$listchar['tot_estate']."', top_business='".$listchar['top_business']."', tot_business='".$listchar['tot_business']."', net_worth='".$listchar['net_worth']."', num_estates='".$listchar['num_estates']."', highest_estate='".$listchar['highest_estate']."' WHERE id='".$listchar['id']."'");
+    $listchar['net_worth'] = $listchar['tot_business'] + $listchar['tot_estate'] + $listchar['coin'] + (isset($listchar['bankcoin']) ? intval($listchar['bankcoin']) : 0);
+
+    // Ensure all values are at least 0 if not set, or properly cast
+    $top_estate_val = isset($listchar['top_estate']) ? intval($listchar['top_estate']) : 0;
+    $tot_estate_val = isset($listchar['tot_estate']) ? intval($listchar['tot_estate']) : 0;
+    $top_business_val = isset($listchar['top_business']) ? intval($listchar['top_business']) : 0;
+    $tot_business_val = isset($listchar['tot_business']) ? intval($listchar['tot_business']) : 0;
+    $net_worth_val = isset($listchar['net_worth']) ? intval($listchar['net_worth']) : 0;
+    $num_estates_val = isset($listchar['num_estates']) ? intval($listchar['num_estates']) : 0;
+    $highest_estate_val = isset($listchar['highest_estate']) ? intval($listchar['highest_estate']) : 0;
+
+    mysqli_query($db,"UPDATE Users_stats SET coin='".$listchar['coin']."', xp='".$listchar['xp']."', top_estate='".$top_estate_val."', tot_estate='".$tot_estate_val."', top_business='".$top_business_val."', tot_business='".$tot_business_val."', net_worth='".$net_worth_val."', num_estates='".$num_estates_val."', highest_estate='".$highest_estate_val."' WHERE id='".$listchar['id']."'");
  }
     
   // loop over all ranks and deterime top 10. If LB is has started, don't update coin ranks.
@@ -72,12 +82,14 @@ if (!$lastBattleDone)
   {
     $rank_by=$rank_data[$y][0];
     $x=0;
-    $result = mysqli_query($db,"SELECT * FROM Users LEFT JOIN Users_stats ON Users.id=Users_stats.id WHERE (Users.nation!='0') ORDER BY ".$rank_by." DESC, exp DESC LIMIT 0,10 ");
+    $query_string = "SELECT Users.*, Users_stats.* FROM Users LEFT JOIN Users_stats ON Users.id=Users_stats.id WHERE (Users.nation!='0') ORDER BY ".$rank_by." DESC, exp DESC LIMIT 0,10 ";
+    $result = mysqli_query($db, $query_string);
 	$numchar = mysqli_num_rows($result);
     while ( $listchar = mysqli_fetch_array( $result ) )
     {
-      $heroes[$x+1][$rank_by]=$listchar[$rank_by];
-      $heroes[$x+11][$rank_by]=$listchar['id'];
+      // Ensure that the value for $rank_by exists and is an integer, default to 0 otherwise
+      $heroes[$x+1][$rank_by] = isset($listchar[$rank_by]) ? intval($listchar[$rank_by]) : 0;
+      $heroes[$x+11][$rank_by] = $listchar['id'];
       $x++;
     }
   }
@@ -86,13 +98,50 @@ if (!$lastBattleDone)
   {
     for ($z=1; $z<=20; $z++)
     {
-		if(!is_int($heroes[$z]['top_estate'])){
-			$heroes[$z]['top_estate']=0;
-		}
-		if(!is_int($heroes[$z]['top_business'])){
-			$heroes[$z]['top_business']=0;
-		}
-      mysqli_query($db,"UPDATE Users_stats SET xp='".$heroes[$z]['xp']."', ji='".$heroes[$z]['ji']."', achieved='".$heroes[$z]['achieved']."', wins='".$heroes[$z]['wins']."', duel_wins='".$heroes[$z]['duel_wins']."', enemy_wins='".$heroes[$z]['enemy_wins']."', ally_wins='".$heroes[$z]['ally_wins']."', off_wins='".$heroes[$z]['off_wins']."', npc_wins='".$heroes[$z]['npc_wins']."', shadow_wins='".$heroes[$z]['shadow_wins']."', military_wins='".$heroes[$z]['military_wins']."', ruffian_wins='".$heroes[$z]['ruffian_wins']."', channeler_wins='".$heroes[$z]['channeler_wins']."', animal_wins='".$heroes[$z]['animal_wins']."', exotic_wins='".$heroes[$z]['exotic_wins']."', quests_done='".$heroes[$z]['quests_done']."', play_quests_done='".$heroes[$z]['play_quests_done']."', find_quests_done='".$heroes[$z]['find_quests_done']."', npc_quests_done='".$heroes[$z]['npc_quests_done']."', item_quests_done='".$heroes[$z]['item_quests_done']."', horde_quests_done='".$heroes[$z]['horde_quests_done']."', escort_quests_done='".$heroes[$z]['escort_quests_done']."', my_quests_done='".$heroes[$z]['my_quests_done']."', coin='".$heroes[$z]['coin']."', bankcoin='".$heroes[$z]['bankcoin']."', coin_donated='".$heroes[$z]['coin_donated']."', duel_earn='".$heroes[$z]['duel_earn']."', dice_earn='".$heroes[$z]['dice_earn']."', item_earn='".$heroes[$z]['item_earn']."', quest_earn='".$heroes[$z]['quest_earn']."', prof_earn='".$heroes[$z]['prof_earn']."', top_estate='".$heroes[$z]['top_estate']."', tot_estate='".$heroes[$z]['tot_estate']."', top_business='".$heroes[$z]['top_business']."', tot_business='".$heroes[$z]['tot_business']."', net_worth='".$heroes[$z]['net_worth']."', align_high='".$heroes[$z]['align_high']."', align_low='".$heroes[$z]['align_low']."', win_tourney='".$heroes[$z]['win_tourney']."', horde_wins='".$heroes[$z]['horde_wins']."', army_wins='".$heroes[$z]['army_wins']."' WHERE id='".($z+10000)."'");
+      // Initialize all hero stats to 0 if not set to prevent errors with non-integer values
+      $h_xp = isset($heroes[$z]['xp']) ? intval($heroes[$z]['xp']) : 0;
+      $h_ji = isset($heroes[$z]['ji']) ? intval($heroes[$z]['ji']) : 0;
+      $h_achieved = isset($heroes[$z]['achieved']) ? intval($heroes[$z]['achieved']) : 0;
+      $h_wins = isset($heroes[$z]['wins']) ? intval($heroes[$z]['wins']) : 0;
+      $h_duel_wins = isset($heroes[$z]['duel_wins']) ? intval($heroes[$z]['duel_wins']) : 0;
+      $h_enemy_wins = isset($heroes[$z]['enemy_wins']) ? intval($heroes[$z]['enemy_wins']) : 0;
+      $h_ally_wins = isset($heroes[$z]['ally_wins']) ? intval($heroes[$z]['ally_wins']) : 0;
+      $h_off_wins = isset($heroes[$z]['off_wins']) ? intval($heroes[$z]['off_wins']) : 0;
+      $h_npc_wins = isset($heroes[$z]['npc_wins']) ? intval($heroes[$z]['npc_wins']) : 0;
+      $h_shadow_wins = isset($heroes[$z]['shadow_wins']) ? intval($heroes[$z]['shadow_wins']) : 0;
+      $h_military_wins = isset($heroes[$z]['military_wins']) ? intval($heroes[$z]['military_wins']) : 0;
+      $h_ruffian_wins = isset($heroes[$z]['ruffian_wins']) ? intval($heroes[$z]['ruffian_wins']) : 0;
+      $h_channeler_wins = isset($heroes[$z]['channeler_wins']) ? intval($heroes[$z]['channeler_wins']) : 0;
+      $h_animal_wins = isset($heroes[$z]['animal_wins']) ? intval($heroes[$z]['animal_wins']) : 0;
+      $h_exotic_wins = isset($heroes[$z]['exotic_wins']) ? intval($heroes[$z]['exotic_wins']) : 0;
+      $h_quests_done = isset($heroes[$z]['quests_done']) ? intval($heroes[$z]['quests_done']) : 0;
+      $h_play_quests_done = isset($heroes[$z]['play_quests_done']) ? intval($heroes[$z]['play_quests_done']) : 0;
+      $h_find_quests_done = isset($heroes[$z]['find_quests_done']) ? intval($heroes[$z]['find_quests_done']) : 0;
+      $h_npc_quests_done = isset($heroes[$z]['npc_quests_done']) ? intval($heroes[$z]['npc_quests_done']) : 0;
+      $h_item_quests_done = isset($heroes[$z]['item_quests_done']) ? intval($heroes[$z]['item_quests_done']) : 0;
+      $h_horde_quests_done = isset($heroes[$z]['horde_quests_done']) ? intval($heroes[$z]['horde_quests_done']) : 0;
+      $h_escort_quests_done = isset($heroes[$z]['escort_quests_done']) ? intval($heroes[$z]['escort_quests_done']) : 0;
+      $h_my_quests_done = isset($heroes[$z]['my_quests_done']) ? intval($heroes[$z]['my_quests_done']) : 0;
+      $h_coin = isset($heroes[$z]['coin']) ? intval($heroes[$z]['coin']) : 0;
+      $h_bankcoin = isset($heroes[$z]['bankcoin']) ? intval($heroes[$z]['bankcoin']) : 0;
+      $h_coin_donated = isset($heroes[$z]['coin_donated']) ? intval($heroes[$z]['coin_donated']) : 0;
+      $h_duel_earn = isset($heroes[$z]['duel_earn']) ? intval($heroes[$z]['duel_earn']) : 0;
+      $h_dice_earn = isset($heroes[$z]['dice_earn']) ? intval($heroes[$z]['dice_earn']) : 0;
+      $h_item_earn = isset($heroes[$z]['item_earn']) ? intval($heroes[$z]['item_earn']) : 0;
+      $h_quest_earn = isset($heroes[$z]['quest_earn']) ? intval($heroes[$z]['quest_earn']) : 0;
+      $h_prof_earn = isset($heroes[$z]['prof_earn']) ? intval($heroes[$z]['prof_earn']) : 0;
+      $h_top_estate = isset($heroes[$z]['top_estate']) ? intval($heroes[$z]['top_estate']) : 0;
+      $h_tot_estate = isset($heroes[$z]['tot_estate']) ? intval($heroes[$z]['tot_estate']) : 0;
+      $h_top_business = isset($heroes[$z]['top_business']) ? intval($heroes[$z]['top_business']) : 0;
+      $h_tot_business = isset($heroes[$z]['tot_business']) ? intval($heroes[$z]['tot_business']) : 0;
+      $h_net_worth = isset($heroes[$z]['net_worth']) ? intval($heroes[$z]['net_worth']) : 0;
+      $h_align_high = isset($heroes[$z]['align_high']) ? intval($heroes[$z]['align_high']) : 0;
+      $h_align_low = isset($heroes[$z]['align_low']) ? intval($heroes[$z]['align_low']) : 0;
+      $h_win_tourney = isset($heroes[$z]['win_tourney']) ? intval($heroes[$z]['win_tourney']) : 0;
+      $h_horde_wins = isset($heroes[$z]['horde_wins']) ? intval($heroes[$z]['horde_wins']) : 0;
+      $h_army_wins = isset($heroes[$z]['army_wins']) ? intval($heroes[$z]['army_wins']) : 0;
+
+      mysqli_query($db,"UPDATE Users_stats SET xp='".$h_xp."', ji='".$h_ji."', achieved='".$h_achieved."', wins='".$h_wins."', duel_wins='".$h_duel_wins."', enemy_wins='".$h_enemy_wins."', ally_wins='".$h_ally_wins."', off_wins='".$h_off_wins."', npc_wins='".$h_npc_wins."', shadow_wins='".$h_shadow_wins."', military_wins='".$h_military_wins."', ruffian_wins='".$h_ruffian_wins."', channeler_wins='".$h_channeler_wins."', animal_wins='".$h_animal_wins."', exotic_wins='".$h_exotic_wins."', quests_done='".$h_quests_done."', play_quests_done='".$h_play_quests_done."', find_quests_done='".$h_find_quests_done."', npc_quests_done='".$h_npc_quests_done."', item_quests_done='".$h_item_quests_done."', horde_quests_done='".$h_horde_quests_done."', escort_quests_done='".$h_escort_quests_done."', my_quests_done='".$h_my_quests_done."', coin='".$h_coin."', bankcoin='".$h_bankcoin."', coin_donated='".$h_coin_donated."', duel_earn='".$h_duel_earn."', dice_earn='".$h_dice_earn."', item_earn='".$h_item_earn."', quest_earn='".$h_quest_earn."', prof_earn='".$h_prof_earn."', top_estate='".$h_top_estate."', tot_estate='".$h_tot_estate."', top_business='".$h_top_business."', tot_business='".$h_tot_business."', net_worth='".$h_net_worth."', align_high='".$h_align_high."', align_low='".$h_align_low."', win_tourney='".$h_win_tourney."', horde_wins='".$h_horde_wins."', army_wins='".$h_army_wins."' WHERE id='".($z+10000)."'");
 	}
   }
 }

@@ -323,6 +323,9 @@ function take_quest_items ($goal, $inventory)
 function generate_random_quest($loc,$qalign="")
 {
   global $db,$map_data, $item_type_pl, $horde_types, $npc_plural, $loc_npc_nations, $npc_nation_names, $npc_nation_data, $enemy_list, $quest_type_num;
+  
+  $escaped_loc = mysqli_real_escape_string($db, $loc);
+
   $special = [];
   $type = intval(rand(0,4));
   $started = time()/3600;
@@ -393,7 +396,7 @@ function generate_random_quest($loc,$qalign="")
     if ($rtype == 11) $rtype = 13;
     $reward[1]= $rtype;
     $reward[2] = intval((($eid+$mult)*5)+25);
-    $qname = "Attacks on ".$tnamelist[$tnid]."-ap-s ".$special[2];    
+    $qname = "Attacks on ".$tnamelist[$tnid]."'s ".$special[2];    
   }
   else if ($type == $quest_type_num["Find"])
   {
@@ -415,7 +418,7 @@ function generate_random_quest($loc,$qalign="")
     if ($rtype == 11) $rtype = 13;
     $reward[1]= $rtype;
     $reward[2] = intval((($eid+5)*5)+25);
-    $qname = "Find ".$special[0]."-ap-s ".$enemy_list[$goals[2]][$goals[1]];  
+    $qname = "Find ".$special[0]."'s ".$enemy_list[$goals[2]][$goals[1]];  
   }
   else if ($type == $quest_type_num["Horde"])
   {
@@ -444,7 +447,7 @@ function generate_random_quest($loc,$qalign="")
   else if ($type == $quest_type_num["Escort"])
   {
     $goals[0] = rand(1,5)*6;
-    $route = mysqli_fetch_array(mysqli_query($db,"SELECT * FROM Routes WHERE start='".$loc."' AND length >'".$goals[0]."' ORDER BY rand()"));
+    $route = mysqli_fetch_array(mysqli_query($db,"SELECT * FROM Routes WHERE start='".$escaped_loc."' AND length >'".$goals[0]."' ORDER BY rand()"));
     $goals[1] = $route['id'];
     $path = unserialize($route['path']);
     $goals[2] = $path[$goals[0]];
@@ -461,7 +464,7 @@ function generate_random_quest($loc,$qalign="")
   
   $quest['name']=$qname;
   $quest['type']=$type;
-  $quest['location']= $loc;
+  $quest['location']= $escaped_loc;
   $quest['offerer'] = $special[3]." ".$special[0]." ".$special[4];
   $quest['num_avail']= $num_avail;
   $quest['started']= $started;

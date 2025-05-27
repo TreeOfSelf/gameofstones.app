@@ -238,8 +238,7 @@ if ($_GET['trade'] && $_REQUEST['item'])
           $itm=mysqli_fetch_array(mysqli_query($db,"SELECT * FROM Items WHERE id='".$_REQUEST['item']."'"));
           $item_name=iname($itm);
           $link="[<a href=messages.php?accept=1&name=".$char['name']."&last=".$char['lastname']."&note=>Accept Offer</a>]";
-          $ilink="<a href=javascript:doPopUp(&#39;".$itm['base']."&#39;,&#39;".$itm['prefix']."&#39;,&#39;".$itm['suffix']."&#39;)>".$item_name."</a>";
-          $note="<i><b>Trade offer:</b></i> $link<br/><br/>One $ilink in return for ".displayGold($tradeval,1)."<br/><br/><img src=\"items/".str_replace(" ","",$itm['base']).".gif\" />";
+          $note="<i><b>Trade offer:</b></i> $link<br/><br/>One ".$item_name." in return for ".displayGold($tradeval,1)."<br/><br/><img src=\"items/".str_replace(" ","",$itm['base']).".gif\" />";
           $note_extra=$char['id']."|".$_REQUEST['item']."|".$tradeval."|".intval(time()+intval($_REQUEST['time']));
           $noteto = $_GET['name']." ".$_GET['last'];
           $notesub = "Trade Offer";
@@ -252,7 +251,7 @@ if ($_GET['trade'] && $_REQUEST['item'])
           // Update the message's body with the message's own id
           $request = mysqli_fetch_array(mysqli_query($db,"SELECT * FROM Notes WHERE sent='".$mytime."' AND from_id='".$char['id']."'"));
           $link="[<a href=messages.php?accept=1&name=".$char['name']."&last=".$char['lastname']."&note=".$request['id'].">Accept Offer</a>]";
-          $request['body'] = "<i><b>Trade offer:</b></i> $link<br/><br/>One $ilink in return for ".displayGold($tradeval,1)."<br/><br/><img src=\"items/".str_replace(" ","",$itm['base']).".gif\" />";
+          $request['body'] = "<i><b>Trade offer:</b></i> $link<br/><br/>One ".$item_name." in return for ".displayGold($tradeval,1)."<br/><br/><img src=\"items/".str_replace(" ","",$itm['base']).".gif\" />";
           mysqli_query($db,"UPDATE Notes SET body='".$request['body']."' WHERE id='".$request['id']."'");
 
           mysqli_query($db,"UPDATE Users SET lastpost='".time()."' WHERE id='".$char['id']."'");

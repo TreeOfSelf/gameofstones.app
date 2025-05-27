@@ -80,7 +80,7 @@ if ($prev_dice)
  foreach ($prev_dice as $p => $a)
  {
   $text .= "<tr><td><font class='littletext'>";
-  if ($p == "NPC") $text .= "<i>".str_replace('-ap-',"'",$char['location'])." Gambler's Roll: </i>"; 
+  if ($p == "NPC") $text .= "<i>".$char['location']." Gambler's Roll: </i>"; 
   else $text .= "<i>".$p."'s Roll</i>";
   $text .= "</td><td width='5'></td><td><table rules='none' border='";
   if ($p_info[$p] == $winning_score) {$text .= "2"; $winners++;}

@@ -695,7 +695,7 @@ window.onload=intitializeChat;
                   }
               ?>
                 <tr class='small'>
-                  <td><?php echo str_replace('-ap-',"'",$loc['name']); ?></td>
+                  <td><?php echo $loc['name']; ?></td>
                   <td><?php echo round($clanreps[$locid]); ?></td>
                   <td><?php echo round($clanscores[$society['id']]); ?></td>
                   <td>
@@ -722,7 +722,7 @@ window.onload=intitializeChat;
                         if ($stance[str_replace(" ","_",$listchar['name'])] == 1 && $listchar['id'] != $society['id'])
                         {
                   ?> 
-                    <option value="<?php echo $listchar['id'];?>" <?php if ($listchar['id']==$supporting[$society['id']]) echo ' selected';?>><?php echo str_replace('-ap-',"'",$listchar['name']); ?></option>
+                    <option value="<?php echo $listchar['id'];?>" <?php if ($listchar['id']==$supporting[$society['id']]) echo ' selected';?>><?php echo $listchar['name']; ?></option>
                   <?php
                         }
                       }
@@ -849,7 +849,7 @@ window.onload=intitializeChat;
                           $level = $upgrades[$index];
                           $upbonus = getUpgradeBonus($upgrades, $clan_hires, $index);
                           $upbonus1 = getUpgradeBonus($upgrades, $clan_hires, $index,1);
-                          $htitle = str_replace("&#39;","\&#39;","Current Bonus:<br/>".itm_info(cparse($upbonus))."<br/>Next Level:<br/>".itm_info(cparse($upbonus1)));
+                          $htitle = "Current Bonus:<br/>".itm_info(cparse($upbonus))."<br/>Next Level:<br/>".itm_info(cparse($upbonus1));
                           echo "<tr>";
                       ?>
                           <td><button type="button" class="btn btn-warning btn-xs btn-block btn-wrap" data-html="true" data-toggle="popover" data-placement="top" data-content="<?php echo $htitle;?>"><?php echo $clan_hires[$index][0]." Level ".($upgrades[$index]);?></button></td>

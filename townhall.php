@@ -925,7 +925,7 @@ include('header.php');
                 <td><?php echo displayGold($rules[3]);?></td>
               </tr>
               <tr>
-                <td align=right><b>City&#39;s Spoils:</b></td>
+                <td align=right><b>City's Spoils:</b></td>
                 <td><?php echo displayGold($reward[0]);?></td>
               </tr>
               <tr>

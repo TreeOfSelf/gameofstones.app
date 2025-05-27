@@ -9,8 +9,8 @@
 include("connect.php");
 include("itemarray2.php");
 
-$townnames = array ('Thakan-ap-dar','Falme','Tanchico','Ebou Dar','Illian','Tear','Stedding Shangtai','Cairhein',
-                    'Tar Valon','Caemlyn','Far Madding','Amador','Emond-ap-s Field','Aiel Waste','Maradon',);
+$townnames = array ("Thakan'dar",'Falme','Tanchico','Ebou Dar','Illian','Tear','Stedding Shangtai','Cairhein',
+                    'Tar Valon','Caemlyn','Far Madding','Amador',"Emond's Field",'Aiel Waste','Maradon',);
                     
 for ($loc_id=0; $loc_id < 15; ++$loc_id)
 {
@@ -18,7 +18,7 @@ for ($loc_id=0; $loc_id < 15; ++$loc_id)
     
     //$shoplvls = serialize(array (1,1,1,1,1,1,1,1));
     echo $shop_base[$name][0];
-    $forum = array ( array ("The", "Creator" , "Welcome to ".str_replace('-ap-',"'",$tname)."!",time()) );
+    $forum = array ( array ("The", "Creator" , "Welcome to ".$tname."!",time()) );
     $forum = serialize($forum);
     //echo "id: ".$loc_id." name:".$tname;
     $ruler= "No One";

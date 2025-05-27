@@ -1,4 +1,4 @@
-<?php if (!$head) { ?>
+<?php if (!@$head) { ?>
 <html>
 <head>
 <title>Admin Recreate Society Table</title>
@@ -108,7 +108,7 @@ else
 ?>
 
 <br><br>
-<?php if (!$head) { ?>
+<?php if (!@$head) { ?>
 </body>
 </html>
 <?php } ?>

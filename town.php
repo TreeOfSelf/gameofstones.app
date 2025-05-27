@@ -46,7 +46,6 @@ $numchar = $resultf['0'];
     else 
     { 
       $town_img_name = str_replace(' ','_',strtolower($char['location']));
-      $town_img_name = str_replace('&#39;','',strtolower($town_img_name));
       echo "<div class='col-sm-3 col-lg-2 hidden-xs'><img class='img-optional' src=\"images/Flags/".$town_img_name.".gif\" align='top' width=160/></div>";
     }
 

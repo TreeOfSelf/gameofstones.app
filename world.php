@@ -20,12 +20,10 @@ $escortId_param = isset($_REQUEST['escortId']) ? intval($_REQUEST['escortId']) :
 $waysId_param = isset($_REQUEST['waysId']) ? intval($_REQUEST['waysId']) : 0;
 
 $surrounding_area = $map_data[$current_char_location]; // Use original current location as key for map_data
-// Prepare character's current location for comparison: remove &#39; if present. Literal ' will remain.
-$clean_current_loc_for_compare = str_replace("&#39;", "", $current_char_location);
 
 // Compare raw fromLoc_param with the cleaned version of character's current location.
 // Use integer versions of toLoc_param, escortId_param, waysId_param for numeric comparisons.
-if ($fromLoc_param == $clean_current_loc_for_compare && (($toLoc_param >= 0 && $toLoc_param < 4) || $escortId_param > 0 || $waysId_param > 0))
+if ($fromLoc_param == $current_char_location && (($toLoc_param >= 0 && $toLoc_param < 4) || $escortId_param > 0 || $waysId_param > 0))
 {
   // Escape current character location for use in SQL query
   $sql_safe_current_char_loc = mysqli_real_escape_string($db, $current_char_location);
@@ -106,7 +104,6 @@ include('header.php');
   {
     $link1 = "town.php";
     $town_img_name = str_replace(' ','_',strtolower($char['location']));
-    $town_img_name = str_replace('&#39;','',strtolower($town_img_name));
     if ($mode != 1) $bg = "background-image:url('images/townback/".$town_img_name.".jpg'); ";
   } 
   elseif ($char['arrival']<=time()) 

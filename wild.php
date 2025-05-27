@@ -263,8 +263,6 @@ $myHorde=0;
   $wild_img_name = str_replace(' ','_',$wild_img_name);
   // Remove '-ap-' (custom apostrophe placeholder)
   $wild_img_name = str_replace('-ap-','',$wild_img_name);
-  // Remove '&#39;' (HTML entity for apostrophe)
-  $wild_img_name = str_replace('&#39;','',$wild_img_name);
   // Remove literal apostrophe "'"
   $wild_img_name = str_replace('\'','',$wild_img_name);
   

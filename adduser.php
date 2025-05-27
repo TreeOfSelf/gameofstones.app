@@ -23,6 +23,11 @@ if (mysqli_num_rows($result) <= 0) {
 //gather user variables from last page where inputed
 $username=mysqli_real_escape_string($db,trim($_POST['userid']));
 $lastname=mysqli_real_escape_string($db,trim($_POST['last']));
+
+// Capitalize first letter of username and lastname
+$username = ucfirst(strtolower($username)); // Make lowercase first to ensure only first char is upper
+$lastname = ucfirst(strtolower($lastname));
+
 $channeler=mysqli_real_escape_string($db,$_POST['channeler']);
 $sex=mysqli_real_escape_string($db,$_POST['sex']);
 $nation=mysqli_real_escape_string($db,$_POST['nation']);

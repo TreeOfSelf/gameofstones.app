@@ -477,7 +477,7 @@ $city_defenses= array(
   "Mayene" => "Guard Dog",
   "Falme" => "Lopar",
   "Cantorin" => "Raken",
-  "Maradon" => "Asha&#39man",
+  "Maradon" => "Asha'man",
   "Ebou Dar" => "Damane",
   "Tar Valon" => "Aes Sedai",
   "Shol Arbela" => "Mad Male Channeler",
@@ -1004,7 +1004,16 @@ while ($town = mysqli_fetch_array( $result ) )
   $clan_building_bonuses .= getBuildClanBonuses($tmpUps, $unique_buildings[$town["name"]], $unique_build_bonuses);
 }
 
-$location = mysqli_fetch_array(mysqli_query($db,'SELECT * FROM Locations WHERE name="$char[location]"'));
+$safe_char_location = mysqli_real_escape_string($db, $char['location']);
+$location_query_result = mysqli_query($db,"SELECT * FROM Locations WHERE name='$safe_char_location'");
+if ($location_query_result) {
+    $location = mysqli_fetch_array($location_query_result);
+    if (!$location) {
+         $location = array(); // Prevent further errors
+    }
+} else {
+    $location = array(); // Prevent further errors
+}
 
 // setup bonuses for the current location
 include("locBonuses.php");

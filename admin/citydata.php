@@ -29,7 +29,7 @@ $ordups = unserialize($ordcity['upgrades']);
 if ($ordups[7]>0) $orderRuler = $ordcity['ruler'];
 
 // Ruled Chaos bonus
-$chaoscity = mysqli_fetch_array(mysqli_query($db,"SELECT ruler, upgrades FROM Locations WHERE name='Thakan'dar'"));
+$chaoscity = mysqli_fetch_array(mysqli_query($db,"SELECT ruler, upgrades FROM Locations WHERE name='Thakan\'dar'"));
 $chaosups = unserialize($chaoscity['upgrades']);
 if ($chaosups[7]>0) $chaosRuler = $chaoscity['ruler'];
 
@@ -150,7 +150,8 @@ while ( $listloc = mysqli_fetch_array( $result_loc ) )
       $clanscores = unserialize($listloc['clan_scores']);
 
       $WarWinner = "";
-      $result2 = mysqli_query($db,"SELECT id, contestants, rules, reward, type, distro FROM Contests WHERE location='$listloc[name]' AND done='0' AND ends<='$endtime'");
+      $escaped_loc_name = mysqli_real_escape_string($db, $listloc['name']);
+      $result2 = mysqli_query($db,"SELECT id, contestants, rules, reward, type, distro FROM Contests WHERE location='$escaped_loc_name' AND done='0' AND ends<='$endtime'");
       while ($contest = mysqli_fetch_array( $result2 ) )
       {
         echo "</br>\n Updating contest ".$contest['id']." | ";
@@ -353,7 +354,7 @@ while ( $listloc = mysqli_fetch_array( $result_loc ) )
       // Determine rulers
       echo "</br>\n Determine rulers. | ";
       $halfhour = time()-1800;    
-      $resultf = mysqli_fetch_array(mysqli_query($db,"SELECT COUNT(*) FROM Users WHERE location='$listloc[name]' AND depart<='$halfhour' "));
+      $resultf = mysqli_fetch_array(mysqli_query($db,"SELECT COUNT(*) FROM Users WHERE location='$escaped_loc_name' AND depart<='$halfhour' "));
       $numchar = $resultf[0];
       $listloc['pop']=getTownPop($upgrades,$numchar,$build_pop);
       $newruler= "No One";
@@ -446,7 +447,7 @@ while ( $listloc = mysqli_fetch_array( $result_loc ) )
         }
       }    
      
-      $numhorde = mysqli_num_rows(mysqli_query($db,"SELECT id FROM Hordes WHERE done='0' AND target='$listloc[name]'"));    
+      $numhorde = mysqli_num_rows(mysqli_query($db,"SELECT id FROM Hordes WHERE done='0' AND target='$escaped_loc_name'"));    
   
       for ($h=0; $h < $hourspast; $h++)
       {
@@ -535,7 +536,7 @@ while ( $listloc = mysqli_fetch_array( $result_loc ) )
         }
         else // at war
         {
-          $result = mysqli_query($db,"SELECT id, name, lastname, society FROM Users WHERE location='".$listloc['name']."'");
+          $result = mysqli_query($db,"SELECT id, name, lastname, society FROM Users WHERE location='".$escaped_loc_name."'");
           while ( $wlistchar = mysqli_fetch_array( $result ) )
           {
             $wsoc = mysqli_fetch_array(mysqli_query($db,"SELECT id, support FROM Soc WHERE name='$wlistchar[society]'"));
@@ -572,7 +573,8 @@ while ( $listloc = mysqli_fetch_array( $result_loc ) )
       elseif ($town_bonuses['lQ']) $qalign=1;
       elseif ($town_bonuses['sQ']) $qalign=2;      
       // check for expired quests
-      $result = mysqli_query($db,"SELECT * FROM Quests WHERE location='".$location['name']."' && done='0' && cat != 1");
+      $escaped_loc_name_for_select = mysqli_real_escape_string($db, $location['name']);
+      $result = mysqli_query($db,"SELECT * FROM Quests WHERE location='$escaped_loc_name_for_select' && done='0' && cat != 1");
       while ($quest = mysqli_fetch_array( $result ) )
       {        
         if ($quest['expire'] != -1 && $quest['expire']*3600 < time())
@@ -581,14 +583,34 @@ while ( $listloc = mysqli_fetch_array( $result_loc ) )
         }
       }
       // check for quest generation
-      $result2 = mysqli_query($db,"SELECT * FROM Quests WHERE location='".$listloc['name']."' && done='0' && num_avail='-1' && cat != 1 && type != '".$quest_type_num['Support']."'");
+      // $escaped_loc_name has already been defined for the SELECT query above for $location['name'] which is $listloc['name']
+      $escaped_support_type = mysqli_real_escape_string($db, $quest_type_num['Support']);
+      $result2 = mysqli_query($db,"SELECT * FROM Quests WHERE location='$escaped_loc_name_for_select' && done='0' && num_avail='-1' && cat != 1 && type != '$escaped_support_type'");
       $num_quests = mysqli_num_rows($result2);
       $maxquests = 4+$town_bonuses['eQ'];
       for ($i=0; $i+$num_quests < $maxquests; $i++)
       {
         $qs = unserialize(generate_random_quest($listloc['name'],$qalign));
+
+        // Escape all string fields from $qs before inserting
+        $qs_name = mysqli_real_escape_string($db, $qs['name']);
+        // Assuming type is numeric from $quest_type_num, but if it can be a string from generate_random_quest, it should be escaped.
+        // For now, assuming $qs['type'] is a numeric key. If it's textual, it needs escaping.
+        $qs_offerer = mysqli_real_escape_string($db, $qs['offerer']);
+        // num_avail, started, expire, align are typically numeric.
+        // $qs['num_avail'], $qs['started'], $qs['expire'], $qs['align']
+        $qs_location = mysqli_real_escape_string($db, $qs['location']);
+        $qs_reqs = mysqli_real_escape_string($db, $qs['reqs']); 
+        $qs_goals = mysqli_real_escape_string($db, $qs['goals']); 
+        $qs_special = mysqli_real_escape_string($db, $qs['special']); 
+        $qs_reward = mysqli_real_escape_string($db, $qs['reward']);
+
+        // Assuming $qs['type'], $qs['num_avail'], $qs['started'], $qs['expire'], $qs['align'] are numeric and don't need quotes in SQL.
+        // If $qs['type'] is actually a string value from generate_random_quest, it needs quotes and escaping.
+        // For now, treating $qs['type'] and $qs['align'] as numeric based on common patterns.
+        // $qs['num_avail'] is treated as numeric from its usage.
         $sql = "INSERT INTO Quests (name,       type,       offerer,       num_avail,       num_done,started,       expire,       align,       location,       reqs,       goals,       special,       reward,       done) 
-                            VALUES ('$qs[name]','$qs[type]','$qs[offerer]','$qs[num_avail]',0,       '$qs[started]','$qs[expire]','$qs[align]','$qs[location]','$qs[reqs]','$qs[goals]','$qs[special]','$qs[reward]',0)";
+                            VALUES ('$qs_name', '".$qs['type']."', '$qs_offerer', '".$qs['num_avail']."', 0,       '".$qs['started']."', '".$qs['expire']."', '".$qs['align']."', '$qs_location', '$qs_reqs', '$qs_goals', '$qs_special', '$qs_reward', 0)";
         $resultt = mysqli_query($db,$sql);
       }
 

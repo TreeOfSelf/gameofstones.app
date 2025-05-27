@@ -9,12 +9,11 @@ $msg = unserialize($msgs['message']);
 // send messages to the client
 for ($i = 0; $i < count($msg); $i++)
 {
-  $output = str_replace("-ap-","'",$msg[$i]);
+  $output = $msg[$i];
   $output = str_replace("&amp;","&",$output);  
   $output = str_replace("&quot;","\"",$output);
   $output = str_replace("&gt;",">",$output);
   $output = str_replace("&lt;","<",$output); 
-    $output = str_replace("&#39;","'",$output);   
 
   echo $output;
 }

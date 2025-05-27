@@ -199,12 +199,11 @@ while ($qitem = mysqli_fetch_array($iresult))
 if ($message == '') $message = "Welcome to the Local Blacksmith!";
 
 //HEADER
-if (!$is_town) $message = "There are no businesses in ".str_replace('-ap-',"'",$char['location']);
+if (!$is_town) $message = "There are no businesses in ".$char['location'];
 
 if ($mode != 1) 
 {
   $town_img_name = str_replace(' ','_',strtolower($char['location']));
-  $town_img_name = str_replace('&#39;','',strtolower($town_img_name));
   $bg = "background-image:url('images/townback/".$town_img_name.".jpg'); ";
 }
 include('header.php');

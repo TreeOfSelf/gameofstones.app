@@ -2,7 +2,8 @@
 // $location needs to be set before this is included.
 // $clan_building_bonuses is also referenced, but is optional. Only needed for cities.
 
-$result3 = mysqli_query($db,"SELECT id FROM Hordes WHERE done='0' AND target='$location[name]'");
+$escaped_target_name = mysqli_real_escape_string($db, $location['name']);
+$result3 = mysqli_query($db,"SELECT id FROM Hordes WHERE done='0' AND target='$escaped_target_name'");
 $numhorde = mysqli_num_rows($result3);
 if ($numhorde) $lochorde = 1;
 else $lochorde=0;

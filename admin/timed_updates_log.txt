@@ -1,900 +1,140 @@
-Starting 15 minute updateStarting Updates...Connecting to DB... Starting Quarterly Updates...Updating Users...</br>
-starting heroes update</br>
- Hourly update not running this iterationStarting 15 minute updateStarting Updates...Connecting to DB... Starting Quarterly Updates...Updating Users...
-</br>Checking character: The Creator   Current gold: "1000"  | New gold: "1000"   Current battles: "0" | New battles: 0
-</br>Checking character: Dark One   Current gold: "1000"  | New gold: "1000"   Current battles: "0" | New battles: 0
-</br>Checking character: Green Man   Current gold: "930"  | New gold: "930"   Current battles: "0" | New battles: 0
-</br>Checking character: bigger buy   Current gold: "3000"  | New gold: "3000"   Current battles: "0" | New battles: 0
-</br>Checking character: yoo friend   Current gold: "3000"  | New gold: "3000"   Current battles: "0" | New battles: 0
-</br>Checking character: big guy   Current gold: "2627"  | New gold: "2627"   Current battles: "0" | New battles: 0
-</br>Checking character: yepppers yeahh   Current gold: "196700"  | New gold: 196720   Current battles: "0" | New battles: 0
-</br>Checking character: Dershadar Rahl   Current gold: "906"  | New gold: "906"   Current battles: "0" | New battles: 0
-</br>Checking character: Badger Badger   Current gold: "288896"  | New gold: 288926   Current battles: "0" | New battles: 0
-</br>Checking character: Jon alJenn   Current gold: "9907"  | New gold: "9907"   Current battles: "0" | New battles: 0
-</br>Checking character: Varian Garos   Current gold: "547942"  | New gold: 548002   Current battles: "0" | New battles: 0
-</br>Checking character: Lucien Testeyr   Current gold: "11678"  | New gold: "11678"   Current battles: "0" | New battles: 0
-</br>Checking character: Caraline Testeyr   Current gold: "3046"  | New gold: "3046"   Current battles: "0" | New battles: 0
-</br>Checking character: Gavin Testeyr   Current gold: "3484"  | New gold: "3484"   Current battles: "0" | New battles: 0
-</br>Checking character: Sara Testeyr   Current gold: "96810"  | New gold: 96820   Current battles: "0" | New battles: 0
-</br>Checking character: sfsdfsdf sdfsdfs   Current gold: "1000"  | New gold: "1000"   Current battles: "30" | New battles: 28</br>
-starting heroes updateStarting hourly updateConnecting to DB...Starting Hourly Updates...Updating Clans...</br>
- Updating society: Questing Questers:1:0-0=0>0|2:1.8338732869425E-42-0=1.8338732869425E-42>1.8155345540731E-42|3:6.5618472780111E-42-0=6.5618472780111E-42>6.496228805231E-42|4:4.6631506368706E-40-0=4.6631506368706E-40>4.6165191305019E-40|5:0-0=0>0|6:0-0=0>0|7:100-100=7.105427357601E-13>100|8:99.999999999999-100=-7.105427357601E-13>99.999999999999|9:0-0=0>0|10:0-0=0>0|11:0-0=0>0|12:2.3475925665431E-43-0=2.3475925665431E-43>2.3241166408777E-43|13:2.4019102859647E-42-0=2.4019102859647E-42>2.3778911831051E-42|14:0-0=0>0|15:0-0=0>0|16:1.8157161256857E-41-0=1.8157161256857E-41>1.7975589644288E-41|17:1.4513131444364E-41-0=1.4513131444364E-41>1.4368000129921E-41|18:0-0=0>0|19:0-0=0>0|20:0-0=0>0|21:2.3842737003953E-43-0=2.3842737003953E-43>2.3604309633914E-43|22:0-0=0>0|23:0-0=0>0|24:0-0=0>0|</br>
- Updating society: VJA:1:0-0=0>0|2:0-0=0>0|3:0-0=0>0|4:0-0=0>0|5:0-0=0>0|6:0-0=0>0|7:0-0=0>0|8:0-0=0>0|9:0-0=0>0|10:0-0=0>0|11:0-0=0>0|12:0-0=0>0|13:0-0=0>0|14:0-0=0>0|15:0-0=0>0|16:0-0=0>0|17:100-100=0>100|18:0-0=0>0|19:0-0=0>0|20:0-0=0>0|21:0-0=0>0|22:0-0=0>0|23:0-0=0>0|24:0-0=0>0|</br>
- Updating society: The Badgerporium:1:2.3967452859051E-43-0=2.3967452859051E-43>2.372777833046E-43|2:0-0=0>0|3:5.8211858989483E-42-0=5.8211858989483E-42>5.7629740399588E-42|4:0-0=0>0|5:0-0=0>0|6:0-0=0>0|7:0-0=0>0|8:0-0=0>0|9:0-0=0>0|10:0-0=0>0|11:0-0=0>0|12:0-0=0>0|13:0-0=0>0|14:0-0=0>0|15:0-0=0>0|16:0-0=0>0|17:0-0=0>0|18:0-0=0>0|19:0-0=0>0|20:100-100=7.105427357601E-13>100|21:0-0=0>0|22:0-0=0>0|23:0-0=0>0|24:0-0=0>0|</br>
- Updating society: House Testeyr:1:7.2733497238351E-43-0=7.2733497238351E-43>7.2006162265967E-43|2:0-0=0>0|3:0-0=0>0|4:0-0=0>0|5:7.7036338789988E-40-0=7.7036338789988E-40>7.6265975402088E-40|6:0-0=0>0|7:1.0918502106821E-42-0=1.0918502106821E-42>1.0809317085753E-42|8:1.7441696656263E-40-0=1.7441696656263E-40>1.72672796897E-40|9:0-0=0>0|10:5.0161032578173E-43-0=5.0161032578173E-43>4.9659422252392E-43|11:0-0=0>0|12:0-0=0>0|13:0-0=0>0|14:1.3568559312396E-41-0=1.3568559312396E-41>1.3432873719272E-41|15:0-0=0>0|16:0-0=0>0|17:100-100=7.105427357601E-13>100|18:1.1591378611606E-41-0=1.1591378611606E-41>1.147546482549E-41|19:1.0031618258663E-41-0=1.0031618258663E-41>9.9313020760763E-42|20:0-0=0>0|21:1.0600698218187E-41-0=1.0600698218187E-41>1.0494691236005E-41|22:0-0=0>0|23:9.8022335208199E-43-0=9.8022335208199E-43>9.7042111856117E-43|24:0-0=0>0|
-</br> Top char: {"0":"12","id":"12","1":"36","level":"36"}
+Starting 15 minute updateStarting Updates...Connecting to DB... Starting Quarterly Updates...Updating Users...
+</br>Checking character: The Creator   Current gold: "1000"  | New gold: "1000"   Current battles: "170" | New battles: 0
+</br>Checking character: Dark One   Current gold: "1000"  | New gold: "1000"   Current battles: "170" | New battles: 0
+</br>Checking character: Green Man   Current gold: "1000"  | New gold: "1000"   Current battles: "170" | New battles: 0
+</br>Checking character: Sfsdf Sdfsf   Current gold: "1000"  | New gold: "1000"   Current battles: "70" | New battles: 68</br>
+starting heroes updateStarting hourly updateConnecting to DB...Starting Hourly Updates...Updating Clans...
+</br> Top char: {"0":"4","id":"4","1":"1","level":"1"}
 </br> Top char is:  
-</br> hhealth is : 2484 
-</br>so therefore max army size is: 3726Updating Clan Battle Participation Points...Updating Cities...
+</br> hhealth is : 1000 
+</br>so therefore max army size is: 1500Updating Clan Battle Participation Points...Updating Cities...
 
 
 
 
 </br> Updating city rumors, top character, and seals for  Mayene...
 </br> Updating  Mayene...</br>
- Determine rulers. | </br> Current army: "900"</br>
-Army up neutral change: 0.0065093952</br>
-Army up neutral change: 0.010835664000000002</br>
-Army up neutral change: 0.0214354224</br>
-Army up neutral change: 0.0214354224</br>
+ Determine rulers. | </br> Current army: "1000"</br>
 Army up: 0</br>
- New army: 900
+ New army: 1000
 </br> Updating  Tear...</br>
  Determine rulers. | </br> Current army: "1000"</br>
-Army up neutral change: 0.003538584</br>
-Army up neutral change: 0.02508996</br>
-Army up neutral change: 0.02508996</br>
-Army up neutral change: 0.027249096</br>
 Army up: 0</br>
  New army: 1000
 </br> Updating  Illian...</br>
  Determine rulers. | </br> Current army: "1000"</br>
-Army up neutral change: 0.0017473008</br>
-Army up neutral change: 0.026039580000000003</br>
-Army up neutral change: 0.035373844800000005</br>
-Army up neutral change: 0.03739303680000001</br>
 Army up: 0</br>
  New army: 1000
 </br> Updating  Ebou Dar...</br>
  Determine rulers. | </br> Current army: "1000"</br>
-Army up enemies change: -0.002845528</br>
-Army up allied change: 0.04996061381818182</br>
-Army up enemies change: 0.04996061381818182</br>
-Army up neutral change: 0.052203716218181824</br>
 Army up: 0</br>
- New army: 1000</br>
- New ruler: Questing Questers
+ New army: 1000
 </br> Updating  Tanchico...</br>
  Determine rulers. | </br> Current army: "1000"</br>
-Army up neutral change: 0.009632145600000001</br>
-Army up neutral change: 0.026819268</br>
-Army up neutral change: 0.026819268</br>
-Army up neutral change: 0.026819268</br>
 Army up: 0</br>
  New army: 1000
 </br> Updating  Cantorin...</br>
  Determine rulers. | </br> Current army: "1000"</br>
-Army up neutral change: 0.0019552176</br>
-Army up neutral change: 0.0215033952</br>
-Army up neutral change: 0.0215033952</br>
-Army up neutral change: 0.0215033952</br>
 Army up: 0</br>
  New army: 1000
 </br> Updating  Falme...</br>
  Determine rulers. | </br> Current army: "1000"</br>
-Army up enemies change: -0.010441155200000002</br>
-Army up allied change: 0.042795117527272726</br>
-Army up enemies change: 0.042795117527272726</br>
-Army up neutral change: 0.04473434152727273</br>
 Army up: 0</br>
- New army: 1000</br>
- New ruler: Questing Questers
+ New army: 1000
 </br> Updating  Bandar Eban...</br>
  Determine rulers. | </br> Current army: "1000"</br>
-Army up allied change: 0.04825644727272727</br>
-Army up enemies change: 0.03340505687272727</br>
-Army up enemies change: 0.03340505687272727</br>
-Army up neutral change: 0.03340505687272727</br>
 Army up: 0</br>
- New army: 1000</br>
- New ruler: House Testeyr
+ New army: 1000
 </br> Updating  Maradon...</br>
  Determine rulers. | </br> Current army: "1000"</br>
-Army up neutral change: 0.001409436</br>
-Army up neutral change: 0.0033486600000000003</br>
-Army up neutral change: 0.0055917624</br>
-Army up neutral change: 0.0055917624</br>
 Army up: 0</br>
  New army: 1000
 </br> Updating  Chachin...</br>
- Determine rulers. | </br> Current army: "1028"</br>
-Army up allied change: 0.14415746545454544</br>
-Army up enemies change: 0.14110935185454543</br>
-Army up enemies change: 0.14110935185454543</br>
-Army up neutral change: 0.14110935185454543</br>
-Army up: 0</br>
- New army: 1028</br>
- New ruler: House Testeyr
-</br> Updating  Shol Arbela...</br>
- Determine rulers. | </br> Current army: "900"</br>
-Army up neutral change: 0.0015113952</br>
-Army up neutral change: 0.0036645336</br>
-Army up neutral change: 0.0036645336</br>
-Army up neutral change: 0.0036645336</br>
-Army up: 0</br>
- New army: 900
-</br> Updating  Fal Dara...</br>
  Determine rulers. | </br> Current army: "1000"</br>
-Army up neutral change: 0.006337464</br>
-Army up neutral change: 0.008586564000000001</br>
-Army up neutral change: 0.008586564000000001</br>
-Army up neutral change: 0.008586564000000001</br>
 Army up: 0</br>
  New army: 1000
-</br> Updating  Thakan&#39;dar...</br>
+</br> Updating  Shol Arbela...</br>
  Determine rulers. | </br> Current army: "1000"</br>
-Army up neutral change: 0.0070311864</br>
-Army up neutral change: 0.009186324000000001</br>
-Army up neutral change: 0.009186324000000001</br>
-Army up neutral change: 0.009186324000000001</br>
+Army up: 0</br>
+ New army: 1000
+</br> Updating  Fal Dara...</br>
+ Determine rulers. | </br> Current army: "1000"</br>
+Army up: 0</br>
+ New army: 1000
+</br> Updating  Thakan'dar...</br>
+ Determine rulers. | </br> Current army: "1000"</br>
 Army up: 0</br>
  New army: 1000
 </br> Updating  Rhuidean...</br>
  Determine rulers. | </br> Current army: "1000"</br>
-Army up allied change: 0.12277814181818182</br>
-Army up enemies change: 0.11970337221818182</br>
-Army up enemies change: 0.11970337221818182</br>
-Army up neutral change: 0.11970337221818182</br>
 Army up: 0</br>
- New army: 1000</br>
- New ruler: House Testeyr
+ New army: 1000
 </br> Updating  Stedding Shangtai...</br>
  Determine rulers. | </br> Current army: "1000"</br>
-Army up neutral change: 0.0041943216</br>
-Army up neutral change: 0.0061335456</br>
-Army up neutral change: 0.0061335456</br>
-Army up neutral change: 0.0061335456</br>
 Army up: 0</br>
  New army: 1000
 </br> Updating  Far Madding...</br>
- Determine rulers. | </br> Current army: "900"</br>
-Army up neutral change: 0.005267892000000001</br>
-Army up neutral change: 0.011521389600000001</br>
-Army up neutral change: 0.024630144</br>
-Army up neutral change: 0.024630144</br>
+ Determine rulers. | </br> Current army: "1000"</br>
 Army up: 0</br>
- New army: 900
+ New army: 1000
 </br> Updating  Caemlyn...</br>
  Determine rulers. | </br> Current army: "1000"</br>
-Army up allied change: 0.18436864727272728</br>
-Army up enemies change: 0.1753695816727273</br>
-Army up enemies change: 0.1753695816727273</br>
-Army up neutral change: 0.1753695816727273</br>
 Army up: 0</br>
- New army: 1000</br>
- New ruler: House Testeyr
+ New army: 1000
 </br> Updating  Cairhien...</br>
  Determine rulers. | </br> Current army: "1000"</br>
-Army up allied change: 0.15578614545454547</br>
-Army up enemies change: 0.15382692945454546</br>
-Army up enemies change: 0.15382692945454546</br>
-Army up neutral change: 0.15382692945454546</br>
 Army up: 0</br>
- New army: 1000</br>
- New ruler: House Testeyr
+ New army: 1000
 </br> Updating  Tar Valon...</br>
  Determine rulers. | </br> Current army: "1000"</br>
-Army up neutral change: 0.0052618944</br>
-Army up neutral change: 0.008260694399999999</br>
-Army up neutral change: 0.008260694399999999</br>
-Army up neutral change: 0.008260694399999999</br>
 Army up: 0</br>
  New army: 1000
 </br> Updating  Lugard...</br>
  Determine rulers. | </br> Current army: "1000"</br>
-Army up neutral change: 0.001409436</br>
-Army up neutral change: 0.0057556968000000005</br>
-Army up neutral change: 0.021421428</br>
-Army up neutral change: 0.021421428</br>
 Army up: 0</br>
  New army: 1000
-</br> Updating  Emond&#39;s Field...</br>
+</br> Updating  Emond's Field...</br>
  Determine rulers. | </br> Current army: "1000"</br>
-Army up neutral change: 0.014214312</br>
-Army up neutral change: 0.0164574144</br>
-Army up neutral change: 0.018952416</br>
-Army up neutral change: 0.018952416</br>
 Army up: 0</br>
  New army: 1000
 </br> Updating  Salidar...</br>
  Determine rulers. | </br> Current army: "1000"</br>
-Army up neutral change: 0.0074050368</br>
-Army up neutral change: 0.0150979584</br>
-Army up neutral change: 0.0150979584</br>
-Army up neutral change: 0.0150979584</br>
 Army up: 0</br>
  New army: 1000
 </br> Updating  Jehannah...</br>
  Determine rulers. | </br> Current army: "1000"</br>
-Army up neutral change: 0.0088704504</br>
-Army up neutral change: 0.017990800799999998</br>
-Army up neutral change: 0.0202578936</br>
-Army up neutral change: 0.0202578936</br>
 Army up: 0</br>
  New army: 1000
 </br> Updating  Amador...</br>
  Determine rulers. | </br> Current army: "1000"</br>
-Army up neutral change: 0.016483404</br>
-Army up neutral change: 0.0186365424</br>
-Army up neutral change: 0.0186365424</br>
-Army up neutral change: 0.0186365424</br>
 Army up: 0</br>
  New army: 1000Updating Hordes...</br>
-Using hhealth: 2484 for horde updates0<485638.00055556</br>
+Using hhealth: 1000 for horde updates0<485647.00055556</br>
 Time check for hordes ran successfully</br>
- Test for new horde generation: 1748329200<1748296802Updating Last Battle...</br>
-SEALS BROKEN: 0Starting 15 minute updateStarting Updates...Connecting to DB... Starting Quarterly Updates...Updating Users...</br>
-starting heroes update</br>
- Hourly update not running this iterationStarting 15 minute updateStarting Updates...Connecting to DB... Starting Quarterly Updates...Updating Users...</br>
-starting heroes update</br>
- Hourly update not running this iterationStarting 15 minute updateStarting Updates...Connecting to DB... Starting Quarterly Updates...Updating Users...</br>
-starting heroes update</br>
- Hourly update not running this iterationStarting 15 minute updateStarting Updates...Connecting to DB... Starting Quarterly Updates...Updating Users...
-</br>Checking character: The Creator   Current gold: "1000"  | New gold: "1000"   Current battles: "0" | New battles: 0
-</br>Checking character: Dark One   Current gold: "1000"  | New gold: "1000"   Current battles: "0" | New battles: 0
-</br>Checking character: Green Man   Current gold: "930"  | New gold: "930"   Current battles: "0" | New battles: 0
-</br>Checking character: bigger buy   Current gold: "3000"  | New gold: "3000"   Current battles: "0" | New battles: 0
-</br>Checking character: yoo friend   Current gold: "3000"  | New gold: "3000"   Current battles: "0" | New battles: 0
-</br>Checking character: big guy   Current gold: "2627"  | New gold: "2627"   Current battles: "0" | New battles: 0
-</br>Checking character: yepppers yeahh   Current gold: "196720"  | New gold: 196740   Current battles: "0" | New battles: 0
-</br>Checking character: Dershadar Rahl   Current gold: "906"  | New gold: "906"   Current battles: "0" | New battles: 0
-</br>Checking character: Badger Badger   Current gold: "288926"  | New gold: 288956   Current battles: "0" | New battles: 0
-</br>Checking character: Jon alJenn   Current gold: "9907"  | New gold: "9907"   Current battles: "0" | New battles: 0
-</br>Checking character: Varian Garos   Current gold: "548002"  | New gold: 548062   Current battles: "0" | New battles: 0
-</br>Checking character: Lucien Testeyr   Current gold: "11678"  | New gold: "11678"   Current battles: "0" | New battles: 0
-</br>Checking character: Caraline Testeyr   Current gold: "3046"  | New gold: "3046"   Current battles: "0" | New battles: 0
-</br>Checking character: Gavin Testeyr   Current gold: "3484"  | New gold: "3484"   Current battles: "0" | New battles: 0
-</br>Checking character: Sara Testeyr   Current gold: "96820"  | New gold: 96830   Current battles: "0" | New battles: 0
-</br>Checking character: sfsdfsdf sdfsdfs   Current gold: "1000"  | New gold: "1000"   Current battles: "28" | New battles: 26</br>
-starting heroes updateStarting hourly updateConnecting to DB...Starting Hourly Updates...Updating Clans...</br>
- Updating society: Questing Questers:1:0-0=0>0|2:1.8155345540731E-42-0=1.8155345540731E-42>1.7973792085324E-42|3:6.496228805231E-42-0=6.496228805231E-42>6.4312665171787E-42|4:4.6165191305019E-40-0=4.6165191305019E-40>4.5703539391969E-40|5:0-0=0>0|6:0-0=0>0|7:100-100=7.105427357601E-13>100|8:99.999999999999-100=-7.105427357601E-13>99.999999999999|9:0-0=0>0|10:0-0=0>0|11:0-0=0>0|12:2.3241166408777E-43-0=2.3241166408777E-43>2.3008754744689E-43|13:2.3778911831051E-42-0=2.3778911831051E-42>2.354112271274E-42|14:0-0=0>0|15:0-0=0>0|16:1.7975589644288E-41-0=1.7975589644288E-41>1.7795833747845E-41|17:1.4368000129921E-41-0=1.4368000129921E-41>1.4224320128622E-41|18:0-0=0>0|19:0-0=0>0|20:0-0=0>0|21:2.3604309633914E-43-0=2.3604309633914E-43>2.3368266537575E-43|22:0-0=0>0|23:0-0=0>0|24:0-0=0>0|</br>
- Updating society: VJA:1:0-0=0>0|2:0-0=0>0|3:0-0=0>0|4:0-0=0>0|5:0-0=0>0|6:0-0=0>0|7:0-0=0>0|8:0-0=0>0|9:0-0=0>0|10:0-0=0>0|11:0-0=0>0|12:0-0=0>0|13:0-0=0>0|14:0-0=0>0|15:0-0=0>0|16:0-0=0>0|17:100-100=0>100|18:0-0=0>0|19:0-0=0>0|20:0-0=0>0|21:0-0=0>0|22:0-0=0>0|23:0-0=0>0|24:0-0=0>0|</br>
- Updating society: The Badgerporium:1:2.372777833046E-43-0=2.372777833046E-43>2.3490500547156E-43|2:0-0=0>0|3:5.7629740399588E-42-0=5.7629740399588E-42>5.7053442995592E-42|4:0-0=0>0|5:0-0=0>0|6:0-0=0>0|7:0-0=0>0|8:0-0=0>0|9:0-0=0>0|10:0-0=0>0|11:0-0=0>0|12:0-0=0>0|13:0-0=0>0|14:0-0=0>0|15:0-0=0>0|16:0-0=0>0|17:0-0=0>0|18:0-0=0>0|19:0-0=0>0|20:100-100=7.105427357601E-13>100|21:0-0=0>0|22:0-0=0>0|23:0-0=0>0|24:0-0=0>0|</br>
- Updating society: House Testeyr:1:7.2006162265967E-43-0=7.2006162265967E-43>7.1286100643308E-43|2:0-0=0>0|3:0-0=0>0|4:0-0=0>0|5:7.6265975402088E-40-0=7.6265975402088E-40>7.5503315648067E-40|6:0-0=0>0|7:1.0809317085753E-42-0=1.0809317085753E-42>1.0701223914895E-42|8:1.72672796897E-40-0=1.72672796897E-40>1.7094606892803E-40|9:0-0=0>0|10:4.9659422252392E-43-0=4.9659422252392E-43>4.9162828029868E-43|11:0-0=0>0|12:0-0=0>0|13:0-0=0>0|14:1.3432873719272E-41-0=1.3432873719272E-41>1.3298544982079E-41|15:0-0=0>0|16:0-0=0>0|17:100-100=7.105427357601E-13>100|18:1.147546482549E-41-0=1.147546482549E-41>1.1360710177235E-41|19:9.9313020760763E-42-0=9.9313020760763E-42>9.8319890553155E-42|20:0-0=0>0|21:1.0494691236005E-41-0=1.0494691236005E-41>1.0389744323645E-41|22:0-0=0>0|23:9.7042111856117E-43-0=9.7042111856117E-43>9.6071690737556E-43|24:0-0=0>0|
-</br> Top char: {"0":"12","id":"12","1":"36","level":"36"}
-</br> Top char is:  
-</br> hhealth is : 2484 
-</br>so therefore max army size is: 3726Updating Clan Battle Participation Points...Updating Cities...
-
-
-
-
-</br> Updating city rumors, top character, and seals for  Mayene...
-</br> Updating  Mayene...</br>
- Determine rulers. | </br> Current army: "900"</br>
-Army up neutral change: 0.006507396000000001</br>
-Army up neutral change: 0.010831665600000002</br>
-Army up neutral change: 0.0214274256</br>
-Army up neutral change: 0.0214274256</br>
-Army up: 0</br>
- New army: 900
-</br> Updating  Tear...</br>
- Determine rulers. | </br> Current army: "1000"</br>
-Army up neutral change: 0.0035365848</br>
-Army up neutral change: 0.025079963999999996</br>
-Army up neutral change: 0.025079963999999996</br>
-Army up neutral change: 0.027239099999999995</br>
-Army up: 0</br>
- New army: 1000
-</br> Updating  Illian...</br>
- Determine rulers. | </br> Current army: "1000"</br>
-Army up neutral change: 0.0017473008</br>
-Army up neutral change: 0.026029584</br>
-Army up neutral change: 0.035359850400000004</br>
-Army up neutral change: 0.03737904240000001</br>
-Army up: 0</br>
- New army: 1000
-</br> Updating  Ebou Dar...</br>
- Determine rulers. | </br> Current army: "1000"</br>
-Army up enemies change: -0.0028441952000000004</br>
-Army up allied change: 0.04994074298181818</br>
-Army up enemies change: 0.04994074298181818</br>
-Army up neutral change: 0.05218384538181818</br>
-Army up: 0</br>
- New army: 1000</br>
- New ruler: Questing Questers
-</br> Updating  Tanchico...</br>
- Determine rulers. | </br> Current army: "1000"</br>
-Army up neutral change: 0.0096281472</br>
-Army up neutral change: 0.026809272000000002</br>
-Army up neutral change: 0.026809272000000002</br>
-Army up neutral change: 0.026809272000000002</br>
-Army up: 0</br>
- New army: 1000
-</br> Updating  Cantorin...</br>
- Determine rulers. | </br> Current army: "1000"</br>
-Army up neutral change: 0.0019552176</br>
-Army up neutral change: 0.0214953984</br>
-Army up neutral change: 0.0214953984</br>
-Army up neutral change: 0.0214953984</br>
-Army up: 0</br>
- New army: 1000
-</br> Updating  Falme...</br>
- Determine rulers. | </br> Current army: "1000"</br>
-Army up enemies change: -0.0104371568</br>
-Army up allied change: 0.0427779122909091</br>
-Army up enemies change: 0.0427779122909091</br>
-Army up neutral change: 0.0447171362909091</br>
-Army up: 0</br>
- New army: 1000</br>
- New ruler: Questing Questers
-</br> Updating  Bandar Eban...</br>
- Determine rulers. | </br> Current army: "1000"</br>
-Army up allied change: 0.04823827272727273</br>
-Army up enemies change: 0.03339221352727273</br>
-Army up enemies change: 0.03339221352727273</br>
-Army up neutral change: 0.03339221352727273</br>
-Army up: 0</br>
- New army: 1000</br>
- New ruler: House Testeyr
-</br> Updating  Maradon...</br>
- Determine rulers. | </br> Current army: "1000"</br>
-Army up neutral change: 0.001409436</br>
-Army up neutral change: 0.0033486600000000003</br>
-Army up neutral change: 0.0055917624</br>
-Army up neutral change: 0.0055917624</br>
-Army up: 0</br>
- New army: 1000
-</br> Updating  Chachin...</br>
- Determine rulers. | </br> Current army: "1028"</br>
-Army up allied change: 0.14409991272727274</br>
-Army up enemies change: 0.14105313192727273</br>
-Army up enemies change: 0.14105313192727273</br>
-Army up neutral change: 0.14105313192727273</br>
-Army up: 0</br>
- New army: 1028</br>
- New ruler: House Testeyr
-</br> Updating  Shol Arbela...</br>
- Determine rulers. | </br> Current army: "900"</br>
-Army up neutral change: 0.0015113952</br>
-Army up neutral change: 0.0036645336</br>
-Army up neutral change: 0.0036645336</br>
-Army up neutral change: 0.0036645336</br>
-Army up: 0</br>
- New army: 900
-</br> Updating  Fal Dara...</br>
- Determine rulers. | </br> Current army: "1000"</br>
-Army up neutral change: 0.0063354648</br>
-Army up neutral change: 0.0085845648</br>
-Army up neutral change: 0.0085845648</br>
-Army up neutral change: 0.0085845648</br>
-Army up: 0</br>
- New army: 1000
-</br> Updating  Thakan&#39;dar...</br>
- Determine rulers. | </br> Current army: "1000"</br>
-Army up neutral change: 0.007029187200000001</br>
-Army up neutral change: 0.009184324800000001</br>
-Army up neutral change: 0.009184324800000001</br>
-Army up neutral change: 0.009184324800000001</br>
-Army up: 0</br>
- New army: 1000
-</br> Updating  Rhuidean...</br>
- Determine rulers. | </br> Current army: "1000"</br>
-Army up allied change: 0.12272967636363637</br>
-Army up enemies change: 0.11965623956363637</br>
-Army up enemies change: 0.11965623956363637</br>
-Army up neutral change: 0.11965623956363637</br>
-Army up: 0</br>
- New army: 1000</br>
- New ruler: House Testeyr
-</br> Updating  Stedding Shangtai...</br>
- Determine rulers. | </br> Current army: "1000"</br>
-Army up neutral change: 0.0041923224</br>
-Army up neutral change: 0.0061315464</br>
-Army up neutral change: 0.0061315464</br>
-Army up neutral change: 0.0061315464</br>
-Army up: 0</br>
- New army: 1000
-</br> Updating  Far Madding...</br>
- Determine rulers. | </br> Current army: "900"</br>
-Army up neutral change: 0.005265892800000001</br>
-Army up neutral change: 0.011517391200000001</br>
-Army up neutral change: 0.024620148</br>
-Army up neutral change: 0.024620148</br>
-Army up: 0</br>
- New army: 900
-</br> Updating  Caemlyn...</br>
- Determine rulers. | </br> Current army: "1000"</br>
-Army up allied change: 0.1842959490909091</br>
-Army up enemies change: 0.1753008818909091</br>
-Army up enemies change: 0.1753008818909091</br>
-Army up neutral change: 0.1753008818909091</br>
-Army up: 0</br>
- New army: 1000</br>
- New ruler: House Testeyr
-</br> Updating  Cairhien...</br>
- Determine rulers. | </br> Current army: "1000"</br>
-Army up allied change: 0.15572253454545454</br>
-Army up enemies change: 0.15376465134545453</br>
-Army up enemies change: 0.15376465134545453</br>
-Army up neutral change: 0.15376465134545453</br>
-Army up: 0</br>
- New army: 1000</br>
- New ruler: House Testeyr
-</br> Updating  Tar Valon...</br>
- Determine rulers. | </br> Current army: "1000"</br>
-Army up neutral change: 0.0052598952</br>
-Army up neutral change: 0.008256696000000001</br>
-Army up neutral change: 0.008256696000000001</br>
-Army up neutral change: 0.008256696000000001</br>
-Army up: 0</br>
- New army: 1000
-</br> Updating  Lugard...</br>
- Determine rulers. | </br> Current army: "1000"</br>
-Army up neutral change: 0.001409436</br>
-Army up neutral change: 0.0057536976</br>
-Army up neutral change: 0.0214134312</br>
-Army up neutral change: 0.0214134312</br>
-Army up: 0</br>
- New army: 1000
-</br> Updating  Emond&#39;s Field...</br>
- Determine rulers. | </br> Current army: "1000"</br>
-Army up neutral change: 0.014208314400000002</br>
-Army up neutral change: 0.0164514168</br>
-Army up neutral change: 0.0189464184</br>
-Army up neutral change: 0.0189464184</br>
-Army up: 0</br>
- New army: 1000
-</br> Updating  Salidar...</br>
- Determine rulers. | </br> Current army: "1000"</br>
-Army up neutral change: 0.0074030376000000005</br>
-Army up neutral change: 0.015091960800000002</br>
-Army up neutral change: 0.015091960800000002</br>
-Army up neutral change: 0.015091960800000002</br>
-Army up: 0</br>
- New army: 1000
-</br> Updating  Jehannah...</br>
- Determine rulers. | </br> Current army: "1000"</br>
-Army up neutral change: 0.008866452</br>
-Army up neutral change: 0.017982804</br>
-Army up neutral change: 0.0202498968</br>
-Army up neutral change: 0.0202498968</br>
-Army up: 0</br>
- New army: 1000
-</br> Updating  Amador...</br>
- Determine rulers. | </br> Current army: "1000"</br>
-Army up neutral change: 0.016477406400000002</br>
-Army up neutral change: 0.018630544800000003</br>
-Army up neutral change: 0.018630544800000003</br>
-Army up neutral change: 0.018630544800000003</br>
-Army up: 0</br>
- New army: 1000Updating Hordes...</br>
-Using hhealth: 2484 for horde updates0<485639.00055556</br>
-Time check for hordes ran successfully</br>
- Test for new horde generation: 1748329200<1748300402Updating Last Battle...</br>
-SEALS BROKEN: 0Starting 15 minute updateStarting Updates...Connecting to DB... Starting Quarterly Updates...Updating Users...</br>
-starting heroes update</br>
- Hourly update not running this iterationStarting 15 minute updateStarting Updates...Connecting to DB... Starting Quarterly Updates...Updating Users...</br>
-starting heroes update</br>
- Hourly update not running this iterationStarting 15 minute updateStarting Updates...Connecting to DB... Starting Quarterly Updates...Updating Users...</br>
-starting heroes update</br>
- Hourly update not running this iterationStarting 15 minute updateStarting Updates...Connecting to DB... Starting Quarterly Updates...Updating Users...
-</br>Checking character: The Creator   Current gold: "1000"  | New gold: "1000"   Current battles: "0" | New battles: 0
-</br>Checking character: Dark One   Current gold: "1000"  | New gold: "1000"   Current battles: "0" | New battles: 0
-</br>Checking character: Green Man   Current gold: "930"  | New gold: "930"   Current battles: "0" | New battles: 0
-</br>Checking character: bigger buy   Current gold: "3000"  | New gold: "3000"   Current battles: "0" | New battles: 0
-</br>Checking character: yoo friend   Current gold: "3000"  | New gold: "3000"   Current battles: "0" | New battles: 0
-</br>Checking character: big guy   Current gold: "2627"  | New gold: "2627"   Current battles: "0" | New battles: 0
-</br>Checking character: yepppers yeahh   Current gold: "196740"  | New gold: 196760   Current battles: "0" | New battles: 0
-</br>Checking character: Dershadar Rahl   Current gold: "906"  | New gold: "906"   Current battles: "0" | New battles: 0
-</br>Checking character: Badger Badger   Current gold: "288956"  | New gold: 288986   Current battles: "0" | New battles: 0
-</br>Checking character: Jon alJenn   Current gold: "9907"  | New gold: "9907"   Current battles: "0" | New battles: 0
-</br>Checking character: Varian Garos   Current gold: "548062"  | New gold: 548122   Current battles: "0" | New battles: 0
-</br>Checking character: Lucien Testeyr   Current gold: "11678"  | New gold: "11678"   Current battles: "0" | New battles: 0
-</br>Checking character: Caraline Testeyr   Current gold: "3046"  | New gold: "3046"   Current battles: "0" | New battles: 0
-</br>Checking character: Gavin Testeyr   Current gold: "3484"  | New gold: "3484"   Current battles: "0" | New battles: 0
-</br>Checking character: Sara Testeyr   Current gold: "96830"  | New gold: 96840   Current battles: "0" | New battles: 0
-</br>Checking character: sfsdfsdf sdfsdfs   Current gold: "3000"  | New gold: "3000"   Current battles: "26" | New battles: 24</br>
-starting heroes updateStarting hourly updateConnecting to DB...Starting Hourly Updates...Updating Clans...</br>
- Updating society: Questing Questers:1:0-0=0>0|2:1.7973792085324E-42-0=1.7973792085324E-42>1.7794054164471E-42|3:6.4312665171787E-42-0=6.4312665171787E-42>6.3669538520069E-42|4:4.5703539391969E-40-0=4.5703539391969E-40>4.5246503998049E-40|5:0-0=0>0|6:0-0=0>0|7:100-100=7.105427357601E-13>100|8:99.999999999999-100=-7.105427357601E-13>99.999999999999|9:0-0=0>0|10:0-0=0>0|11:0-0=0>0|12:2.3008754744689E-43-0=2.3008754744689E-43>2.2778667197242E-43|13:2.354112271274E-42-0=2.354112271274E-42>2.3305711485613E-42|14:0-0=0>0|15:0-0=0>0|16:1.7795833747845E-41-0=1.7795833747845E-41>1.7617875410367E-41|17:1.4224320128622E-41-0=1.4224320128622E-41>1.4082076927335E-41|18:0-0=0>0|19:0-0=0>0|20:0-0=0>0|21:2.3368266537575E-43-0=2.3368266537575E-43>2.3134583872199E-43|22:0-0=0>0|23:0-0=0>0|24:0-0=0>0|</br>
- Updating society: VJA:1:0-0=0>0|2:0-0=0>0|3:0-0=0>0|4:0-0=0>0|5:0-0=0>0|6:0-0=0>0|7:0-0=0>0|8:0-0=0>0|9:0-0=0>0|10:0-0=0>0|11:0-0=0>0|12:0-0=0>0|13:0-0=0>0|14:0-0=0>0|15:0-0=0>0|16:0-0=0>0|17:100-100=0>100|18:0-0=0>0|19:0-0=0>0|20:0-0=0>0|21:0-0=0>0|22:0-0=0>0|23:0-0=0>0|24:0-0=0>0|</br>
- Updating society: The Badgerporium:1:2.3490500547156E-43-0=2.3490500547156E-43>2.3255595541684E-43|2:0-0=0>0|3:5.7053442995592E-42-0=5.7053442995592E-42>5.6482908565636E-42|4:0-0=0>0|5:0-0=0>0|6:0-0=0>0|7:0-0=0>0|8:0-0=0>0|9:0-0=0>0|10:0-0=0>0|11:0-0=0>0|12:0-0=0>0|13:0-0=0>0|14:0-0=0>0|15:0-0=0>0|16:0-0=0>0|17:0-0=0>0|18:0-0=0>0|19:0-0=0>0|20:100-100=7.105427357601E-13>100|21:0-0=0>0|22:0-0=0>0|23:0-0=0>0|24:0-0=0>0|</br>
- Updating society: House Testeyr:1:7.1286100643308E-43-0=7.1286100643308E-43>7.0573239636875E-43|2:0-0=0>0|3:0-0=0>0|4:0-0=0>0|5:7.5503315648067E-40-0=7.5503315648067E-40>7.4748282491586E-40|6:0-0=0>0|7:1.0701223914895E-42-0=1.0701223914895E-42>1.0594211675746E-42|8:1.7094606892803E-40-0=1.7094606892803E-40>1.6923660823875E-40|9:0-0=0>0|10:4.9162828029868E-43-0=4.9162828029868E-43>4.8671199749569E-43|11:0-0=0>0|12:0-0=0>0|13:0-0=0>0|14:1.3298544982079E-41-0=1.3298544982079E-41>1.3165559532258E-41|15:0-0=0>0|16:0-0=0>0|17:100-100=7.105427357601E-13>100|18:1.1360710177235E-41-0=1.1360710177235E-41>1.1247103075463E-41|19:9.8319890553155E-42-0=9.8319890553155E-42>9.7336691647624E-42|20:0-0=0>0|21:1.0389744323645E-41-0=1.0389744323645E-41>1.0285846880409E-41|22:0-0=0>0|23:9.6071690737556E-43-0=9.6071690737556E-43>9.511097383018E-43|24:0-0=0>0|
-</br> Top char: {"0":"12","id":"12","1":"36","level":"36"}
-</br> Top char is:  
-</br> hhealth is : 2484 
-</br>so therefore max army size is: 3726Updating Clan Battle Participation Points...Updating Cities...
-
-
-
-
-</br> Updating city rumors, top character, and seals for  Mayene...
-</br> Updating  Mayene...</br>
- Determine rulers. | </br> Current army: "900"</br>
-Army up neutral change: 0.0065053968</br>
-Army up neutral change: 0.0108276672</br>
-Army up neutral change: 0.0214194288</br>
-Army up neutral change: 0.0214194288</br>
-Army up: 0</br>
- New army: 900
-</br> Updating  Tear...</br>
- Determine rulers. | </br> Current army: "1000"</br>
-Army up neutral change: 0.0035345856000000004</br>
-Army up neutral change: 0.025069968</br>
-Army up neutral change: 0.025069968</br>
-Army up neutral change: 0.027229104</br>
-Army up: 0</br>
- New army: 1000
-</br> Updating  Illian...</br>
- Determine rulers. | </br> Current army: "1000"</br>
-Army up neutral change: 0.0017473008</br>
-Army up neutral change: 0.026019588</br>
-Army up neutral change: 0.035345856</br>
-Army up neutral change: 0.037365048000000005</br>
-Army up: 0</br>
- New army: 1000
-</br> Updating  Ebou Dar...</br>
- Determine rulers. | </br> Current army: "1000"</br>
-Army up enemies change: -0.0028428624</br>
-Army up allied change: 0.04992087214545455</br>
-Army up enemies change: 0.04992087214545455</br>
-Army up neutral change: 0.05216397454545455</br>
-Army up: 0</br>
- New army: 1000</br>
- New ruler: Questing Questers
-</br> Updating  Tanchico...</br>
- Determine rulers. | </br> Current army: "1000"</br>
-Army up neutral change: 0.009624148800000001</br>
-Army up neutral change: 0.026799276000000004</br>
-Army up neutral change: 0.026799276000000004</br>
-Army up neutral change: 0.026799276000000004</br>
-Army up: 0</br>
- New army: 1000
-</br> Updating  Cantorin...</br>
- Determine rulers. | </br> Current army: "1000"</br>
-Army up neutral change: 0.0019552176</br>
-Army up neutral change: 0.0214874016</br>
-Army up neutral change: 0.0214874016</br>
-Army up neutral change: 0.0214874016</br>
-Army up: 0</br>
- New army: 1000
-</br> Updating  Falme...</br>
- Determine rulers. | </br> Current army: "1000"</br>
-Army up enemies change: -0.010433158400000002</br>
-Army up allied change: 0.04276070705454545</br>
-Army up enemies change: 0.04276070705454545</br>
-Army up neutral change: 0.04469993105454546</br>
-Army up: 0</br>
- New army: 1000</br>
- New ruler: Questing Questers
-</br> Updating  Bandar Eban...</br>
- Determine rulers. | </br> Current army: "1000"</br>
-Army up allied change: 0.04822009818181819</br>
-Army up enemies change: 0.03337937018181819</br>
-Army up enemies change: 0.03337937018181819</br>
-Army up neutral change: 0.03337937018181819</br>
-Army up: 0</br>
- New army: 1000</br>
- New ruler: House Testeyr
-</br> Updating  Maradon...</br>
- Determine rulers. | </br> Current army: "1000"</br>
-Army up neutral change: 0.001409436</br>
-Army up neutral change: 0.0033486600000000003</br>
-Army up neutral change: 0.0055917624</br>
-Army up neutral change: 0.0055917624</br>
-Army up: 0</br>
- New army: 1000
-</br> Updating  Chachin...</br>
- Determine rulers. | </br> Current army: "1028"</br>
-Army up allied change: 0.14404236</br>
-Army up enemies change: 0.140996912</br>
-Army up enemies change: 0.140996912</br>
-Army up neutral change: 0.140996912</br>
-Army up: 0</br>
- New army: 1028</br>
- New ruler: House Testeyr
-</br> Updating  Shol Arbela...</br>
- Determine rulers. | </br> Current army: "900"</br>
-Army up neutral change: 0.0015113952</br>
-Army up neutral change: 0.0036645336</br>
-Army up neutral change: 0.0036645336</br>
-Army up neutral change: 0.0036645336</br>
-Army up: 0</br>
- New army: 900
-</br> Updating  Fal Dara...</br>
- Determine rulers. | </br> Current army: "1000"</br>
-Army up neutral change: 0.006333465600000001</br>
-Army up neutral change: 0.008582565600000001</br>
-Army up neutral change: 0.008582565600000001</br>
-Army up neutral change: 0.008582565600000001</br>
-Army up: 0</br>
- New army: 1000
-</br> Updating  Thakan&#39;dar...</br>
- Determine rulers. | </br> Current army: "1000"</br>
-Army up neutral change: 0.007027188</br>
-Army up neutral change: 0.009182325600000001</br>
-Army up neutral change: 0.009182325600000001</br>
-Army up neutral change: 0.009182325600000001</br>
-Army up: 0</br>
- New army: 1000
-</br> Updating  Rhuidean...</br>
- Determine rulers. | </br> Current army: "1000"</br>
-Army up allied change: 0.1226812109090909</br>
-Army up enemies change: 0.11960910690909089</br>
-Army up enemies change: 0.11960910690909089</br>
-Army up neutral change: 0.11960910690909089</br>
-Army up: 0</br>
- New army: 1000</br>
- New ruler: House Testeyr
-</br> Updating  Stedding Shangtai...</br>
- Determine rulers. | </br> Current army: "1000"</br>
-Army up neutral change: 0.0041903232</br>
-Army up neutral change: 0.0061295472</br>
-Army up neutral change: 0.0061295472</br>
-Army up neutral change: 0.0061295472</br>
-Army up: 0</br>
- New army: 1000
-</br> Updating  Far Madding...</br>
- Determine rulers. | </br> Current army: "900"</br>
-Army up neutral change: 0.005263893600000001</br>
-Army up neutral change: 0.011513392800000001</br>
-Army up neutral change: 0.024610152000000003</br>
-Army up neutral change: 0.024610152000000003</br>
-Army up: 0</br>
- New army: 900
-</br> Updating  Caemlyn...</br>
- Determine rulers. | </br> Current army: "1000"</br>
-Army up allied change: 0.18422325090909092</br>
-Army up enemies change: 0.17523218210909092</br>
-Army up enemies change: 0.17523218210909092</br>
-Army up neutral change: 0.17523218210909092</br>
-Army up: 0</br>
- New army: 1000</br>
- New ruler: House Testeyr
-</br> Updating  Cairhien...</br>
- Determine rulers. | </br> Current army: "1000"</br>
-Army up allied change: 0.15565892363636363</br>
-Army up enemies change: 0.15370237323636363</br>
-Army up enemies change: 0.15370237323636363</br>
-Army up neutral change: 0.15370237323636363</br>
-Army up: 0</br>
- New army: 1000</br>
- New ruler: House Testeyr
-</br> Updating  Tar Valon...</br>
- Determine rulers. | </br> Current army: "1000"</br>
-Army up neutral change: 0.005257896000000001</br>
-Army up neutral change: 0.008252697600000001</br>
-Army up neutral change: 0.008252697600000001</br>
-Army up neutral change: 0.008252697600000001</br>
-Army up: 0</br>
- New army: 1000
-</br> Updating  Lugard...</br>
- Determine rulers. | </br> Current army: "1000"</br>
-Army up neutral change: 0.001409436</br>
-Army up neutral change: 0.0057516984000000005</br>
-Army up neutral change: 0.021405434400000003</br>
-Army up neutral change: 0.021405434400000003</br>
-Army up: 0</br>
- New army: 1000
-</br> Updating  Emond&#39;s Field...</br>
- Determine rulers. | </br> Current army: "1000"</br>
-Army up neutral change: 0.014202316800000002</br>
-Army up neutral change: 0.016445419200000002</br>
-Army up neutral change: 0.018940420800000003</br>
-Army up neutral change: 0.018940420800000003</br>
-Army up: 0</br>
- New army: 1000
-</br> Updating  Salidar...</br>
- Determine rulers. | </br> Current army: "1000"</br>
-Army up neutral change: 0.0074010384</br>
-Army up neutral change: 0.0150859632</br>
-Army up neutral change: 0.0150859632</br>
-Army up neutral change: 0.0150859632</br>
-Army up: 0</br>
- New army: 1000
-</br> Updating  Jehannah...</br>
- Determine rulers. | </br> Current army: "1000"</br>
-Army up neutral change: 0.0088624536</br>
-Army up neutral change: 0.0179748072</br>
-Army up neutral change: 0.0202419</br>
-Army up neutral change: 0.0202419</br>
-Army up: 0</br>
- New army: 1000
-</br> Updating  Amador...</br>
- Determine rulers. | </br> Current army: "1000"</br>
-Army up neutral change: 0.0164714088</br>
-Army up neutral change: 0.0186245472</br>
-Army up neutral change: 0.0186245472</br>
-Army up neutral change: 0.0186245472</br>
-Army up: 0</br>
- New army: 1000Updating Hordes...</br>
-Using hhealth: 2484 for horde updates0<485640.00055556</br>
-Time check for hordes ran successfully</br>
- Test for new horde generation: 1748329200<1748304002Updating Last Battle...</br>
-SEALS BROKEN: 0Starting 15 minute updateStarting Updates...Connecting to DB... Starting Quarterly Updates...Updating Users...</br>
-starting heroes update</br>
- Hourly update not running this iterationStarting 15 minute updateStarting Updates...Connecting to DB... Starting Quarterly Updates...Updating Users...</br>
-starting heroes update</br>
- Hourly update not running this iterationStarting 15 minute updateStarting Updates...Connecting to DB... Starting Quarterly Updates...Updating Users...</br>
+ Test for new horde generation: 0<1748329202</br>
+Generating new horde monster</br>
+generating: "Draghkar"</br>
+ PHP ERROR:</br>
+ PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 's Dagger!|";}' WHERE id='50000'' at line 1 in /home/gameofstonesapp/domains/test.gameofstones.app/public_html/admin/hordedata.php:436
+Stack trace:
+#0 /home/gameofstonesapp/domains/test.gameofstones.app/public_html/admin/hordedata.php(436): mysqli_query()
+#1 /home/gameofstonesapp/domains/test.gameofstones.app/public_html/admin/hourly_updates.php(41): include_once('...')
+#2 /home/gameofstonesapp/domains/test.gameofstones.app/public_html/admin/timed_updates.php(35): include_once('...')
+#3 {main}
+  thrown in /home/gameofstonesapp/domains/test.gameofstones.app/public_html/admin/hordedata.php on line 436
+Starting 15 minute updateStarting Updates...Connecting to DB... Starting Quarterly Updates...Updating Users...
+</br>Checking character: The Creator   Current gold: "1000"  | New gold: "1000"   Current battles: "170" | New battles: 0
+</br>Checking character: Dark One   Current gold: "1000"  | New gold: "1000"   Current battles: "170" | New battles: 0
+</br>Checking character: Green Man   Current gold: "1000"  | New gold: "1000"   Current battles: "170" | New battles: 0</br>
 starting heroes update</br>
  Hourly update not running this iterationStarting 15 minute updateStarting Updates...Connecting to DB... Starting Quarterly Updates...Updating Users...
 </br>Checking character: The Creator   Current gold: "1000"  | New gold: "1000"   Current battles: "170" | New battles: 0
 </br>Checking character: Dark One   Current gold: "1000"  | New gold: "1000"   Current battles: "170" | New battles: 0
-</br>Checking character: Green Man   Current gold: "1000"  | New gold: "1000"   Current battles: "170" | New battles: 0
-</br>Checking character: operator test   Current gold: "1000"  | New gold: "1000"   Current battles: "70" | New battles: 68</br>
-starting heroes updatePHP Fatal error:  Uncaught mysqli_sql_exception: Incorrect integer value: '' for column `gameofstonesapp_test`.`Users_stats`.`xp` at row 1 in /home/gameofstonesapp/domains/test.gameofstones.app/public_html/admin/heroes_update.php:95
-Stack trace:
-#0 /home/gameofstonesapp/domains/test.gameofstones.app/public_html/admin/heroes_update.php(95): mysqli_query()
-#1 /home/gameofstonesapp/domains/test.gameofstones.app/public_html/admin/quarterly_updates.php(276): include_once('...')
-#2 /home/gameofstonesapp/domains/test.gameofstones.app/public_html/admin/timed_updates.php(27): include_once('...')
-#3 {main}
-  thrown in /home/gameofstonesapp/domains/test.gameofstones.app/public_html/admin/heroes_update.php on line 95
-Starting 15 minute updateStarting Updates...Connecting to DB... Starting Quarterly Updates...Updating Users...</br>
-starting heroes updatePHP Fatal error:  Uncaught mysqli_sql_exception: Incorrect integer value: '' for column `gameofstonesapp_test`.`Users_stats`.`xp` at row 1 in /home/gameofstonesapp/domains/test.gameofstones.app/public_html/admin/heroes_update.php:95
-Stack trace:
-#0 /home/gameofstonesapp/domains/test.gameofstones.app/public_html/admin/heroes_update.php(95): mysqli_query()
-#1 /home/gameofstonesapp/domains/test.gameofstones.app/public_html/admin/quarterly_updates.php(276): include_once('...')
-#2 /home/gameofstonesapp/domains/test.gameofstones.app/public_html/admin/timed_updates.php(27): include_once('...')
-#3 {main}
-  thrown in /home/gameofstonesapp/domains/test.gameofstones.app/public_html/admin/heroes_update.php on line 95
-Starting 15 minute updateStarting Updates...Connecting to DB... Starting Quarterly Updates...Updating Users...</br>
-starting heroes updatePHP Fatal error:  Uncaught mysqli_sql_exception: Incorrect integer value: '' for column `gameofstonesapp_test`.`Users_stats`.`xp` at row 1 in /home/gameofstonesapp/domains/test.gameofstones.app/public_html/admin/heroes_update.php:95
-Stack trace:
-#0 /home/gameofstonesapp/domains/test.gameofstones.app/public_html/admin/heroes_update.php(95): mysqli_query()
-#1 /home/gameofstonesapp/domains/test.gameofstones.app/public_html/admin/quarterly_updates.php(276): include_once('...')
-#2 /home/gameofstonesapp/domains/test.gameofstones.app/public_html/admin/timed_updates.php(27): include_once('...')
-#3 {main}
-  thrown in /home/gameofstonesapp/domains/test.gameofstones.app/public_html/admin/heroes_update.php on line 95
-Starting 15 minute updateStarting Updates...Connecting to DB... Starting Quarterly Updates...Updating Users...</br>
-starting heroes updatePHP Fatal error:  Uncaught mysqli_sql_exception: Incorrect integer value: '' for column `gameofstonesapp_test`.`Users_stats`.`xp` at row 1 in /home/gameofstonesapp/domains/test.gameofstones.app/public_html/admin/heroes_update.php:95
-Stack trace:
-#0 /home/gameofstonesapp/domains/test.gameofstones.app/public_html/admin/heroes_update.php(95): mysqli_query()
-#1 /home/gameofstonesapp/domains/test.gameofstones.app/public_html/admin/quarterly_updates.php(276): include_once('...')
-#2 /home/gameofstonesapp/domains/test.gameofstones.app/public_html/admin/timed_updates.php(27): include_once('...')
-#3 {main}
-  thrown in /home/gameofstonesapp/domains/test.gameofstones.app/public_html/admin/heroes_update.php on line 95
-Starting 15 minute updateStarting Updates...Connecting to DB... Starting Quarterly Updates...Updating Users...
-</br>Checking character: The Creator   Current gold: "1000"  | New gold: "1000"   Current battles: "0" | New battles: 0
-</br>Checking character: Dark One   Current gold: "1000"  | New gold: "1000"   Current battles: "0" | New battles: 0
-</br>Checking character: Green Man   Current gold: "1000"  | New gold: "1000"   Current battles: "0" | New battles: 0
-</br>Checking character: operator test   Current gold: "3600"  | New gold: "3600"   Current battles: "68" | New battles: 66</br>
-starting heroes updatePHP Fatal error:  Uncaught mysqli_sql_exception: Incorrect integer value: '' for column `gameofstonesapp_test`.`Users_stats`.`xp` at row 1 in /home/gameofstonesapp/domains/test.gameofstones.app/public_html/admin/heroes_update.php:95
-Stack trace:
-#0 /home/gameofstonesapp/domains/test.gameofstones.app/public_html/admin/heroes_update.php(95): mysqli_query()
-#1 /home/gameofstonesapp/domains/test.gameofstones.app/public_html/admin/quarterly_updates.php(276): include_once('...')
-#2 /home/gameofstonesapp/domains/test.gameofstones.app/public_html/admin/timed_updates.php(27): include_once('...')
-#3 {main}
-  thrown in /home/gameofstonesapp/domains/test.gameofstones.app/public_html/admin/heroes_update.php on line 95
-Starting 15 minute updateStarting Updates...Connecting to DB... Starting Quarterly Updates...Updating Users...</br>
-starting heroes updatePHP Fatal error:  Uncaught mysqli_sql_exception: Incorrect integer value: '' for column `gameofstonesapp_test`.`Users_stats`.`xp` at row 1 in /home/gameofstonesapp/domains/test.gameofstones.app/public_html/admin/heroes_update.php:95
-Stack trace:
-#0 /home/gameofstonesapp/domains/test.gameofstones.app/public_html/admin/heroes_update.php(95): mysqli_query()
-#1 /home/gameofstonesapp/domains/test.gameofstones.app/public_html/admin/quarterly_updates.php(276): include_once('...')
-#2 /home/gameofstonesapp/domains/test.gameofstones.app/public_html/admin/timed_updates.php(27): include_once('...')
-#3 {main}
-  thrown in /home/gameofstonesapp/domains/test.gameofstones.app/public_html/admin/heroes_update.php on line 95
-Starting 15 minute updateStarting Updates...Connecting to DB... Starting Quarterly Updates...Updating Users...</br>
-starting heroes updatePHP Fatal error:  Uncaught mysqli_sql_exception: Incorrect integer value: '' for column `gameofstonesapp_test`.`Users_stats`.`xp` at row 1 in /home/gameofstonesapp/domains/test.gameofstones.app/public_html/admin/heroes_update.php:95
-Stack trace:
-#0 /home/gameofstonesapp/domains/test.gameofstones.app/public_html/admin/heroes_update.php(95): mysqli_query()
-#1 /home/gameofstonesapp/domains/test.gameofstones.app/public_html/admin/quarterly_updates.php(276): include_once('...')
-#2 /home/gameofstonesapp/domains/test.gameofstones.app/public_html/admin/timed_updates.php(27): include_once('...')
-#3 {main}
-  thrown in /home/gameofstonesapp/domains/test.gameofstones.app/public_html/admin/heroes_update.php on line 95
-Starting 15 minute updateStarting Updates...Connecting to DB... Starting Quarterly Updates...Updating Users...</br>
-starting heroes updatePHP Fatal error:  Uncaught mysqli_sql_exception: Incorrect integer value: '' for column `gameofstonesapp_test`.`Users_stats`.`xp` at row 1 in /home/gameofstonesapp/domains/test.gameofstones.app/public_html/admin/heroes_update.php:95
-Stack trace:
-#0 /home/gameofstonesapp/domains/test.gameofstones.app/public_html/admin/heroes_update.php(95): mysqli_query()
-#1 /home/gameofstonesapp/domains/test.gameofstones.app/public_html/admin/quarterly_updates.php(276): include_once('...')
-#2 /home/gameofstonesapp/domains/test.gameofstones.app/public_html/admin/timed_updates.php(27): include_once('...')
-#3 {main}
-  thrown in /home/gameofstonesapp/domains/test.gameofstones.app/public_html/admin/heroes_update.php on line 95
-Starting 15 minute updateStarting Updates...Connecting to DB... Starting Quarterly Updates...Updating Users...
-</br>Checking character: The Creator   Current gold: "1000"  | New gold: "1000"   Current battles: "0" | New battles: 0
-</br>Checking character: Dark One   Current gold: "1000"  | New gold: "1000"   Current battles: "0" | New battles: 0
-</br>Checking character: Green Man   Current gold: "1000"  | New gold: "1000"   Current battles: "0" | New battles: 0
-</br>Checking character: operator test   Current gold: "3600"  | New gold: "3600"   Current battles: "66" | New battles: 64</br>
-starting heroes updatePHP Fatal error:  Uncaught mysqli_sql_exception: Incorrect integer value: '' for column `gameofstonesapp_test`.`Users_stats`.`xp` at row 1 in /home/gameofstonesapp/domains/test.gameofstones.app/public_html/admin/heroes_update.php:95
-Stack trace:
-#0 /home/gameofstonesapp/domains/test.gameofstones.app/public_html/admin/heroes_update.php(95): mysqli_query()
-#1 /home/gameofstonesapp/domains/test.gameofstones.app/public_html/admin/quarterly_updates.php(276): include_once('...')
-#2 /home/gameofstonesapp/domains/test.gameofstones.app/public_html/admin/timed_updates.php(27): include_once('...')
-#3 {main}
-  thrown in /home/gameofstonesapp/domains/test.gameofstones.app/public_html/admin/heroes_update.php on line 95
-Starting 15 minute updateStarting Updates...Connecting to DB... Starting Quarterly Updates...Updating Users...</br>
-starting heroes updatePHP Fatal error:  Uncaught mysqli_sql_exception: Incorrect integer value: '' for column `gameofstonesapp_test`.`Users_stats`.`xp` at row 1 in /home/gameofstonesapp/domains/test.gameofstones.app/public_html/admin/heroes_update.php:95
-Stack trace:
-#0 /home/gameofstonesapp/domains/test.gameofstones.app/public_html/admin/heroes_update.php(95): mysqli_query()
-#1 /home/gameofstonesapp/domains/test.gameofstones.app/public_html/admin/quarterly_updates.php(276): include_once('...')
-#2 /home/gameofstonesapp/domains/test.gameofstones.app/public_html/admin/timed_updates.php(27): include_once('...')
-#3 {main}
-  thrown in /home/gameofstonesapp/domains/test.gameofstones.app/public_html/admin/heroes_update.php on line 95
-Starting 15 minute updateStarting Updates...Connecting to DB... Starting Quarterly Updates...Updating Users...</br>
-starting heroes updatePHP Fatal error:  Uncaught mysqli_sql_exception: Incorrect integer value: '' for column `gameofstonesapp_test`.`Users_stats`.`xp` at row 1 in /home/gameofstonesapp/domains/test.gameofstones.app/public_html/admin/heroes_update.php:95
-Stack trace:
-#0 /home/gameofstonesapp/domains/test.gameofstones.app/public_html/admin/heroes_update.php(95): mysqli_query()
-#1 /home/gameofstonesapp/domains/test.gameofstones.app/public_html/admin/quarterly_updates.php(276): include_once('...')
-#2 /home/gameofstonesapp/domains/test.gameofstones.app/public_html/admin/timed_updates.php(27): include_once('...')
-#3 {main}
-  thrown in /home/gameofstonesapp/domains/test.gameofstones.app/public_html/admin/heroes_update.php on line 95
-Starting 15 minute updateStarting Updates...Connecting to DB... Starting Quarterly Updates...Updating Users...</br>
-starting heroes updatePHP Fatal error:  Uncaught mysqli_sql_exception: Incorrect integer value: '' for column `gameofstonesapp_test`.`Users_stats`.`xp` at row 1 in /home/gameofstonesapp/domains/test.gameofstones.app/public_html/admin/heroes_update.php:95
-Stack trace:
-#0 /home/gameofstonesapp/domains/test.gameofstones.app/public_html/admin/heroes_update.php(95): mysqli_query()
-#1 /home/gameofstonesapp/domains/test.gameofstones.app/public_html/admin/quarterly_updates.php(276): include_once('...')
-#2 /home/gameofstonesapp/domains/test.gameofstones.app/public_html/admin/timed_updates.php(27): include_once('...')
-#3 {main}
-  thrown in /home/gameofstonesapp/domains/test.gameofstones.app/public_html/admin/heroes_update.php on line 95
-Starting 15 minute updateStarting Updates...Connecting to DB... Starting Quarterly Updates...Updating Users...
-</br>Checking character: The Creator   Current gold: "1000"  | New gold: "1000"   Current battles: "0" | New battles: 0
-</br>Checking character: Dark One   Current gold: "1000"  | New gold: "1000"   Current battles: "0" | New battles: 0
-</br>Checking character: Green Man   Current gold: "1000"  | New gold: "1000"   Current battles: "0" | New battles: 0
-</br>Checking character: operator test   Current gold: "3600"  | New gold: "3600"   Current battles: "64" | New battles: 62</br>
-starting heroes updatePHP Fatal error:  Uncaught mysqli_sql_exception: Incorrect integer value: '' for column `gameofstonesapp_test`.`Users_stats`.`xp` at row 1 in /home/gameofstonesapp/domains/test.gameofstones.app/public_html/admin/heroes_update.php:95
-Stack trace:
-#0 /home/gameofstonesapp/domains/test.gameofstones.app/public_html/admin/heroes_update.php(95): mysqli_query()
-#1 /home/gameofstonesapp/domains/test.gameofstones.app/public_html/admin/quarterly_updates.php(276): include_once('...')
-#2 /home/gameofstonesapp/domains/test.gameofstones.app/public_html/admin/timed_updates.php(27): include_once('...')
-#3 {main}
-  thrown in /home/gameofstonesapp/domains/test.gameofstones.app/public_html/admin/heroes_update.php on line 95
-Starting 15 minute updateStarting Updates...Connecting to DB... Starting Quarterly Updates...Updating Users...</br>
-starting heroes updatePHP Fatal error:  Uncaught mysqli_sql_exception: Incorrect integer value: '' for column `gameofstonesapp_test`.`Users_stats`.`xp` at row 1 in /home/gameofstonesapp/domains/test.gameofstones.app/public_html/admin/heroes_update.php:95
-Stack trace:
-#0 /home/gameofstonesapp/domains/test.gameofstones.app/public_html/admin/heroes_update.php(95): mysqli_query()
-#1 /home/gameofstonesapp/domains/test.gameofstones.app/public_html/admin/quarterly_updates.php(276): include_once('...')
-#2 /home/gameofstonesapp/domains/test.gameofstones.app/public_html/admin/timed_updates.php(27): include_once('...')
-#3 {main}
-  thrown in /home/gameofstonesapp/domains/test.gameofstones.app/public_html/admin/heroes_update.php on line 95
-Starting 15 minute updateStarting Updates...Connecting to DB... Starting Quarterly Updates...Updating Users...</br>
-starting heroes updatePHP Fatal error:  Uncaught mysqli_sql_exception: Incorrect integer value: '' for column `gameofstonesapp_test`.`Users_stats`.`xp` at row 1 in /home/gameofstonesapp/domains/test.gameofstones.app/public_html/admin/heroes_update.php:95
-Stack trace:
-#0 /home/gameofstonesapp/domains/test.gameofstones.app/public_html/admin/heroes_update.php(95): mysqli_query()
-#1 /home/gameofstonesapp/domains/test.gameofstones.app/public_html/admin/quarterly_updates.php(276): include_once('...')
-#2 /home/gameofstonesapp/domains/test.gameofstones.app/public_html/admin/timed_updates.php(27): include_once('...')
-#3 {main}
-  thrown in /home/gameofstonesapp/domains/test.gameofstones.app/public_html/admin/heroes_update.php on line 95
-Starting 15 minute updateStarting Updates...Connecting to DB... Starting Quarterly Updates...Updating Users...</br>
-starting heroes updatePHP Fatal error:  Uncaught mysqli_sql_exception: Incorrect integer value: '' for column `gameofstonesapp_test`.`Users_stats`.`xp` at row 1 in /home/gameofstonesapp/domains/test.gameofstones.app/public_html/admin/heroes_update.php:95
-Stack trace:
-#0 /home/gameofstonesapp/domains/test.gameofstones.app/public_html/admin/heroes_update.php(95): mysqli_query()
-#1 /home/gameofstonesapp/domains/test.gameofstones.app/public_html/admin/quarterly_updates.php(276): include_once('...')
-#2 /home/gameofstonesapp/domains/test.gameofstones.app/public_html/admin/timed_updates.php(27): include_once('...')
-#3 {main}
-  thrown in /home/gameofstonesapp/domains/test.gameofstones.app/public_html/admin/heroes_update.php on line 95
-Starting 15 minute updateStarting Updates...Connecting to DB... Starting Quarterly Updates...Updating Users...
-</br>Checking character: The Creator   Current gold: "1000"  | New gold: "1000"   Current battles: "0" | New battles: 0
-</br>Checking character: Dark One   Current gold: "1000"  | New gold: "1000"   Current battles: "0" | New battles: 0
-</br>Checking character: Green Man   Current gold: "1000"  | New gold: "1000"   Current battles: "0" | New battles: 0
-</br>Checking character: operator test   Current gold: "3600"  | New gold: "3600"   Current battles: "62" | New battles: 60
-</br>Checking character: sadfdfsdf sdfsf   Current gold: "3000"  | New gold: "3000"   Current battles: "62" | New battles: 60</br>
-starting heroes updatePHP Fatal error:  Uncaught mysqli_sql_exception: Incorrect integer value: '' for column `gameofstonesapp_test`.`Users_stats`.`xp` at row 1 in /home/gameofstonesapp/domains/test.gameofstones.app/public_html/admin/heroes_update.php:95
-Stack trace:
-#0 /home/gameofstonesapp/domains/test.gameofstones.app/public_html/admin/heroes_update.php(95): mysqli_query()
-#1 /home/gameofstonesapp/domains/test.gameofstones.app/public_html/admin/quarterly_updates.php(276): include_once('...')
-#2 /home/gameofstonesapp/domains/test.gameofstones.app/public_html/admin/timed_updates.php(27): include_once('...')
-#3 {main}
-  thrown in /home/gameofstonesapp/domains/test.gameofstones.app/public_html/admin/heroes_update.php on line 95
-Starting 15 minute updateStarting Updates...Connecting to DB... Starting Quarterly Updates...Updating Users...</br>
-starting heroes updatePHP Fatal error:  Uncaught mysqli_sql_exception: Incorrect integer value: '' for column `gameofstonesapp_test`.`Users_stats`.`xp` at row 1 in /home/gameofstonesapp/domains/test.gameofstones.app/public_html/admin/heroes_update.php:95
-Stack trace:
-#0 /home/gameofstonesapp/domains/test.gameofstones.app/public_html/admin/heroes_update.php(95): mysqli_query()
-#1 /home/gameofstonesapp/domains/test.gameofstones.app/public_html/admin/quarterly_updates.php(276): include_once('...')
-#2 /home/gameofstonesapp/domains/test.gameofstones.app/public_html/admin/timed_updates.php(27): include_once('...')
-#3 {main}
-  thrown in /home/gameofstonesapp/domains/test.gameofstones.app/public_html/admin/heroes_update.php on line 95
-Starting 15 minute updateStarting Updates...Connecting to DB... Starting Quarterly Updates...Updating Users...</br>
-starting heroes updatePHP Fatal error:  Uncaught mysqli_sql_exception: Incorrect integer value: '' for column `gameofstonesapp_test`.`Users_stats`.`xp` at row 1 in /home/gameofstonesapp/domains/test.gameofstones.app/public_html/admin/heroes_update.php:95
-Stack trace:
-#0 /home/gameofstonesapp/domains/test.gameofstones.app/public_html/admin/heroes_update.php(95): mysqli_query()
-#1 /home/gameofstonesapp/domains/test.gameofstones.app/public_html/admin/quarterly_updates.php(276): include_once('...')
-#2 /home/gameofstonesapp/domains/test.gameofstones.app/public_html/admin/timed_updates.php(27): include_once('...')
-#3 {main}
-  thrown in /home/gameofstonesapp/domains/test.gameofstones.app/public_html/admin/heroes_update.php on line 95
-Starting 15 minute updateStarting Updates...Connecting to DB... Starting Quarterly Updates...Updating Users...</br>
-starting heroes updatePHP Fatal error:  Uncaught mysqli_sql_exception: Incorrect integer value: '' for column `gameofstonesapp_test`.`Users_stats`.`xp` at row 1 in /home/gameofstonesapp/domains/test.gameofstones.app/public_html/admin/heroes_update.php:95
-Stack trace:
-#0 /home/gameofstonesapp/domains/test.gameofstones.app/public_html/admin/heroes_update.php(95): mysqli_query()
-#1 /home/gameofstonesapp/domains/test.gameofstones.app/public_html/admin/quarterly_updates.php(276): include_once('...')
-#2 /home/gameofstonesapp/domains/test.gameofstones.app/public_html/admin/timed_updates.php(27): include_once('...')
-#3 {main}
-  thrown in /home/gameofstonesapp/domains/test.gameofstones.app/public_html/admin/heroes_update.php on line 95
+</br>Checking character: Green Man   Current gold: "1000"  | New gold: "1000"   Current battles: "170" | New battles: 0</br>
+starting heroes update</br>
+ Hourly update not running this iterationStarting 15 minute updateStarting Updates...Connecting to DB... Starting Quarterly Updates...Updating Users...
+</br>Checking character: The Creator   Current gold: "1000"  | New gold: "1000"   Current battles: "170" | New battles: 0
+</br>Checking character: Dark One   Current gold: "1000"  | New gold: "1000"   Current battles: "170" | New battles: 0
+</br>Checking character: Green Man   Current gold: "1000"  | New gold: "1000"   Current battles: "170" | New battles: 0</br>
+starting heroes update</br>
+ Hourly update not running this iteration

@@ -2,16 +2,17 @@
 
 /* establish a connection with the database */
 include_once("admin/connect.php");
-include_once("admin/userdata.php");
-include_once("admin/locFuncs.php");
-include_once("admin/duelFuncs.php");
-include_once("admin/charFuncs.php");
-include_once("admin/jobFuncs.php");
-// Find all equipped items
-include_once("admin/equipped.php");
+include_once("admin/userdata.php"); 
 
+include_once("admin/locFuncs.php"); 
+
+include_once("admin/duelFuncs.php");
+include_once("admin/charFuncs.php"); 
+include_once("admin/jobFuncs.php");
+include_once("admin/equipped.php");
 include_once("map/mapdata/coordinates.inc");
-if ($location_array[$char['location']][2]) $is_town=1;
+
+if (isset($location_array[$char['location']][2]) && $location_array[$char['location']][2]) $is_town=1;
 else $is_town=0;
 
 $message = mysqli_real_escape_string($db,$_GET['message']);
@@ -34,28 +35,28 @@ $twoter = mysqli_real_escape_string($db,$_REQUEST['twoter']);
 $dismantlePrice = mysqli_real_escape_string($db,$_REQUEST['dismantlePrice']);
 $blendPrice = mysqli_real_escape_string($db,$_REQUEST['blendPrice']);
 
-
 $soc_name = $char['society'];
 $society = mysqli_fetch_array(mysqli_query($db,"SELECT * FROM Soc WHERE name='$soc_name' "));
 
-$loc = $char['location'];
-$shopname = $town_shop_names[$loc][$shop-1];
+$loc = $char['location']; 
+$shopname = isset($town_shop_names[$loc][$shop-1]) ? $town_shop_names[$loc][$shop-1] : '';
 if ($shopname == "") $shopname = $loc."'s Outfitter";
 
 // Check if city has been destroyed. If so, don't display anything.
-if (!$location['isDestroyed'])
+if (!isset($location['isDestroyed']) || !$location['isDestroyed']) 
 {
 $type = $shop + 18;
 
-$jobs = unserialize($char['jobs']);
+$jobs_data = isset($char['jobs']) ? $char['jobs'] : null;
+$jobs = $jobs_data ? unserialize($jobs_data) : array();
 $pro_stats=cparse(getAllJobBonuses($jobs));
 
-$fv = $pro_stats['fV'] + $town_bonuses["fV"] + $town_bonuses['lV'] + $town_bonuses['tV'];
-$hv = $pro_stats['hV'] + $town_bonuses['hV'] + $town_bonuses['lV'] + $town_bonuses['tV'];
-$dv = $pro_stats['dV'] + $town_bonuses['dV'] + $town_bonuses['lV'] + $town_bonuses['tV'];
-$iv = $pro_stats['iV'] + $town_bonuses['iV'] + $town_bonuses['oV'] + $town_bonuses['tV'];
-$uv = $pro_stats['uV'] + $town_bonuses['uV'] + $town_bonuses['oV'] + $town_bonuses['tV'];
-$sv = $pro_stats['sV'] + $town_bonuses['sV'] + $town_bonuses['oV'] + $town_bonuses['tV'];
+$fv = (isset($pro_stats['fV']) ? $pro_stats['fV'] : 0) + (isset($town_bonuses["fV"]) ? $town_bonuses["fV"] : 0) + (isset($town_bonuses['lV']) ? $town_bonuses['lV'] : 0) + (isset($town_bonuses['tV']) ? $town_bonuses['tV'] : 0);
+$hv = (isset($pro_stats['hV']) ? $pro_stats['hV'] : 0) + (isset($town_bonuses['hV']) ? $town_bonuses['hV'] : 0) + (isset($town_bonuses['lV']) ? $town_bonuses['lV'] : 0) + (isset($town_bonuses['tV']) ? $town_bonuses['tV'] : 0);
+$dv = (isset($pro_stats['dV']) ? $pro_stats['dV'] : 0) + (isset($town_bonuses['dV']) ? $town_bonuses['dV'] : 0) + (isset($town_bonuses['lV']) ? $town_bonuses['lV'] : 0) + (isset($town_bonuses['tV']) ? $town_bonuses['tV'] : 0);
+$iv = (isset($pro_stats['iV']) ? $pro_stats['iV'] : 0) + (isset($town_bonuses['iV']) ? $town_bonuses['iV'] : 0) + (isset($town_bonuses['oV']) ? $town_bonuses['oV'] : 0) + (isset($town_bonuses['tV']) ? $town_bonuses['tV'] : 0);
+$uv = (isset($pro_stats['uV']) ? $pro_stats['uV'] : 0) + (isset($town_bonuses['uV']) ? $town_bonuses['uV'] : 0) + (isset($town_bonuses['oV']) ? $town_bonuses['oV'] : 0) + (isset($town_bonuses['tV']) ? $town_bonuses['tV'] : 0);
+$sv = (isset($pro_stats['sV']) ? $pro_stats['sV'] : 0) + (isset($town_bonuses['sV']) ? $town_bonuses['sV'] : 0) + (isset($town_bonuses['oV']) ? $town_bonuses['oV'] : 0) + (isset($town_bonuses['tV']) ? $town_bonuses['tV'] : 0);
 
 $pro_minus[1] = (100+$fv)/100;
 $pro_minus[2] = (100+$hv)/100;
@@ -65,13 +66,13 @@ $ustats = mysqli_fetch_array(mysqli_query($db,"SELECT * FROM Users_stats WHERE i
 
 if (!$shop || $shop < 1 || $shop > 4) {$shop = 1;}
 
-if (!$location['shopg'])
-{
-  $location['shopg']=serialize($base_town_consumes[$loc]);
-  mysqli_query($db,"UPDATE Locations SET shopg='".$location['shopg']."' WHERE name='$loc'");
-}
+$shopg = isset($location['shopg']) ? unserialize($location['shopg']) : false;
 
-$shopg = unserialize($location['shopg']);
+if ($shopg === false && (isset($location['shopg']) && $location['shopg'] !== serialize(false) && $location['shopg'] !== null && $location['shopg'] !== '')) {
+    $shopg = array(); 
+} else if ($shopg === false) {
+    $shopg = array(); 
+}
 
 $shopname = $town_shop_names[$loc][$shop-1];
 
@@ -1027,9 +1028,8 @@ $wikilink = $wikilinks[$shop-1];
 
 // DRAW PAGE
   $town_img_name = str_replace(' ','_',strtolower($char['location']));
-  $town_img_name = str_replace('&#39;','',strtolower($town_img_name));
 
-if (!$is_town) $message = "There are no businesses in ".str_replace('-ap-',"'",$char['location']);
+if (!$is_town) $message = "There are no businesses in ".$char['location'];
 $bg="";
 if ($mode != 1) 
 {
@@ -1248,6 +1248,7 @@ else if ($shop == 2)
         <!--<button class='btn btn-default btn-md btn-block' onClick="javascript:combineItems()">Combine Items</button>-->
         <a id='combineButton'  data-href="javascript:submitBlendForm();" data-toggle="confirmation" data-placement="top" title="Are you sure you want to blend these items?" class='btn btn-default btn-md btn-block'>Blend Ter'angreals</a>
       </div>
+</div>
 </div>
 </div>
 </div>

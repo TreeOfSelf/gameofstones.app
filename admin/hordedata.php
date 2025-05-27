@@ -52,7 +52,8 @@ if (floor($msgs['checktime']/6) < floor(time()/3600))
         if ($newdone==3)
         {
         
-		  $attacked = mysqli_fetch_array(mysqli_query($db,"SELECT id, bank, upgrades, shoplvls, shopg, name, chaos, army FROM Locations WHERE name='$myHorde[target]'"));
+          $escaped_horde_target = mysqli_real_escape_string($db, $myHorde['target']);
+		  $attacked = mysqli_fetch_array(mysqli_query($db,"SELECT id, bank, upgrades, shoplvls, shopg, name, chaos, army FROM Locations WHERE name='$escaped_horde_target'"));
           
           // Lose seal if it has one.
           $sealid = $attacked['id']+50000;
@@ -134,7 +135,7 @@ if (floor($msgs['checktime']/6) < floor(time()/3600))
           if ($attacked['army'] < 1000) $attacked['army'] = 1000;
           
           // updated database, including adding chaos
-          mysqli_query($db,"UPDATE Locations SET bank='$attacked[bank]', upgrades='$saups', shoplvls='$sashop', shopg='$sacons', chaos=chaos+50, army='$attacked[army]' WHERE name='$myHorde[target]'");
+          mysqli_query($db,"UPDATE Locations SET bank='$attacked[bank]', upgrades='$saups', shoplvls='$sashop', shopg='$sacons', chaos=chaos+50, army='$attacked[army]' WHERE name='$escaped_horde_target'");
 
           // All players in the targeted City get moved to the Wilderness area the horde attacked from. 
           $locusers = mysqli_query($db,"SELECT id, location FROM Users WHERE location='$attacked[name]'");
@@ -351,7 +352,8 @@ if (floor($msgs['checktime']/6) < floor(time()/3600))
       // Don't have two in a row targeting same town.
       if ($lastHorde['target'] != $townnames[$x])
       {
-        $temp = mysqli_num_rows(mysqli_query($db,"SELECT id FROM Hordes WHERE type='1' AND target='".$townnames[$x]."'"));
+        $escaped_townname = mysqli_real_escape_string($db, $townnames[$x]);
+        $temp = mysqli_num_rows(mysqli_query($db,"SELECT id FROM Hordes WHERE type='1' AND target='".$escaped_townname."'"));
         // If the town has a seal, cancel out one horde that's targeted it. Make sure that doesn't make us negative!
         $sealid = $x+50001;
         $hasSeal = mysqli_num_rows(mysqli_query($db,"SELECT id FROM Items WHERE type=0 && owner='$sealid'"));
@@ -373,7 +375,8 @@ if (floor($msgs['checktime']/6) < floor(time()/3600))
       // Don't have two in a row targeting same town.
       if ($lastHorde['target'] != $townnames[$x])
       {
-        $temp = mysqli_num_rows(mysqli_query($db,"SELECT id FROM Hordes WHERE type='1' AND target='".$townnames[$x]."'"));
+        $escaped_townname_for_select = mysqli_real_escape_string($db, $townnames[$x]);
+        $temp = mysqli_num_rows(mysqli_query($db,"SELECT id FROM Hordes WHERE type='1' AND target='".$escaped_townname_for_select."'"));
         // If the town has a seal, add one extra
         $sealid = $x+50001;
         $hasSeal = mysqli_num_rows(mysqli_query($db,"SELECT id FROM Items WHERE type=0 && owner='$sealid'")); 
@@ -410,8 +413,10 @@ if (floor($msgs['checktime']/6) < floor(time()/3600))
     $hntime = $hstime+36+ rand(0,12);
     if ($hwild != "" && $htown['name'])
     {
+      $escaped_hwild = mysqli_real_escape_string($db, $hwild);
+      $escaped_htown_name = mysqli_real_escape_string($db, $htown['name']);
       $sql = "INSERT INTO Hordes (type, location, target,         starts,    ends,      next,      done, npcs, users) 
-                          VALUES ('1',  '$hwild', '$htown[name]', '$hstime', '$hetime', '$hntime', 0,    '$shnpcs','$usersInput')";
+                          VALUES ('1',  '$escaped_hwild', '$escaped_htown_name', '$hstime', '$hetime', '$hntime', 0,    '$shnpcs','$usersInput')";
       $resultt = mysqli_query($db,$sql);
 	  echo "</br>\n PHP ERROR:";
 	  echo "</br>\n ".mysqli_error($db);

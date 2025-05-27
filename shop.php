@@ -118,7 +118,8 @@ $time = time();
         }
 
         $location['bank'] += $ruler_cut;
-        mysqli_query($db,"UPDATE Locations SET bank='".$location['bank']."' WHERE name='$loc'");
+        $escaped_loc_for_update = mysqli_real_escape_string($db, $loc);
+        mysqli_query($db,"UPDATE Locations SET bank='".$location['bank']."' WHERE name='$escaped_loc_for_update'");
         
         if ($shoplvls[$buy][$sellclan]>0)
         {

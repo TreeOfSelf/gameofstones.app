@@ -13,12 +13,18 @@ $shopmax= array (
 'Caemlyn' => array(7,5,6,0,4,4,5,5,4),
 'Far Madding' => array(5,4,5,6,7,5,4,4,0),
 'Amador' => array(5,7,4,4,4,5,5,6,),
-'Emond-ap-s Field' => array(0,4,5,4,7,6,5,4,5),
+"Emond's Field" => array("400"=>array("-1"),"500"=>array("-1"),"200"=>array("-1")),
 'Rhuidean' => array(4,0,4,7,5,4,5,5,6),
 'Maradon' => array(7,4,5,6,5,5,4,0,4),
 'Bandar Eban' => array(5,6,5,0,4,4,4,7,5),
 'Lugard' => array(4,5,4,5,0,4,6,7,5),
 'Fal Dara' => array(6,7,4,4,5,5,5,0,4),
+"Thakan'dar" => array("900"=>array("-1"),"100"=>array("-1"),"1000"=>array("-1")),
+"Shol Arbela" => array("100"=>array("-1"),"300"=>array("-1"),"900"=>array("-1")),
+"Jehannah" => array("200"=>array("-1"),"300"=>array("-1"),"700"=>array("-1")),
+"Mayene" => array("1000"=>array("-1"),"200"=>array("-1"),"600"=>array("-1")),
+"Cantorin" => array("200"=>array("-1"),"700"=>array("-1"),"100"=>array("-1")),
+"Salidar" => array("500"=>array("-1"),"1000"=>array("-1"),"200"=>array("-1")),
 );
 
 $shop_base = array (
@@ -35,11 +41,17 @@ $shop_base = array (
 'Caemlyn' => array('0'=>array('0')),
 'Far Madding' => array('400'=>array('0')),
 'Amador' => array('100'=>array('0')),
-'Emond-ap-s Field' => array('400'=>array('0')),
+"Emond's Field" => array("400"=>array("-1"),"500"=>array("-1"),"200"=>array("-1")),
 'Rhuidean' => array('300'=>array('0')),
 'Maradon' => array('0'=>array('0')),
+"Thakan'dar" => array("900"=>array("-1"),"100"=>array("-1"),"1000"=>array("-1")),
 'Fal Dara' => array('100'=>array('0')), 
 'Lugard' => array('700'=>array('0')),
+"Shol Arbela" => array("100"=>array("-1"),"300"=>array("-1"),"900"=>array("-1")),
+"Jehannah" => array("200"=>array("-1"),"300"=>array("-1"),"700"=>array("-1")),
+"Mayene" => array("1000"=>array("-1"),"200"=>array("-1"),"600"=>array("-1")),
+"Cantorin" => array("200"=>array("-1"),"700"=>array("-1"),"100"=>array("-1")),
+"Salidar" => array("500"=>array("-1"),"1000"=>array("-1"),"200"=>array("-1")),
 );
 
 $shop_spec = array('','2','5','6','8','2','3','5','6','7','8','0','4','1','4','3','0','1','7');
@@ -52,7 +64,7 @@ $town_consumables = array (
 'Falme' => array(1,6,8,2,5,7,3,4,9),
 'Lugard' => array(1,6,9,3,5,7,2,4,8),
 'Amador' => array(3,5,7,2,4,8,1,6,9),
-'Emond-ap-s Field' => array(2,4,9,3,6,7,1,5,8),
+"Emond's Field" => array(2,4,9,3,6,7,1,5,8),
 'Stedding Shangtai' => array(2,5,7,3,4,9,1,6,8),
 'Rhuidean' => array(3,4,8,2,5,9,1,6,7),
 'Bandar Eban' => array(3,5,8,2,6,7,1,4,9),

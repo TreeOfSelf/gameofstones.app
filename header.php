@@ -511,7 +511,7 @@
         </li>
 
         <form name="travelForm" action="world.php" method="post">
-          <?php $clean_loc = str_replace("&#39;", "", $char['location'] ?? '');?>
+          <?php $clean_loc = $char['location'];?>
           <input type="hidden" name="fromLoc" value="<?php echo $clean_loc;?>"/>
           <input type="hidden" name="toLoc" value="-1"/>
           <input type="hidden" name="escortId" value="-1"/>

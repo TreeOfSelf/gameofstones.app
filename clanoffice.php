@@ -10,7 +10,7 @@ include_once("admin/locFuncs.php" );
 if (!$location['isDestroyed'])
 {
 $id=$char['id'];
-$loc_name = str_replace('-ap-',"'",$char['location']);
+$loc_name = $char['location'];
 $loc_query = $char['location'];
 $soc_name = $char['society'];
 
